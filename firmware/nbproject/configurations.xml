@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Arquivos de Cabeçalho"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="kernel" projectFiles="true">
+        <logicalFolder name="f3" displayName="drivers" projectFiles="true">
+          <itemPath>kernel/drivers/cpu_control.c</itemPath>
+          <itemPath>kernel/drivers/cpu_control.h</itemPath>
+          <itemPath>kernel/drivers/keyboard.c</itemPath>
+          <itemPath>kernel/drivers/keyboard.h</itemPath>
+          <itemPath>kernel/drivers/lcd_simulator.c</itemPath>
+          <itemPath>kernel/drivers/lcd_simulator.h</itemPath>
+          <itemPath>kernel/drivers/real_time_clock.c</itemPath>
+          <itemPath>kernel/drivers/real_time_clock.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f2" displayName="screen" projectFiles="true">
+          <itemPath>kernel/screen/debug.c</itemPath>
+          <itemPath>kernel/screen/debug.h</itemPath>
+          <itemPath>kernel/screen/notepad.c</itemPath>
+          <itemPath>kernel/screen/notepad.h</itemPath>
+          <itemPath>kernel/screen/screen.c</itemPath>
+          <itemPath>kernel/screen/screen.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f4" displayName="settings" projectFiles="true">
+          <itemPath>kernel/settings/keyboard.c</itemPath>
+          <itemPath>kernel/settings/screens.c</itemPath>
+          <itemPath>kernel/settings/settings.h</itemPath>
+          <itemPath>kernel/settings/std.c</itemPath>
+          <itemPath>kernel/settings/upp.c</itemPath>
+          <itemPath>kernel/settings/util.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f1" displayName="upp" projectFiles="true">
+          <itemPath>kernel/upp/fonte.c</itemPath>
+          <itemPath>kernel/upp/fonte.h</itemPath>
+          <itemPath>kernel/upp/upp.c</itemPath>
+          <itemPath>kernel/upp/upp.h</itemPath>
+        </logicalFolder>
+        <itemPath>kernel/compiler_define.h</itemPath>
+        <itemPath>kernel/start.c</itemPath>
+        <itemPath>kernel/start.h</itemPath>
+        <itemPath>kernel/std.c</itemPath>
+        <itemPath>kernel/std.h</itemPath>
+        <itemPath>kernel/util.c</itemPath>
+        <itemPath>kernel/util.h</itemPath>
+      </logicalFolder>
+      <itemPath>hardware.c</itemPath>
+      <itemPath>hardware.h</itemPath>
+      <itemPath>main.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Arquivos de Código-Fonte"
+                   projectFiles="true">
+      <itemPath>main.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Arquivos de Recurso"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Arquivos de Teste"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Arquivos Importantes"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+      </compileType>
+      <item path="hardware.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="hardware.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/compiler_define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/cpu_control.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/cpu_control.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/keyboard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/keyboard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/lcd_simulator.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/lcd_simulator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/real_time_clock.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/real_time_clock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/screen/debug.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/screen/debug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/screen/notepad.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/screen/notepad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/screen/screen.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/screen/screen.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/settings/keyboard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/screens.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/settings.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/settings/std.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/upp.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/util.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/start.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/start.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/std.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/std.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/upp/fonte.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/upp/fonte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/upp/upp.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/upp/upp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/util.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="hardware.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="hardware.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/compiler_define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/cpu_control.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/cpu_control.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/keyboard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/keyboard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/lcd_simulator.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/lcd_simulator.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/real_time_clock.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/real_time_clock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/screen/debug.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/screen/debug.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/screen/notepad.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/screen/notepad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/screen/screen.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/screen/screen.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/settings/keyboard.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/screens.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/settings.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/settings/std.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/upp.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/util.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/start.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/start.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/std.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/std.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/upp/fonte.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/upp/fonte.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/upp/upp.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/upp/upp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/util.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="main.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
