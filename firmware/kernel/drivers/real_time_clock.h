@@ -11,8 +11,8 @@
  * Created on 8 de Maio de 2018, 11:24
  */
 
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef REAL_TIME_CLOCK.H
+#define REAL_TIME_CLOCK.H
 
 #ifdef __cplusplus
 extern "C" {

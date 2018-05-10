@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
 #include "settings/settings.h"
-    
+
     void Start_inicialize();
     
     void Start_loop();

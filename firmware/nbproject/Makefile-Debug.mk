@@ -40,6 +40,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/drivers/keyboard.o \
 	${OBJECTDIR}/kernel/drivers/lcd_simulator.o \
 	${OBJECTDIR}/kernel/drivers/real_time_clock.o \
+	${OBJECTDIR}/kernel/fonts/alfanum_6.o \
+	${OBJECTDIR}/kernel/fonts/alfanum_8.o \
+	${OBJECTDIR}/kernel/fonts/numeric_16.o \
+	${OBJECTDIR}/kernel/fonts/numeric_24.o \
+	${OBJECTDIR}/kernel/kernel.o \
 	${OBJECTDIR}/kernel/screen/debug.o \
 	${OBJECTDIR}/kernel/screen/notepad.o \
 	${OBJECTDIR}/kernel/screen/screen.o \
@@ -48,12 +53,17 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/settings/std.o \
 	${OBJECTDIR}/kernel/settings/upp.o \
 	${OBJECTDIR}/kernel/settings/util.o \
-	${OBJECTDIR}/kernel/start.o \
 	${OBJECTDIR}/kernel/std.o \
-	${OBJECTDIR}/kernel/upp/fonte.o \
 	${OBJECTDIR}/kernel/upp/upp.o \
 	${OBJECTDIR}/kernel/util.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/screens/alarms.o \
+	${OBJECTDIR}/screens/calendar.o \
+	${OBJECTDIR}/screens/main.o \
+	${OBJECTDIR}/screens/menu.o \
+	${OBJECTDIR}/screens/settings.o \
+	${OBJECTDIR}/screens/status.o \
+	${OBJECTDIR}/screens/stopwatch.o
 
 
 # C Compiler Flags
@@ -105,6 +115,31 @@ ${OBJECTDIR}/kernel/drivers/real_time_clock.o: kernel/drivers/real_time_clock.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/real_time_clock.o kernel/drivers/real_time_clock.c
 
+${OBJECTDIR}/kernel/fonts/alfanum_6.o: kernel/fonts/alfanum_6.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/fonts
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/fonts/alfanum_6.o kernel/fonts/alfanum_6.c
+
+${OBJECTDIR}/kernel/fonts/alfanum_8.o: kernel/fonts/alfanum_8.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/fonts
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/fonts/alfanum_8.o kernel/fonts/alfanum_8.c
+
+${OBJECTDIR}/kernel/fonts/numeric_16.o: kernel/fonts/numeric_16.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/fonts
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/fonts/numeric_16.o kernel/fonts/numeric_16.c
+
+${OBJECTDIR}/kernel/fonts/numeric_24.o: kernel/fonts/numeric_24.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/fonts
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/fonts/numeric_24.o kernel/fonts/numeric_24.c
+
+${OBJECTDIR}/kernel/kernel.o: kernel/kernel.c
+	${MKDIR} -p ${OBJECTDIR}/kernel
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/kernel.o kernel/kernel.c
+
 ${OBJECTDIR}/kernel/screen/debug.o: kernel/screen/debug.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/screen
 	${RM} "$@.d"
@@ -145,20 +180,10 @@ ${OBJECTDIR}/kernel/settings/util.o: kernel/settings/util.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/settings/util.o kernel/settings/util.c
 
-${OBJECTDIR}/kernel/start.o: kernel/start.c
-	${MKDIR} -p ${OBJECTDIR}/kernel
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/start.o kernel/start.c
-
 ${OBJECTDIR}/kernel/std.o: kernel/std.c
 	${MKDIR} -p ${OBJECTDIR}/kernel
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/std.o kernel/std.c
-
-${OBJECTDIR}/kernel/upp/fonte.o: kernel/upp/fonte.c
-	${MKDIR} -p ${OBJECTDIR}/kernel/upp
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/upp/fonte.o kernel/upp/fonte.c
 
 ${OBJECTDIR}/kernel/upp/upp.o: kernel/upp/upp.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/upp
@@ -174,6 +199,41 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/screens/alarms.o: screens/alarms.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms.o screens/alarms.c
+
+${OBJECTDIR}/screens/calendar.o: screens/calendar.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/calendar.o screens/calendar.c
+
+${OBJECTDIR}/screens/main.o: screens/main.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/main.o screens/main.c
+
+${OBJECTDIR}/screens/menu.o: screens/menu.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/menu.o screens/menu.c
+
+${OBJECTDIR}/screens/settings.o: screens/settings.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/settings.o screens/settings.c
+
+${OBJECTDIR}/screens/status.o: screens/status.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/status.o screens/status.c
+
+${OBJECTDIR}/screens/stopwatch.o: screens/stopwatch.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/stopwatch.o screens/stopwatch.c
 
 # Subprojects
 .build-subprojects:

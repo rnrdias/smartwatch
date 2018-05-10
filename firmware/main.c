@@ -18,30 +18,15 @@
 #include <windows.h>
 
 #include "main.h"
-//#include "kernel/settings/settings.h"
-
-/*void hardwareLoop() {
-    if (kbhit()) {
-        letra = getch();
-        if (letra == 'q')
-            exit(0);
-    } else {
-        letra = 0;
-    }
-}*/
 
 int main(int argc, char** argv) {
-
+    
     Start_inicialize();
-
-    Std_printf("%rOla mundo");
-
+    Screen_windowOpen(&Sc_main);
 
 
     while (1) {
-        
         Start_loop();
-        
         LCD_SendBuffer(lcdBuffer);
         printf("%d%d%d%d\n\n", Keyboard_keyEnter(), Keyboard_keyEsc(), Keyboard_keyUp(), Keyboard_keyDown());
         //hardwareLoop();

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "start.h"
+#include "kernel.h"
 
 void Start_loop(void) {
     Keyboard_loop();
@@ -19,7 +19,7 @@ void Start_inicialize(void) {
     Screen_initialize();
     LCD_Inicialize();
     Std_extends = Std_extend;
-    UPP_fontDefault = &UPP_FontAlfanum_8;
+    UPP_fontDefault = &Font_alfanum_8;
 }
 
 

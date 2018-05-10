@@ -19,7 +19,8 @@ extern "C" {
 #endif
 
 #include "kernel/settings/settings.h"    
-#include "kernel/start.h"
+#include "kernel/kernel.h"
+#include "screens/screens.h"
     
 #ifdef __cplusplus
 }

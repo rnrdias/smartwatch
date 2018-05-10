@@ -62,12 +62,12 @@ char Screen_hasEditNumRun() {
 }
 
 char stackPont;
-DC_window *stack[stackSize];
+Screen_window *stack[stackSize];
 
 #define stackPush(x) stack[++stackPont]=x
 #define stackPop() stack[stackPont--]
 
-void Screen_windowOpen(DC_window *win) {
+void Screen_windowOpen(Screen_window *win) {
     stackPush(win);
     scrollValue = 0;
     if (win->start != 0)
@@ -75,7 +75,7 @@ void Screen_windowOpen(DC_window *win) {
 }
 
 void Screen_windowClose() {
-    DC_window *aux = stackPop();
+    Screen_window *aux = stackPop();
     if (aux->end != 0)
         aux->end(aux);
 }
@@ -161,6 +161,14 @@ void Screen_listSelectPrint() {
     unsigned char listIndex;
     unsigned char i;
 
+    //keys
+    if (!Screen_hasEditNumRun()) {
+        if (Screen_getKeyDown())
+            listAux->index++;
+        if (Screen_getKeyUp() && listAux->index != 0)
+            listAux->index--;
+    }
+
     //limite moviment list
     if (listAux->index >= listAux->sizeList) {
         listAux->index = listAux->sizeList - 1;
@@ -197,14 +205,4 @@ void Screen_listSelectPrint() {
             break;
 
     }
-
-    //keys
-    if (!Screen_hasEditNumRun()) {
-        if (Screen_getKeyDown())
-            listAux->index++;
-        if (Screen_getKeyUp() && listAux->index != 0)
-            listAux->index--;
-    }
-
-
 }

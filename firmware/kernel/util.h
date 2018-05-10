@@ -11,7 +11,7 @@
 
 #include "compiler_define.h"
 
-#define Util_malloc_max 100 //define o tamanho da memoria das funções memPush e memPop
+
 /*
  * Pototipo para atraso de milesegundos
  */
@@ -35,7 +35,7 @@ extern unsigned char Util_stringLenth(char *string);
 /*
  * Aloca variavel na pilha de memoria
  */
-void *Util_memPush(unsigned char size);
+void *Util_memPush(unsigned int size);
 /*
  * Retira variavel da pilha de memoria
  */

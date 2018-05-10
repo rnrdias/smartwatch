@@ -19,26 +19,26 @@ extern "C" {
 #endif
 
 #include "../util.h"
-#include "upp.h"
+#include "../upp/upp.h"
     /*
      * Fonte alfanumerico tamanho 6
      */
-    CONST UPP_BitmapFormat UPP_FontAlfanum_6;
+    CONST UPP_BitmapFormat Font_alfanum_6;
 
     /*
      * Fonte alfanumerico tamanho 8
      */
-    CONST UPP_BitmapFormat UPP_FontAlfanum_8;
+    CONST UPP_BitmapFormat Font_alfanum_8;
 
     /*
      * Fonte numerica tamanho 16
      */
-    CONST UPP_BitmapFormat UPP_FontNum_16;
+    CONST UPP_BitmapFormat Font_numeric_16;
 
     /*
      * Fonte numerica tamanho 24
      */
-    CONST UPP_BitmapFormat UPP_FontNum_24;
+    CONST UPP_BitmapFormat Font_numeric_24;
 #ifdef __cplusplus
 }
 #endif

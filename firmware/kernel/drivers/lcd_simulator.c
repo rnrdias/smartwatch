@@ -16,8 +16,6 @@ void gotoxy(int x, int y) {
 #define displayWidth() 84
 #define displayHeight() 6
 
-
-
 void LCD_SendBuffer(char *buffer) {
     //unsigned int i = UPP_getDisplayHeight() * UPP_getDisplayWidth() * 8;
     unsigned int y = displayHeight();
@@ -45,10 +43,10 @@ void LCD_SendBuffer(char *buffer) {
         }
         printf("\n");
     }
-  
+
     //printf("%d%d%d%d\n\n", BA, BB, BC, BD);
 }
 
-void LCD_Inicialize() {
-
+void LCD_Inicialize(void) {
+    gotoxy(0, 0);
 }

@@ -11,8 +11,8 @@
  * Created on 8 de Maio de 2018, 11:24
  */
 
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef NOTEPAD_H
+#define NOTEPAD_H
 
 #ifdef __cplusplus
 extern "C" {

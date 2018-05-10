@@ -16,9 +16,9 @@ unsigned char Util_parityCalc(unsigned char value, unsigned char Imp_nPar) {
     }
 }
 
-unsigned char Util_stringLenth(char *string){
+unsigned char Util_stringLenth(char *string) {
     unsigned char i = 0;
-    while(*(string++)){
+    while (*(string++)) {
         i++;
     }
     return i;
@@ -29,22 +29,22 @@ unsigned char Util_stringLenth(char *string){
 char mem[Util_malloc_max];
 
 typedef struct {
-    unsigned char size;
+    unsigned int size;
     char var;
 } aloc;
 
-unsigned char indexTop = 0;
+unsigned int indexTop = 0;
 
-void *Util_memPush(unsigned char size) {
+void *Util_memPush(unsigned int size) {
     if (indexTop + size >= Util_malloc_max)
         return 0;
     aloc *ret = (aloc *) & mem[indexTop];
     ret->size = size;
-    indexTop += size + 1;
+    indexTop += size + sizeof (unsigned int);
     return &ret->var;
 }
 
 void Util_memPop(void *p) {
-    aloc *ret = p - sizeof (unsigned char);
-    indexTop -= ret->size + 1;
+    aloc *ret = p - sizeof (unsigned int);
+    indexTop -= ret->size + sizeof (unsigned int);
 }

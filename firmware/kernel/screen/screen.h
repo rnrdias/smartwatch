@@ -78,6 +78,7 @@ extern "C" {
         void (*itemPrint)(struct Screen_listItem_t * this);
         unsigned char itemPrintSize;
         char isSelect;
+        void *parameter;
     } Screen_listItem;
 
     /*
@@ -134,7 +135,7 @@ extern "C" {
         //void (*resume)(struct DC_window_t * this);
         //void (*stop)(struct DC_window_t * this);
         void *parameters;
-    } DC_window;
+    } Screen_window;
 
     /*
      * prototipo para a impressão do titulo da janela
@@ -143,7 +144,7 @@ extern "C" {
     /*
      * função para abertura da janela
      */
-    void Screen_windowOpen(DC_window *win);
+    void Screen_windowOpen(Screen_window *win);
     /*
      * função para o fechamento da janela
      */

@@ -12,22 +12,21 @@
  */
 
 #include "settings.h"
-char BA, BB, BC, BD;
 
 char Screen_getKeyUp() {
-    return BC;
+    return Keyboard_keyUp();
 }
 
 char Screen_getKeyDown() {
-    return BD;
+    return Keyboard_keyDown();
 }
 
 char Screen_getKeyEntre() {
-    return BA;
+    return Keyboard_keyEnter();
 }
 
 char Screen_getKeyEsc() {
-    return BB;
+    return Keyboard_keyEsc();
 }
 
 char Screen_getScrollStop() {
@@ -35,9 +34,9 @@ char Screen_getScrollStop() {
 }
 
 void Screen_windowLoadHead(char *title) {
-    Std_printf("%r%w%#%s\r\n%w", &UPP_FontAlfanum_6, &UPP_FontAlfanum_8, '_', title, &UPP_FontAlfanum_8);
+    Std_printf("%r%w%#%s\r\n%w", &Font_alfanum_6, &Font_alfanum_8, '_', title, &Font_alfanum_8);
 }
 
 void Screen_listSelectOutPrint(Screen_listItem *item) {
-    Std_printf("%m%#%s%m\r\n", item->isSelect, &UPP_FontAlfanum_8, ' ', item->description, 0);
+    Std_printf("%m%#%s%m\r\n", item->isSelect, &Font_alfanum_8, ' ', item->description, 0);
 }

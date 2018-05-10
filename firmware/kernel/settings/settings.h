@@ -21,7 +21,7 @@ extern "C" {
 
 #include "../screen/screen.h"
 #include "../upp/upp.h"
-#include "../upp/fonte.h"
+#include "../fonts/fonts.h"
 #include "../std.h"
 #include "../drivers/lcd_simulator.h"
 #include "../drivers/keyboard.h"

@@ -11,8 +11,8 @@
  * Created on 8 de Maio de 2018, 11:24
  */
 
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef LCD_SIMULATOR_H
+#define LCD_SIMULATOR_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -21,7 +21,8 @@ extern "C" {
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-void LCD_Inicialize();   
+    
+void LCD_Inicialize(void);  
 void LCD_SendBuffer(char *buffer);
 
 
