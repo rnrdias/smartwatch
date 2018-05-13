@@ -6,10 +6,18 @@
 
 #include "screens.h"
 
+void Sc_settingsStart(Screen_window *this) {
+    this->title = Lang_load(&lang->settings);
+}
+
 void Sc_settingsBody(Screen_window *this) {
     if (Keyboard_keyEsc()) {
         Screen_windowClose();
     }
 }
 
-Screen_window Sc_settings = {"Configuracoes", Sc_settingsBody, 0, 0};
+void Sc_settingsEnd(Screen_window *this) {
+    Util_memPop(this->title);
+}
+
+Screen_window Sc_settings = {"Configuracoes", Sc_settingsBody, Sc_settingsStart, Sc_settingsEnd};

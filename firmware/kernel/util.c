@@ -36,8 +36,8 @@ typedef struct {
 unsigned int indexTop = 0;
 
 void *Util_memPush(unsigned int size) {
-    if (indexTop + size >= Util_malloc_max)
-        return 0;
+    if (indexTop + size >= Util_malloc_max) 
+        return 0;//while(1);
     aloc *ret = (aloc *) & mem[indexTop];
     ret->size = size;
     indexTop += size + sizeof (unsigned int);

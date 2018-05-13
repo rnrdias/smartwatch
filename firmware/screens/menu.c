@@ -11,9 +11,30 @@ void Sc_menuClick(Screen_listItem *this) {
 }
 
 void Sc_menuStart(Screen_window *this) {
-    Screen_listItem *itens = Util_memPush(8 * sizeof (Screen_listItem));
+    Screen_listItem *itens = Util_memPush(5 * sizeof (Screen_listItem));
 
-    itens[0].description = "Alarmes";
+    itens[0].description = Lang_load(&lang->alarms);
+    itens[0].click = &Sc_menuClick;
+    itens[0].parameter = &Sc_alarms;
+
+    itens[1].description = Lang_load(&lang->calendar);
+    itens[1].click = &Sc_menuClick;
+    itens[1].parameter = &Sc_calendar;
+
+    itens[2].description = Lang_load(&lang->settings);
+    itens[2].click = &Sc_menuClick;
+    itens[2].parameter = &Sc_settings;
+
+    itens[3].description = Lang_load(&lang->stopwatch);
+    itens[3].click = &Sc_menuClick;
+    itens[3].parameter = &Sc_stopwatch;
+
+    itens[4].description = Lang_load(&lang->status);
+    itens[4].click = &Sc_menuClick;
+    itens[4].parameter = &Sc_status;
+
+
+    /*itens[0].description = "Alarmes";
     itens[0].click = &Sc_menuClick;
     itens[0].parameter = &Sc_alarms;
 
@@ -31,7 +52,7 @@ void Sc_menuStart(Screen_window *this) {
 
     itens[4].description = "Status";
     itens[4].click = &Sc_menuClick;
-    itens[4].parameter = &Sc_status;
+    itens[4].parameter = &Sc_status;*/
 
 
     Screen_list *list = Util_memPush(sizeof (Screen_list));
@@ -60,8 +81,10 @@ void Sc_menuEnd(Screen_window *this) {
     Screen_list *list;
     list = (this->parameters);
     itens = list->itens;
-    
+
     Util_memPop(list);
+    for (unsigned char i = 0; i < 5; i++)
+        Util_memPop(itens[i].description);
     Util_memPop(itens);
 }
 Screen_window Sc_menu = {"menu", Sc_menuBody, Sc_menuStart, Sc_menuEnd};

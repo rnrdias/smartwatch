@@ -50,6 +50,11 @@
         <itemPath>kernel/util.c</itemPath>
         <itemPath>kernel/util.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f3" displayName="language" projectFiles="true">
+        <itemPath>language/language.c</itemPath>
+        <itemPath>language/language.h</itemPath>
+        <itemPath>language/pt_br.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="screens" projectFiles="true">
         <itemPath>screens/alarms.c</itemPath>
         <itemPath>screens/calendar.c</itemPath>
@@ -167,6 +172,12 @@
       </item>
       <item path="kernel/util.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="language/language.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="language/language.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="language/pt_br.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
@@ -279,6 +290,12 @@
       <item path="kernel/util.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/util.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="language/language.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="language/language.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="language/pt_br.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>

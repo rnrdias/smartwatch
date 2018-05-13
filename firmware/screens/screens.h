@@ -22,6 +22,7 @@ extern "C" {
 #include "../kernel/fonts/fonts.h"
 #include "../kernel/drivers/keyboard.h"
 #include "../kernel/std.h"
+#include "../language/language.h"
 
     Screen_window Sc_main;
     Screen_window Sc_menu;
@@ -30,7 +31,7 @@ extern "C" {
     Screen_window Sc_settings;
     Screen_window Sc_status;
     Screen_window Sc_stopwatch;
-    
+
 
 
 #ifdef __cplusplus

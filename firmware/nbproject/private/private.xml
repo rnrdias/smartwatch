@@ -10,11 +10,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/main.h</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/start.h</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/language/pt_br.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/menu.c</file>
             <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/main.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/start.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/drivers/lcd_simulator.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/language/language.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/util.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/language/language.h</file>
         </group>
     </open-files>
 </project-private>

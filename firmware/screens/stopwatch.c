@@ -6,10 +6,17 @@
 
 #include "screens.h"
 
+void Sc_stopwatchStart(Screen_window *this) {
+    this->title = Lang_load(&lang->stopwatch);
+}
+
 void Sc_stopwatchBody(Screen_window *this) {
     if (Keyboard_keyEsc()) {
         Screen_windowClose();
     }
 }
 
-Screen_window Sc_stopwatch = {"Cronometro", Sc_stopwatchBody, 0, 0};
+void Sc_stopwatchEnd(Screen_window *this) {
+    Util_memPop(this->title);
+}
+Screen_window Sc_stopwatch = {"Cronometro", Sc_stopwatchBody, Sc_stopwatchStart, Sc_stopwatchEnd};

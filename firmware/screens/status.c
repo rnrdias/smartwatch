@@ -6,10 +6,17 @@
 
 #include "screens.h"
 
+void Sc_statusStart(Screen_window *this) {
+        this->title = Lang_load(&lang->status);
+}
+
 void Sc_statusBody(Screen_window *this) {
     if (Keyboard_keyEsc()) {
         Screen_windowClose();
     }
 }
 
-Screen_window Sc_status = {"Status", Sc_statusBody, 0, 0};
+void Sc_statusEnd(Screen_window *this) {
+    Util_memPop(this->title);
+}
+Screen_window Sc_status = {"Status", Sc_statusBody, Sc_statusStart, Sc_statusEnd};
