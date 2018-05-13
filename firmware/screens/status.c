@@ -17,6 +17,6 @@ void Sc_statusBody(Screen_window *this) {
 }
 
 void Sc_statusEnd(Screen_window *this) {
-    Util_memPop(this->title);
+    Util_memTop(this->title);
 }
-Screen_window Sc_status = {"Status", Sc_statusBody, Sc_statusStart, Sc_statusEnd};
+Screen_window Sc_status = {0, Sc_statusBody, Sc_statusStart, Sc_statusEnd};

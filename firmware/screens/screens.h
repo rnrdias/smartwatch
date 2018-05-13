@@ -19,6 +19,7 @@ extern "C" {
 #endif
 
 #include "../kernel/screen/screen.h"
+#include "../kernel/screen/notepad.h"
 #include "../kernel/fonts/fonts.h"
 #include "../kernel/drivers/keyboard.h"
 #include "../kernel/std.h"

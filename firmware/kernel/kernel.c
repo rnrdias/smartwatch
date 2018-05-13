@@ -5,11 +5,13 @@
  */
 
 #include "kernel.h"
+#include "drivers/real_time_clock.h"
 
 void Start_loop(void) {
     Keyboard_loop();
     Screen_loop();
     Hardware_loop();
+    RTC_loop();
 }
 
 void Start_inicialize(void) {
@@ -17,9 +19,10 @@ void Start_inicialize(void) {
     UPP_initialize();
     Std_initialize();
     Screen_initialize();
-    LCD_Inicialize();
+    LCD_inicialize();
     Std_extends = Std_extend;
     UPP_fontDefault = &Font_alfanum_8;
+    RTC_initialize();
 }
 
 

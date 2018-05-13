@@ -19,7 +19,7 @@ char *Lang_load(char **end) {
         index++;
     } while (data);
 
-    Util_memPop(strPush);
+    Util_memTop(strPush);
     Util_memPush(index);
 
     return strPush;

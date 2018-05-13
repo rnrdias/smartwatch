@@ -18,7 +18,18 @@
 extern "C" {
 #endif
 
-    
+#include "screen.h"
+#include "../drivers/keyboard.h"
+#include "../std.h"
+#include "../util.h"
+
+    typedef struct {
+        //char *title;
+        char *data;
+        unsigned char *scroll;
+    } Sc_notepadParam;
+
+    extern Screen_window Sc_notepad;
 
 
 

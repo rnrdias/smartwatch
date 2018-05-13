@@ -22,8 +22,8 @@ extern "C" {
 #include <conio.h>
 #include <windows.h>
     
-void LCD_Inicialize(void);  
-void LCD_SendBuffer(char *buffer);
+void LCD_inicialize(void);  
+void LCD_sendBuffer(char *buffer);
 
 
 #ifdef __cplusplus

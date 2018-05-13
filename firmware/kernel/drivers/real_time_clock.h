@@ -11,14 +11,25 @@
  * Created on 8 de Maio de 2018, 11:24
  */
 
-#ifndef REAL_TIME_CLOCK.H
-#define REAL_TIME_CLOCK.H
+#ifndef REAL_TIME_CLOCK_H
+#define REAL_TIME_CLOCK_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    
+    extern unsigned char RTC_monthDay[];
+
+    unsigned char RTC_hour, RTC_minute, RTC_second, RTC_day, RTC_month;
+    unsigned int RTC_year;
+
+    unsigned char RTC_weekdayCalc(unsigned char day, unsigned char month, unsigned int year);
+    unsigned char RTC_getWeekday();
+
+    void RTC_initialize();
+    void RTC_loop();
+
+
 
 
 

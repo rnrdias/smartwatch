@@ -82,9 +82,6 @@ void Sc_menuEnd(Screen_window *this) {
     list = (this->parameters);
     itens = list->itens;
 
-    Util_memPop(list);
-    for (unsigned char i = 0; i < 5; i++)
-        Util_memPop(itens[i].description);
-    Util_memPop(itens);
+    Util_memTop(itens);
 }
 Screen_window Sc_menu = {"menu", Sc_menuBody, Sc_menuStart, Sc_menuEnd};

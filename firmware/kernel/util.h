@@ -39,6 +39,6 @@ void *Util_memPush(unsigned int size);
 /*
  * Retira variavel da pilha de memoria
  */
-void Util_memPop(void *p);
+void Util_memTop(void *p);
 
 #endif /* UTIL_H_ */

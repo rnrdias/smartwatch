@@ -17,6 +17,6 @@ void Sc_stopwatchBody(Screen_window *this) {
 }
 
 void Sc_stopwatchEnd(Screen_window *this) {
-    Util_memPop(this->title);
+    Util_memTop(this->title);
 }
-Screen_window Sc_stopwatch = {"Cronometro", Sc_stopwatchBody, Sc_stopwatchStart, Sc_stopwatchEnd};
+Screen_window Sc_stopwatch = {0, Sc_stopwatchBody, Sc_stopwatchStart, Sc_stopwatchEnd};

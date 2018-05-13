@@ -17,7 +17,7 @@ void Sc_settingsBody(Screen_window *this) {
 }
 
 void Sc_settingsEnd(Screen_window *this) {
-    Util_memPop(this->title);
+    Util_memTop(this->title);
 }
 
-Screen_window Sc_settings = {"Configuracoes", Sc_settingsBody, Sc_settingsStart, Sc_settingsEnd};
+Screen_window Sc_settings = {0, Sc_settingsBody, Sc_settingsStart, Sc_settingsEnd};

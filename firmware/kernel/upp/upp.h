@@ -33,23 +33,23 @@ extern "C" {
 
         unsigned char data[];
     } UPP_BitmapFormat;
-    
+
     /*
      * Prototipo para colheta do tamanho do display sua largura
      */
     int UPP_getDisplayWidth();
-    
+
     /*
      * Prototipo para colheta do tamanho do display sua altura
      */
     int UPP_getDisplayHeight();
-    
+
     /*
      * Prototipo para saida padrão dos dados processados para serem enviados
      * para o display
      */
     void UPP_buffer(char valor, int index);
-    
+
     /*
      * Estrutura que contem alguns flags de controle
      * invert : se 1 o proximo conteudo impresso será invertido os bit
@@ -75,7 +75,7 @@ extern "C" {
     } UPP_flag;
 
     UPP_BitmapFormat *UPP_fontDefault;
-    
+
     /*
      * Função de inicialização da UPP
      */
@@ -126,7 +126,7 @@ extern "C" {
      * Verifica se o scroll estar no fim
      */
     char UPP_scrollHasNext();
-    
+
     /*
      * Função de extenção da biblioteca padrão Std_printf
      * Comando acresentados
@@ -140,6 +140,7 @@ extern "C" {
      * %| : Seta cursor para centro ("%|mensagem")
      * %> : Seta cursor para direita ("%>mensagem")
      * %# : Preenche a linha com um bitmap ("%#",&bitmap,index)
+     * %o : Set posição do scroll
      */
     void UPP_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr);
 

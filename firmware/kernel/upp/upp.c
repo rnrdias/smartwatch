@@ -215,6 +215,8 @@ void UPP_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr) {
         UPP_BitmapFormat *bf = va_arg(*arg_ptr, UPP_BitmapFormat *);
         char index = va_arg(*arg_ptr, unsigned int);
         UPP_fillInLine(bf, index);
+    } else if (*str == 'o') {
+        UPP_setScroll(va_arg(*arg_ptr, unsigned int));
     }
 
     if (setTextPosition != 0) {

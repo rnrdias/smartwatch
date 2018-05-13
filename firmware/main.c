@@ -21,14 +21,14 @@
 #include "language/language.h"
 
 int main(int argc, char** argv) {
-
+    
     lang = &pt_br;
     Start_inicialize();
     Screen_windowOpen(&Sc_main);
 
     while (1) {
         Start_loop();
-        LCD_SendBuffer(lcdBuffer);
+        LCD_sendBuffer(lcdBuffer);
         //printf("%d%d%d%d\n\n", Keyboard_keyEnter(), Keyboard_keyEsc(), Keyboard_keyUp(), Keyboard_keyDown());
         //hardwareLoop();
     }

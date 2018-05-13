@@ -25,26 +25,23 @@ unsigned char Util_stringLenth(char *string) {
 }
 
 
-
 char mem[Util_malloc_max];
 
 typedef struct {
-    unsigned int size;
     char var;
 } aloc;
 
-unsigned int indexTop = 0;
+char *indexTop = mem;
 
 void *Util_memPush(unsigned int size) {
-    if (indexTop + size >= Util_malloc_max) 
-        return 0;//while(1);
-    aloc *ret = (aloc *) & mem[indexTop];
-    ret->size = size;
-    indexTop += size + sizeof (unsigned int);
-    return &ret->var;
+    char *p = indexTop;
+    if (size + indexTop >= mem + Util_malloc_max)
+        return 0;
+    indexTop += size;
+    return p;
 }
 
-void Util_memPop(void *p) {
-    aloc *ret = p - sizeof (unsigned int);
-    indexTop -= ret->size + sizeof (unsigned int);
+void Util_memTop(void *p) {
+    if (p >= mem && p <= mem + Util_malloc_max)
+        indexTop = p;
 }

@@ -17,7 +17,7 @@ void Sc_alarmsBody(Screen_window *this) {
 }
 
 void Sc_alarmsEnd(Screen_window *this){
-    Util_memPop(this->title);
+    Util_memTop(this->title);
 }
 
 Screen_window Sc_alarms = {0, Sc_alarmsBody, Sc_alarmsStart, Sc_alarmsEnd};
