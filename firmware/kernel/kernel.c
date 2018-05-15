@@ -12,6 +12,7 @@ void Start_loop(void) {
     Screen_loop();
     Hardware_loop();
     RTC_loop();
+    RTC_date.second++;
 }
 
 void Start_inicialize(void) {

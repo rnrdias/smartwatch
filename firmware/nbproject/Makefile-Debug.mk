@@ -60,10 +60,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/language/pt_br.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/screens/alarms.o \
+	${OBJECTDIR}/screens/alarms_settings.o \
 	${OBJECTDIR}/screens/calendar.o \
+	${OBJECTDIR}/screens/calendar_events.o \
 	${OBJECTDIR}/screens/main.o \
 	${OBJECTDIR}/screens/menu.o \
 	${OBJECTDIR}/screens/settings.o \
+	${OBJECTDIR}/screens/settings_date_hour.o \
 	${OBJECTDIR}/screens/status.o \
 	${OBJECTDIR}/screens/stopwatch.o
 
@@ -217,10 +220,20 @@ ${OBJECTDIR}/screens/alarms.o: screens/alarms.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms.o screens/alarms.c
 
+${OBJECTDIR}/screens/alarms_settings.o: screens/alarms_settings.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms_settings.o screens/alarms_settings.c
+
 ${OBJECTDIR}/screens/calendar.o: screens/calendar.c
 	${MKDIR} -p ${OBJECTDIR}/screens
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/calendar.o screens/calendar.c
+
+${OBJECTDIR}/screens/calendar_events.o: screens/calendar_events.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/calendar_events.o screens/calendar_events.c
 
 ${OBJECTDIR}/screens/main.o: screens/main.c
 	${MKDIR} -p ${OBJECTDIR}/screens
@@ -236,6 +249,11 @@ ${OBJECTDIR}/screens/settings.o: screens/settings.c
 	${MKDIR} -p ${OBJECTDIR}/screens
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/settings.o screens/settings.c
+
+${OBJECTDIR}/screens/settings_date_hour.o: screens/settings_date_hour.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/settings_date_hour.o screens/settings_date_hour.c
 
 ${OBJECTDIR}/screens/status.o: screens/status.c
 	${MKDIR} -p ${OBJECTDIR}/screens

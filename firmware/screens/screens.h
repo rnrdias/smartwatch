@@ -18,6 +18,7 @@
 extern "C" {
 #endif
 
+#include "../kernel/drivers/real_time_clock.h"
 #include "../kernel/screen/screen.h"
 #include "../kernel/screen/notepad.h"
 #include "../kernel/fonts/fonts.h"
@@ -32,7 +33,9 @@ extern "C" {
     Screen_window Sc_settings;
     Screen_window Sc_status;
     Screen_window Sc_stopwatch;
-
+    Screen_window Sc_calendarEvents;
+    Screen_window Sc_alarmsSettings;
+    Screen_window Sc_settingsDateHour;
 
 
 #ifdef __cplusplus

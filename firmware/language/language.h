@@ -17,26 +17,28 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
+
 #include "../kernel/screen/screen.h"
 #include "../kernel/fonts/fonts.h"
 #include "../kernel/util.h"
-    
-    
-    typedef struct{
+
+    typedef struct {
         char *alarms;
         char *calendar;
+        char *calendarEvents;
         char *settings;
         char *stopwatch;
         char *status;
-    }Language;
+        char *menu;
+        char *settingsDateHour;
+    } Language;
 
-    Language *lang; 
-    
+    Language *lang;
+
     char *Lang_load(char **end);
-    
+
     extern const Language pt_br;
-    
+
 
 #ifdef __cplusplus
 }

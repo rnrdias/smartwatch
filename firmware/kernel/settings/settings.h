@@ -26,10 +26,11 @@ extern "C" {
 #include "../drivers/lcd_simulator.h"
 #include "../drivers/keyboard.h"
 #include "../../hardware.h"
-    
-  
-char lcdBuffer[504];
-void Std_extend(void (*functionPtr)(char), char *str, va_list *arg_ptr);
+#include "../drivers/real_time_clock.h"
+
+
+    char lcdBuffer[504];
+    void Std_extend(void (*functionPtr)(char), char *str, va_list *arg_ptr);
 
 #ifdef __cplusplus
 }

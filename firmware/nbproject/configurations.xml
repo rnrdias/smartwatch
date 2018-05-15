@@ -57,11 +57,14 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="screens" projectFiles="true">
         <itemPath>screens/alarms.c</itemPath>
+        <itemPath>screens/alarms_settings.c</itemPath>
         <itemPath>screens/calendar.c</itemPath>
+        <itemPath>screens/calendar_events.c</itemPath>
         <itemPath>screens/main.c</itemPath>
         <itemPath>screens/menu.c</itemPath>
         <itemPath>screens/screens.h</itemPath>
         <itemPath>screens/settings.c</itemPath>
+        <itemPath>screens/settings_date_hour.c</itemPath>
         <itemPath>screens/status.c</itemPath>
         <itemPath>screens/stopwatch.c</itemPath>
       </logicalFolder>
@@ -184,7 +187,11 @@
       </item>
       <item path="screens/alarms.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="screens/alarms_settings.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="screens/calendar.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="screens/calendar_events.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -193,6 +200,8 @@
       <item path="screens/screens.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="screens/settings.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="screens/settings_date_hour.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/status.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -303,7 +312,11 @@
       </item>
       <item path="screens/alarms.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="screens/alarms_settings.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="screens/calendar.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="screens/calendar_events.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -312,6 +325,8 @@
       <item path="screens/screens.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="screens/settings.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="screens/settings_date_hour.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/status.c" ex="false" tool="0" flavor2="0">
       </item>

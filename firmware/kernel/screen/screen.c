@@ -16,7 +16,7 @@ void Screen_StartScroll(unsigned char *scroll) {
     scrollValue = scroll;
 }
 
-void Screen_editNumber(Screen_numberEdit *numEdit) {
+void Screen_editNumber(Screen_numberEditFormat *numEdit) {
     if (numEdit->editRun) {
         if (Screen_getKeyEsc()) {
             numEdit->sucess = 0;
@@ -43,7 +43,7 @@ char mastEditNumRun;
 unsigned char mastEditNumRunIndex;
 char mastEditNumApl;
 
-void mastEditNumber(Screen_numberEdit *numEdit) {
+void mastEditNumber(Screen_numberEditFormat *numEdit) {
     if (numEdit->editRun) {
         if (Screen_getKeyUp()) {
             numEdit->numView += numEdit->numInc;
@@ -126,8 +126,8 @@ void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr) 
     }
 
     if (*str == 'x') {
-        Screen_numberEdit *aux;
-        aux = va_arg(*arg_ptr, Screen_numberEdit *);
+        Screen_numberEditFormat *aux;
+        aux = va_arg(*arg_ptr, Screen_numberEditFormat *);
 
         aux->editRun = (mastEditNumRun == ++mastEditNumRunIndex);
 
@@ -140,11 +140,49 @@ void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr) 
             } else {
                 mastEditNumber(aux);
                 if (mastEditNumApl) {
-                    *aux->numVar = aux->numView;
+                    switch (aux->type) {
+                        case 1:
+                            *(char *) aux->numVar = aux->numView;
+                            break;
+                        case 2:
+                            *(int *) aux->numVar = aux->numView;
+                            break;
+                        case 3:
+                            *(long *) aux->numVar = aux->numView;
+                            break;
+                        case 4:
+                            *(unsigned char *) aux->numVar = aux->numView;
+                            break;
+                        case 5:
+                            *(unsigned int *) aux->numVar = aux->numView;
+                            break;
+                        case 6:
+                            *(unsigned long *) aux->numVar = aux->numView;
+                            break;
+                    }
                 }
             }
         } else {
-            aux->numView = *aux->numVar;
+            switch (aux->type) {
+                case 1:
+                    aux->numView = *(char*) aux->numVar;
+                    break;
+                case 2:
+                    aux->numView = *(int*) aux->numVar;
+                    break;
+                case 3:
+                    aux->numView = *(long*) aux->numVar;
+                    break;
+                case 4:
+                    aux->numView = *(unsigned char*) aux->numVar;
+                    break;
+                case 5:
+                    aux->numView = *(unsigned int*) aux->numVar;
+                    break;
+                case 6:
+                    aux->numView = *(unsigned long*) aux->numVar;
+                    break;
+            }
         }
     }
 }

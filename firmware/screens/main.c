@@ -8,12 +8,17 @@
 
 void Sc_mainBody(Screen_window *this) {
     Std_printf("%r\n");
-    Std_printf("%w%1d:%1d%w\n %1d\r\n", &Font_numeric_16, 0, 0, &Font_alfanum_8, 0);
-    Std_printf("%s %1d-%1d-%3d", "Seg", 1, 1, 2000);
+    UPP_setCursorXY(5, 1);
+    Std_printf("%w%1d:%1d%w\n%1d\r\n", &Font_numeric_16, RTC_date.hour, RTC_date.minute, &Font_alfanum_8, RTC_date.second);
+    Std_printf("%s %1d-%1d-%3d", "Seg", RTC_date.day, RTC_date.month, RTC_date.year);
     Std_printf("%s", "info");
-    
+
     if (Keyboard_keyEnter()) {
         Screen_windowOpen(&Sc_menu);
+    }
+
+    if (Keyboard_keyEsc()) {
+        Screen_windowOpen(&Sc_status);
     }
 }
 Screen_window Sc_main = {0, Sc_mainBody, 0, 0};

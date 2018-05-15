@@ -37,6 +37,13 @@ extern "C" {
      */
     char Screen_getKeyEsc();
 
+#define Screen_numberEditChar 1
+#define Screen_numberEditInt 2
+#define Screen_numberEditLong 3
+#define Screen_numberEditUnsignedChar 4
+#define Screen_numberEditUnsignedInt 5
+#define Screen_numberEditUnsignedLong 6
+
     /*
      * Estrutura para configuração para a edição do numero 
      * *numVar : ponteiro para a variavel a ser editada
@@ -51,15 +58,16 @@ extern "C" {
         long int numMin;
         long int numMax;
         long int numView;
+        unsigned type : 3;
         unsigned sucess : 1;
         unsigned editRun : 1;
-    } Screen_numberEdit;
+    } Screen_numberEditFormat;
 
     /*
      * Função para aplicar a edição a um numero com DC_numberEdit
      * de paramentro
      */
-    void Screen_editNumber(Screen_numberEdit *num);
+    void Screen_editNumber(Screen_numberEditFormat *num);
 
     /*
      * Estrutura de definição de um item para a lista: item basico:

@@ -6,12 +6,13 @@
 
 #include "screens.h"
 
-void Sc_menuClick(Screen_listItem *this) {
+void Sc_calendarEventsClick(Screen_listItem *this) {
     Screen_windowOpen(this->parameter);
 }
 
-void Sc_menuStart(Screen_window *this) {
-    Screen_listItem *itens = Util_memPush(5 * sizeof (Screen_listItem));
+void Sc_calendarEventsStart(Screen_window *this) {
+    this->title = Lang_load(&lang->calendarEvents);
+    /*Screen_listItem *itens = Util_memPush(5 * sizeof (Screen_listItem));
 
     itens[0].description = Lang_load(&lang->alarms);
     itens[0].click = &Sc_menuClick;
@@ -42,24 +43,25 @@ void Sc_menuStart(Screen_window *this) {
 
     Screen_listSelectLoad(list);
 
-    this->title = Lang_load(&lang->menu);
-    this->parameters = list;
+    this->parameters = list;*/
 }
 
-void Sc_menuBody(Screen_window *this) {
+void Sc_calendarEventsBody(Screen_window *this) {
+    /*//Std_printf("%rmenu");
     Screen_listSelectLoad(this->parameters);
-    Screen_listSelectPrint();
+    Screen_listSelectPrint();*/
     if (Keyboard_keyEsc()) {
         Screen_windowClose();
     }
 }
 
-void Sc_menuEnd(Screen_window *this) {
-    Screen_listItem *itens;
+void Sc_calendarEventsEnd(Screen_window *this) {
+    Util_memTop(this->title);
+    /*Screen_listItem *itens;
     Screen_list *list;
     list = (this->parameters);
     itens = list->itens;
 
-    Util_memTop(itens);
+    Util_memTop(itens);*/
 }
-Screen_window Sc_menu = {0, Sc_menuBody, Sc_menuStart, Sc_menuEnd};
+Screen_window Sc_calendarEvents = {0, Sc_calendarEventsBody, Sc_calendarEventsStart, Sc_calendarEventsEnd};

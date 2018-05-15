@@ -10,9 +10,9 @@
  *
  * Created on 9 de Maio de 2018, 11:01
  */
-
-char toggle;
+#include "settings.h"
+//char toggle;
 
 char Util_toggleSeg() {
-    return toggle;
+    return RTC_date.second % 2;
 }

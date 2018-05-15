@@ -30,42 +30,45 @@ unsigned char RTC_weekdayCalc(unsigned char day, unsigned char month, unsigned i
 }
 
 unsigned char RTC_getWeekday() {
-    return RTC_weekdayCalc(RTC_day, RTC_month, RTC_year);
+    return RTC_weekdayCalc(RTC_date.day, RTC_date.month, RTC_date.year);
+}
+
+void RTC_dateValid(RTC_DateFormat *date) {
+    if (date->second >= 60) {
+        date->second = 0;
+        date->minute++;
+    }
+    if (date->minute >= 60) {
+        date->minute = 0;
+        date->hour++;
+    }
+    if (date->hour >= 24) {
+        date->hour = 0;
+        date->day++;
+    }
+    if (date->day > RTC_monthDay[date->month - 1]+(date->year % 4 == 0 && date->month == 2) ? 1 : 0) {
+        date->day = 1;
+        date->month++;
+    }
+    if (date->month >= 13) {
+        date->month = 1;
+        date->year++;
+    }
+    if (date->day == 0)
+        date->day = 1;
+    if (date->month == 0)
+        date->month = 1;
 }
 
 void RTC_loop() {
-    if (RTC_second >= 60) {
-        RTC_second = 0;
-        RTC_minute++;
-    }
-    if (RTC_minute >= 60) {
-        RTC_minute = 0;
-        RTC_hour++;
-    }
-    if (RTC_hour >= 24) {
-        RTC_hour = 0;
-        RTC_day++;
-    }
-    if (RTC_day > RTC_monthDay[RTC_month - 1]+(RTC_year % 4 == 0 && RTC_month == 2) ? 1 : 0) {
-        RTC_day = 1;
-        RTC_month++;
-    }
-    if (RTC_month >= 13) {
-        RTC_month = 1;
-        RTC_year++;
-    }
-    if (RTC_day == 0)
-        RTC_day = 1;
-    if (RTC_month == 0)
-        RTC_month = 1;
+    RTC_dateValid(&RTC_date);
 }
 
 void RTC_initialize() {
-    RTC_hour = 0;
-    RTC_minute = 0;
-    RTC_second = 0;
-
-    RTC_day = 1;
-    RTC_month = 1;
-    RTC_year = 1900;
+    RTC_date.hour = 0;
+    RTC_date.minute = 0;
+    RTC_date.second = 0;
+    RTC_date.day = 1;
+    RTC_date.month = 1;
+    RTC_date.year = 1900;
 }
