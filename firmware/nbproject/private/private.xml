@@ -10,10 +10,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/main.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/kernel.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/drivers/real_time_clock.h</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/drivers/real_time_clock.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/calendar_events.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/main.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/language/pt_br.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/screens.h</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/settings_date_hour.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/calendar.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/settings.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/alarms.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/language/language.h</file>
         </group>
     </open-files>
 </project-private>

@@ -7,11 +7,14 @@
 #include "screens.h"
 
 void Sc_mainBody(Screen_window *this) {
+    char *weekday = Lang_load(&lang->sunday + RTC_getWeekday());
+
     Std_printf("%r\n");
     UPP_setCursorXY(5, 1);
     Std_printf("%w%1d:%1d%w\n%1d\r\n", &Font_numeric_16, RTC_date.hour, RTC_date.minute, &Font_alfanum_8, RTC_date.second);
-    Std_printf("%s %1d-%1d-%3d", "Seg", RTC_date.day, RTC_date.month, RTC_date.year);
+    Std_printf("%s %1d-%1d-%3d", weekday, RTC_date.day, RTC_date.month, RTC_date.year);
     Std_printf("%s", "info");
+    Util_memTop(weekday);
 
     if (Keyboard_keyEnter()) {
         Screen_windowOpen(&Sc_menu);

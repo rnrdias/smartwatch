@@ -31,6 +31,13 @@ extern "C" {
         char *status;
         char *menu;
         char *settingsDateHour;
+        char *sunday;
+        char *monday;
+        char *tuesday;
+        char *wednesday;
+        char *thursday;
+        char *friday;
+        char *saturday;
     } Language;
 
     Language *lang;

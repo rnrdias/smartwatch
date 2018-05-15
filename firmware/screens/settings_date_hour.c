@@ -67,8 +67,8 @@ void Sc_settingsDateHourBody(Screen_window *this) {
         Screen_windowClose();
     }
     Std_printf("%y%x%x%x%x%x", &p->hour, &p->minute, &p->day, &p->month, &p->year);
-    Std_printf("  %w%t%1d%t:%t%1d%t\r\n", &Font_numeric_16, p->hour.editRun, p->hour.numView, 0, p->minute.editRun, p->minute.numView, 0);
-    Std_printf("%w\n  %t%1d%t-%t%1d%t-%t%3d%t", &Font_alfanum_8, p->day.editRun, p->day.numView, 0, p->month.editRun, p->month.numView, 0, p->year.editRun, p->year.numView, 0);
+    Std_printf("  %w%t%1d%t:%t%1d%t\r\n", &Font_numeric_16, p->hour.editRun, (int) p->hour.numView, 0, p->minute.editRun, (int) p->minute.numView, 0);
+    Std_printf("%w\n  %t%1d%t-%t%1d%t-%t%3d%t", &Font_alfanum_8, p->day.editRun, (int) p->day.numView, 0, p->month.editRun, (int) p->month.numView, 0, p->year.editRun, (int) p->year.numView, 0);
 
 
 }
