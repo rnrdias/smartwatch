@@ -6,6 +6,8 @@
                    projectFiles="true">
       <logicalFolder name="f1" displayName="kernel" projectFiles="true">
         <logicalFolder name="f3" displayName="drivers" projectFiles="true">
+          <itemPath>kernel/drivers/beep_simulator.c</itemPath>
+          <itemPath>kernel/drivers/beep_simulator.h</itemPath>
           <itemPath>kernel/drivers/cpu_control.c</itemPath>
           <itemPath>kernel/drivers/cpu_control.h</itemPath>
           <itemPath>kernel/drivers/keyboard.c</itemPath>
@@ -108,6 +110,10 @@
       <item path="hardware.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/compiler_define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/beep_simulator.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/beep_simulator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/drivers/cpu_control.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -233,6 +239,10 @@
       <item path="hardware.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/compiler_define.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/beep_simulator.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/beep_simulator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/drivers/cpu_control.c" ex="false" tool="0" flavor2="0">
       </item>

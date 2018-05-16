@@ -19,9 +19,11 @@ extern "C" {
 #endif
 
 #include "settings/settings.h"
+#include "drivers/real_time_clock.h"
+#include "drivers/beep_simulator.h"
 
-    void Start_inicialize();
-    
+    void Start_initialize();
+
     void Start_loop();
 
 

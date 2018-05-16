@@ -18,7 +18,7 @@ void Sc_settingsStart(Screen_window *this) {
     itens[0].description = Lang_load(&lang->settingsDateHour);
     itens[0].click = &Sc_settingsClick;
     itens[0].parameter = &Sc_settingsDateHour;
-
+    
     itens[1].description = "C2";
     itens[1].click = &Sc_settingsClick;
     itens[1].parameter = &Sc_calendar;
@@ -38,7 +38,7 @@ void Sc_settingsStart(Screen_window *this) {
     Screen_list *list = Util_memPush(sizeof (Screen_list));
     list->itens = itens;
     list->quantPrint = 5;
-    list->sizeList = 5;
+    list->sizeList = 1;
     list->index = 0;
     list->scrollIndex = 0;
 

@@ -27,6 +27,7 @@ extern "C" {
 #include "../drivers/keyboard.h"
 #include "../../hardware.h"
 #include "../drivers/real_time_clock.h"
+#include "../drivers/beep_simulator.h"
 
 
     char lcdBuffer[504];

@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/hardware.o \
+	${OBJECTDIR}/kernel/drivers/beep_simulator.o \
 	${OBJECTDIR}/kernel/drivers/cpu_control.o \
 	${OBJECTDIR}/kernel/drivers/keyboard.o \
 	${OBJECTDIR}/kernel/drivers/lcd_simulator.o \
@@ -99,6 +100,11 @@ ${OBJECTDIR}/hardware.o: hardware.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/hardware.o hardware.c
+
+${OBJECTDIR}/kernel/drivers/beep_simulator.o: kernel/drivers/beep_simulator.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/beep_simulator.o kernel/drivers/beep_simulator.c
 
 ${OBJECTDIR}/kernel/drivers/cpu_control.o: kernel/drivers/cpu_control.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/drivers

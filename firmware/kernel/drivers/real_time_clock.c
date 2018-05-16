@@ -6,7 +6,7 @@
 
 #include "real_time_clock.h"
 unsigned char RTC_monthDay[] = {
-    31, //JaN
+    31, //Jan
     28, //Fer
     31, //Mar
     30, //Abr

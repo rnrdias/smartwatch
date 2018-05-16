@@ -19,11 +19,11 @@
 
 #include "main.h"
 #include "language/language.h"
+#include "kernel/drivers/beep_simulator.h"
 
 int main(int argc, char** argv) {
-    
     lang = &pt_br;
-    Start_inicialize();
+    Start_initialize();
     Screen_windowOpen(&Sc_main);
 
     while (1) {
