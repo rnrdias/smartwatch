@@ -18,16 +18,17 @@
 #include <windows.h>
 
 #include "main.h"
-#include "language/language.h"
-#include "kernel/drivers/beep_simulator.h"
+#include "App/app.h"
 
 int main(int argc, char** argv) {
     lang = &pt_br;
     Start_initialize();
+    App_initialize();
     Screen_windowOpen(&Sc_main);
 
     while (1) {
         Start_loop();
+        App_loop();
         LCD_sendBuffer(lcdBuffer);
         //printf("%d%d%d%d\n\n", Keyboard_keyEnter(), Keyboard_keyEsc(), Keyboard_keyUp(), Keyboard_keyDown());
         //hardwareLoop();

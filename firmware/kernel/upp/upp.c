@@ -14,6 +14,15 @@
 unsigned int cursIndex;
 #define GET_CURSOR_X() (cursIndex%UPP_getDisplayWidth())
 #define GET_CURSOR_Y() (cursIndex/UPP_getDisplayWidth())
+
+unsigned char UPP_getCursorX() {
+    return (cursIndex % UPP_getDisplayWidth());
+}
+
+unsigned char UPP_getCursorY() {
+    return (cursIndex / UPP_getDisplayWidth());
+}
+
 //#define SET_CURSOR_X(value) (cursIndex=GET_CURSOR_Y()*UPP_getDisplayWidth()+value)
 //#define SET_CURSOR_Y(value) (cursIndex=GET_CURSOR_X()+value*UPP_getDisplayWidth())
 

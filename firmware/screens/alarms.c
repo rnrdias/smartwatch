@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 
+
+
 #include "screens.h"
+#include "../App/alarms.h"
 
 void Sc_alarmsClick(Screen_listItem *this) {
+    Sc_alarmsSettings.parameters = this->parameter;
     Screen_windowOpen(&Sc_alarmsSettings);
 }
 
@@ -14,26 +18,23 @@ void Sc_alarmsStart(Screen_window *this) {
     Screen_listItem *itens;
     this->title = Lang_load(&lang->alarms);
 
-    itens = Util_memPush(5 * sizeof (Screen_listItem));
-    itens[0].description = "00:00 Desl.";
-    itens[0].click = &Sc_alarmsClick;
-    itens[0].parameter = 0;
+    itens = Util_memPush(ALARMS_MAX * sizeof (Screen_listItem));
 
-    itens[1].description = "00:00 Desl.";
-    itens[1].click = &Sc_alarmsClick;
-    itens[1].parameter = 0;
-
-    itens[2].description = "00:00 Desl.";
-    itens[2].click = &Sc_alarmsClick;
-    itens[2].parameter = 0;
-
-    itens[3].description = "00:00 Desl.";
-    itens[3].click = &Sc_alarmsClick;
-    itens[3].parameter = 0;
-
-    itens[4].description = "00:00 Desl.";
-    itens[4].click = &Sc_alarmsClick;
-    itens[4].parameter = 0;
+    for (unsigned char i = 0; i < ALARMS_MAX; i++) {
+        char *str = Util_memPush(15 * sizeof (char));
+        char *week = Util_memPush(9 * sizeof (char));
+        for (char j = 0; j < 8; j++) {
+            if (Alarms[i].weekday & (1 << j))
+                week[j] = RCB(&lang->initSunday + j);
+            else
+                week[j] = '_';
+        }
+        week[8] = '\0';
+        Std_sprintf(str, "%1d:%1d %s", Alarms[i].hour, Alarms[i].minute, week);
+        itens[i].description = str;
+        itens[i].click = &Sc_alarmsClick;
+        itens[i].parameter = &Alarms[i];
+    }
 
     Screen_list *list = Util_memPush(sizeof (Screen_list));
     list->itens = itens;
@@ -48,7 +49,6 @@ void Sc_alarmsStart(Screen_window *this) {
 }
 
 void Sc_alarmsBody(Screen_window *this) {
-    //Std_printf("%1d:%1d DSTQQSS\r\n",1,0);
     Screen_listSelectLoad(this->parameters);
     Screen_listSelectPrint();
     if (Keyboard_keyEsc()) {

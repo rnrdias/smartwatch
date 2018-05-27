@@ -38,5 +38,8 @@ void Screen_windowLoadHead(char *title) {
 }
 
 void Screen_listSelectOutPrint(Screen_listItem *item) {
-    Std_printf("%m%#%s%m\r\n", item->isSelect, &Font_alfanum_8, ' ', item->description, 0);
+    Std_printf("%m%#%s%m", item->isSelect, &Font_alfanum_8, ' ', item->description, 0);
+    if (UPP_getCursorX() != 0) {
+        Std_printf("\r\n");
+    }
 }

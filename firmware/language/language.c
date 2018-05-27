@@ -24,3 +24,9 @@ char *Lang_load(char **end) {
 
     return strPush;
 }
+
+char *Lang_loadCharacter(char *end) {
+    char *character = Util_memPush(1);
+    *character = (char *) RCB(end);
+    return character;
+}

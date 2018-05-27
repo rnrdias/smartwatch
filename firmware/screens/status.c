@@ -7,7 +7,7 @@
 #include "screens.h"
 
 void Sc_statusStart(Screen_window *this) {
-        this->title = Lang_load(&lang->status);
+    this->title = Lang_load(&lang->status);
 }
 
 void Sc_statusBody(Screen_window *this) {

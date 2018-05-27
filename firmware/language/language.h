@@ -38,12 +38,21 @@ extern "C" {
         char *thursday;
         char *friday;
         char *saturday;
+        char *switchedOn;
+        char initSunday;
+        char initmonday;
+        char inittuesday;
+        char initwednesday;
+        char initthursday;
+        char initfriday;
+        char initsaturday;
+        char initSwitchedOn;
     } Language;
 
     Language *lang;
 
     char *Lang_load(char **end);
-
+    char *Lang_loadCharacter(char *end);
     extern const Language pt_br;
 
 

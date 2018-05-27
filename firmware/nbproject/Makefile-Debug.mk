@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/App/alarms.o \
+	${OBJECTDIR}/App/app.o \
 	${OBJECTDIR}/hardware.o \
 	${OBJECTDIR}/kernel/drivers/beep_simulator.o \
 	${OBJECTDIR}/kernel/drivers/cpu_control.o \
@@ -60,7 +62,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/language/language.o \
 	${OBJECTDIR}/language/pt_br.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/mem.o \
 	${OBJECTDIR}/screens/alarms.o \
+	${OBJECTDIR}/screens/alarms_ringing.o \
 	${OBJECTDIR}/screens/alarms_settings.o \
 	${OBJECTDIR}/screens/calendar.o \
 	${OBJECTDIR}/screens/calendar_events.o \
@@ -95,6 +99,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/firmware.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/firmware ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/App/alarms.o: App/alarms.c
+	${MKDIR} -p ${OBJECTDIR}/App
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/alarms.o App/alarms.c
+
+${OBJECTDIR}/App/app.o: App/app.c
+	${MKDIR} -p ${OBJECTDIR}/App
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/app.o App/app.c
 
 ${OBJECTDIR}/hardware.o: hardware.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -221,10 +235,20 @@ ${OBJECTDIR}/main.o: main.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
 
+${OBJECTDIR}/mem.o: mem.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mem.o mem.c
+
 ${OBJECTDIR}/screens/alarms.o: screens/alarms.c
 	${MKDIR} -p ${OBJECTDIR}/screens
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms.o screens/alarms.c
+
+${OBJECTDIR}/screens/alarms_ringing.o: screens/alarms_ringing.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms_ringing.o screens/alarms_ringing.c
 
 ${OBJECTDIR}/screens/alarms_settings.o: screens/alarms_settings.c
 	${MKDIR} -p ${OBJECTDIR}/screens

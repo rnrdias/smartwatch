@@ -4,6 +4,12 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
+      <logicalFolder name="f4" displayName="App" projectFiles="true">
+        <itemPath>App/alarms.c</itemPath>
+        <itemPath>App/alarms.h</itemPath>
+        <itemPath>App/app.c</itemPath>
+        <itemPath>App/app.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="kernel" projectFiles="true">
         <logicalFolder name="f3" displayName="drivers" projectFiles="true">
           <itemPath>kernel/drivers/beep_simulator.c</itemPath>
@@ -59,6 +65,7 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="screens" projectFiles="true">
         <itemPath>screens/alarms.c</itemPath>
+        <itemPath>screens/alarms_ringing.c</itemPath>
         <itemPath>screens/alarms_settings.c</itemPath>
         <itemPath>screens/calendar.c</itemPath>
         <itemPath>screens/calendar_events.c</itemPath>
@@ -73,6 +80,8 @@
       <itemPath>hardware.c</itemPath>
       <itemPath>hardware.h</itemPath>
       <itemPath>main.h</itemPath>
+      <itemPath>mem.c</itemPath>
+      <itemPath>mem.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
@@ -105,6 +114,14 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="App/alarms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App/alarms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="App/app.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App/app.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hardware.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="hardware.h" ex="false" tool="3" flavor2="0">
@@ -191,7 +208,13 @@
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="mem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="mem.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="screens/alarms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="screens/alarms_ringing.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/alarms_settings.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -234,6 +257,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="App/alarms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App/alarms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="App/app.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App/app.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hardware.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="hardware.h" ex="false" tool="3" flavor2="0">
@@ -320,7 +351,13 @@
       </item>
       <item path="main.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="mem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="mem.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="screens/alarms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="screens/alarms_ringing.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/alarms_settings.c" ex="false" tool="0" flavor2="0">
       </item>

@@ -15,6 +15,7 @@ CONST char pt_br_settings[] = "Configuracoes";
 CONST char pt_br_stopwatch[] = "Cronometro";
 CONST char pt_br_status[] = "Status";
 CONST char pt_br_menu[] = "Menu";
+//seq
 CONST char pt_br_sunday[] = "Dom";
 CONST char pt_br_monday[] = "Seg";
 CONST char pt_br_tuesday[] = "Ter";
@@ -22,6 +23,9 @@ CONST char pt_br_wednesday[] = "Qua";
 CONST char pt_br_thursday[] = "Qui";
 CONST char pt_br_friday[] = "Sex";
 CONST char pt_br_saturday[] = "Sab";
+CONST char pt_br_switchedOn[] = "Lig";
+//seq fim
+
 
 CONST Language pt_br = {
     pt_br_alarms,
@@ -39,4 +43,13 @@ CONST Language pt_br = {
     pt_br_thursday,
     pt_br_friday,
     pt_br_saturday,
+    pt_br_switchedOn,
+    'D',
+    'S',
+    'T',
+    'Q',
+    'Q',
+    'S',
+    'S',
+    'L'
 };

@@ -101,6 +101,14 @@ extern "C" {
      */
     void UPP_setCursorXY(unsigned char x, unsigned char y);
     /*
+     * Get a posição do cursor x
+     */
+    unsigned char UPP_getCursorX();
+    /*
+     * Get a posição do cursor y
+     */
+    unsigned char UPP_getCursorY();
+    /*
      * Preenche uma linha inteira com um determinado imagem bitmap
      */
     void UPP_fillInLine(UPP_BitmapFormat *bitmap, unsigned char index);
