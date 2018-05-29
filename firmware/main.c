@@ -27,8 +27,8 @@ int main(int argc, char** argv) {
     Screen_windowOpen(&Sc_main);
 
     while (1) {
-        Start_loop();
         App_loop();
+        Start_loop();
         LCD_sendBuffer(lcdBuffer);
         //printf("%d%d%d%d\n\n", Keyboard_keyEnter(), Keyboard_keyEsc(), Keyboard_keyUp(), Keyboard_keyDown());
         //hardwareLoop();

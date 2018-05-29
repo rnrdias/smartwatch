@@ -10,11 +10,11 @@ Beep_paramFormat param = {2000, 250, 1, 0, 1, 0};
 
 void Start_loop(void) {
     Keyboard_loop();
-    Screen_loop();
     Hardware_loop();
-    RTC_loop();
-    RTC_date.second++;
     Beep_loop();
+    RTC_date.second++;
+    RTC_loop();
+    Screen_loop();
     if (Keyboard_keyDown() || Keyboard_getKeyEnter() || Keyboard_getKeyEsc() || Keyboard_getKeyUp()) {
         Beep_param = &param;
         param.repeat = 1;
