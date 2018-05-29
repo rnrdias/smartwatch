@@ -45,3 +45,7 @@ void Util_memTop(void *p) {
     if (p >= mem && p <= mem + Util_malloc_max)
         indexTop = p;
 }
+
+unsigned int Util_memGetSizeAloc() {
+    return mem - indexTop;
+}

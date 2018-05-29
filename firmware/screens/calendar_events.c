@@ -46,7 +46,7 @@ void Sc_calendarEventsStart(Screen_window *this) {
     this->parameters = list;*/
 }
 
-void Sc_calendarEventsBody(Screen_window *this) {
+void Sc_calendarEventsLoop(Screen_window *this) {
     /*//Std_printf("%rmenu");
     Screen_listSelectLoad(this->parameters);
     Screen_listSelectPrint();*/
@@ -64,4 +64,4 @@ void Sc_calendarEventsEnd(Screen_window *this) {
 
     Util_memTop(itens);*/
 }
-Screen_window Sc_calendarEvents = {0, Sc_calendarEventsBody, Sc_calendarEventsStart, Sc_calendarEventsEnd};
+Screen_window Sc_calendarEvents = {0, Sc_calendarEventsLoop, Sc_calendarEventsStart, Sc_calendarEventsEnd, 0, 0};

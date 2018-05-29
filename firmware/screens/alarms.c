@@ -15,9 +15,38 @@ void Sc_alarmsClick(Screen_listItem *this) {
 }
 
 void Sc_alarmsStart(Screen_window *this) {
-    Screen_listItem *itens;
+    //Screen_listItem *itens;
     this->title = Lang_load(&lang->alarms);
 
+    Screen_list *list = Util_memPush(sizeof (Screen_list));
+    list->itens = 0;
+    list->quantPrint = 5;
+    list->sizeList = 5;
+    list->index = 0;
+    list->scrollIndex = 0;
+
+    Screen_listSelectLoad(list);
+
+    this->parameters = list;
+}
+
+void Sc_alarmsLoop(Screen_window *this) {
+    Screen_listSelectLoad(this->parameters);
+    Screen_listSelectPrint();
+    if (Keyboard_keyEsc()) {
+        Screen_windowClose();
+    }
+    if (Keyboard_keyEnter()) {
+
+    }
+}
+
+void Sc_alarmsEnd(Screen_window *this) {
+    Util_memTop(this->title);
+}
+
+void Sc_alarmsResume(Screen_window *this) {
+    Screen_listItem *itens;
     itens = Util_memPush(ALARMS_MAX * sizeof (Screen_listItem));
 
     for (unsigned char i = 0; i < ALARMS_MAX; i++) {
@@ -36,31 +65,13 @@ void Sc_alarmsStart(Screen_window *this) {
         itens[i].parameter = &Alarms[i];
     }
 
-    Screen_list *list = Util_memPush(sizeof (Screen_list));
-    list->itens = itens;
-    list->quantPrint = 5;
-    list->sizeList = 5;
-    list->index = 0;
-    list->scrollIndex = 0;
-
-    Screen_listSelectLoad(list);
-
-    this->parameters = list;
+    Screen_list *l = this->parameters;
+    l->itens = itens;
 }
 
-void Sc_alarmsBody(Screen_window *this) {
-    Screen_listSelectLoad(this->parameters);
-    Screen_listSelectPrint();
-    if (Keyboard_keyEsc()) {
-        Screen_windowClose();
-    }
-    if (Keyboard_keyEnter()) {
-
-    }
+void Sc_alarmsPause(Screen_window *this) {
+    Screen_list *l = this->parameters;
+    Util_memTop(l->itens);
 }
 
-void Sc_alarmsEnd(Screen_window *this) {
-    Util_memTop(this->title);
-}
-
-Screen_window Sc_alarms = {0, Sc_alarmsBody, Sc_alarmsStart, Sc_alarmsEnd};
+Screen_window Sc_alarms = {0, Sc_alarmsLoop, Sc_alarmsStart, Sc_alarmsEnd, Sc_alarmsResume, Sc_alarmsPause};

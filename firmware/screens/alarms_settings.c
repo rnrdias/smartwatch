@@ -22,6 +22,25 @@ typedef struct {
 
     char aux;
     char weekday[8];
+} SC_alarmsSettingsParamNumEdit;
+
+typedef struct {
+    /*Screen_numberEditFormat hour;
+    Screen_numberEditFormat minute;
+
+    Screen_numberEditFormat sun;
+    Screen_numberEditFormat mon;
+    Screen_numberEditFormat tue;
+    Screen_numberEditFormat wed;
+    Screen_numberEditFormat thu;
+    Screen_numberEditFormat fri;
+    Screen_numberEditFormat sat;
+    Screen_numberEditFormat on;
+
+    char aux;
+    char weekday[8];*/
+
+    SC_alarmsSettingsParamNumEdit *numbs;
     Alarms_paramFormat *alarm;
 } SC_alarmsSettingsParam;
 
@@ -30,6 +49,11 @@ char tmp;
 void Sc_alarmsSettingsStart(Screen_window *this) {
     this->title = Lang_load(&lang->alarms);
     Alarms_paramFormat *alarm = this->parameters;
+    SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
+    p->alarm = alarm;
+    this->parameters = p;
+
+    /*Alarms_paramFormat *alarm = this->parameters;
     SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
     Screen_numberEditFormat *aux = (Screen_numberEditFormat *) p;
     aux += 2;
@@ -64,29 +88,30 @@ void Sc_alarmsSettingsStart(Screen_window *this) {
         aux++;
     }
 
-    this->parameters = p;
+    this->parameters = p;*/
 }
 
-void Sc_alarmsSettingsBody(Screen_window *this) {
+void Sc_alarmsSettingsLoop(Screen_window *this) {
     SC_alarmsSettingsParam *p = this->parameters;
-    Screen_numberEditFormat *aux = &p->hour;
+    SC_alarmsSettingsParamNumEdit *n = p->numbs;
+    Screen_numberEditFormat *aux = &p->numbs->hour;
     if (Screen_hasEditNumRun()) {
-        p->aux = 1;
+        n->aux = 1;
     } else {
         if (Keyboard_keyEsc()) {
             Screen_windowClose();
         }
-        if (p->aux) {
+        if (n->aux) {
             char weekday = 0;
             for (char i = 0; i < 8; i++) {
-                weekday |= ((p->weekday[i]) << i);
+                weekday |= ((n->weekday[i]) << i);
             }
             p->alarm->weekday = weekday;
-            p->aux = 0;
+            n->aux = 0;
         }
     }
 
-    Std_printf("  %w%t%1d%t:%t%1d%t\r\n", &Font_numeric_16, p->hour.editRun, (int) p->hour.numView, 0, p->minute.editRun, (int) p->minute.numView, 0);
+    Std_printf("  %w%t%1d%t:%t%1d%t\r\n", &Font_numeric_16, n->hour.editRun, (int) n->hour.numView, 0, n->minute.editRun, (int) n->minute.numView, 0);
     Std_printf("%w ", &Font_alfanum_6);
     Std_printf("%y");
     for (char i = 0; i < 10; i++) {
@@ -105,4 +130,49 @@ void Sc_alarmsSettingsBody(Screen_window *this) {
 void Sc_alarmsSettingsEnd(Screen_window *this) {
     Util_memTop(this->title);
 }
-Screen_window Sc_alarmsSettings = {0, Sc_alarmsSettingsBody, Sc_alarmsSettingsStart, Sc_alarmsSettingsEnd};
+
+void Sc_alarmsSettingsResume(Screen_window *this) {
+    SC_alarmsSettingsParam *p = this->parameters;
+    SC_alarmsSettingsParamNumEdit *n = Util_memPush(sizeof (SC_alarmsSettingsParamNumEdit));
+    Screen_numberEditFormat *aux = (Screen_numberEditFormat *) n;
+    aux += 2;
+    p->numbs = n;
+
+    n->aux = 0;
+
+    n->hour.numInc = 1;
+    n->hour.numMax = 23;
+    n->hour.numMin = 0;
+    n->hour.numVar = (long *) &p->alarm->hour;
+    n->hour.editRun = 0;
+    n->hour.sucess = 0;
+    n->hour.type = Screen_numberEditUnsignedChar;
+
+    n->minute.numInc = 1;
+    n->minute.numMax = 59;
+    n->minute.numMin = 0;
+    n->minute.numVar = (long *) &p->alarm->minute;
+    n->minute.editRun = 0;
+    n->minute.sucess = 0;
+    n->minute.type = Screen_numberEditUnsignedChar;
+
+    for (char i = 0; i < 8; i++) {
+        aux->numInc = 1;
+        aux->numMax = 1;
+        aux->numMin = 0;
+        n->weekday[i] = (p->alarm->weekday & (1 << i)) != 0;
+        aux->numVar = (long *) &n->weekday[i];
+        aux->editRun = 0;
+        aux->sucess = 0;
+        aux->type = Screen_numberEditUnsignedChar;
+        aux++;
+    }
+}
+
+void Sc_alarmsSettingsPause(Screen_window *this) {
+    SC_alarmsSettingsParam *p = this->parameters;
+    Util_memTop(p->numbs);
+}
+
+
+Screen_window Sc_alarmsSettings = {0, Sc_alarmsSettingsLoop, Sc_alarmsSettingsStart, Sc_alarmsSettingsEnd, Sc_alarmsSettingsResume, Sc_alarmsSettingsPause};

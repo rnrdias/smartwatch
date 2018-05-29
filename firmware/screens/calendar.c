@@ -23,7 +23,7 @@ void Sc_calendarStart(Screen_window *this) {
     this->parameters = p;
 }
 
-void Sc_calendarBody(Screen_window *this) {
+void Sc_calendarLoop(Screen_window *this) {
     //Util_memTop(this->parameters);
     Sc_calendarParam *p = this->parameters;
     Screen_StartScroll(&p->scroll);
@@ -68,4 +68,4 @@ void Sc_calendarEnd(Screen_window *this) {
     Util_memTop(this->parameters);
 }
 
-Screen_window Sc_calendar = {0, Sc_calendarBody, Sc_calendarStart, Sc_calendarEnd};
+Screen_window Sc_calendar = {0, Sc_calendarLoop, Sc_calendarStart, Sc_calendarEnd, 0, 0};

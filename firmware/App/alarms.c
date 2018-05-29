@@ -61,7 +61,7 @@ void Alarms_initialize(void) {
 
     //test
     Alarms[0].hour = 0;
-    Alarms[0].minute = 2;
+    Alarms[0].minute = 1;
     Alarms[0].weekday = 0x80;
     Alarms[0].mon = 1;
 

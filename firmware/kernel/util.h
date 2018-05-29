@@ -40,5 +40,8 @@ void *Util_memPush(unsigned int size);
  * Retira variavel da pilha de memoria
  */
 void Util_memTop(void *p);
-
+/*
+ * Retorna quantidade de memoria alocada
+ */
+unsigned int Util_memGetSizeAloc();
 #endif /* UTIL_H_ */

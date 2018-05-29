@@ -18,7 +18,7 @@ void Sc_alarmsRingingStart(Screen_window *this) {
     Beep_param = this->parameters;
 }
 
-void Sc_alarmsRingingBody(Screen_window *this) {
+void Sc_alarmsRingingLoop(Screen_window *this) {
     Beep_param = this->parameters;
 
     if (Keyboard_keyEsc()) {
@@ -31,4 +31,4 @@ void Sc_alarmsRingingEnd(Screen_window *this) {
     p->repeat = 1;
     Util_memTop(this->title);
 }
-Screen_window Sc_alarmsRinging = {0, Sc_alarmsRingingBody, Sc_alarmsRingingStart, Sc_alarmsRingingEnd};
+Screen_window Sc_alarmsRinging = {0, Sc_alarmsRingingLoop, Sc_alarmsRingingStart, Sc_alarmsRingingEnd, 0, 0};

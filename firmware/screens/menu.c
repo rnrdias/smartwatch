@@ -11,7 +11,37 @@ void Sc_menuClick(Screen_listItem *this) {
 }
 
 void Sc_menuStart(Screen_window *this) {
-    Screen_listItem *itens = Util_memPush(5 * sizeof (Screen_listItem));
+    this->title = Lang_load(&lang->menu);
+    
+    Screen_list *list = Util_memPush(sizeof (Screen_list));
+    //list->itens = itens;
+    list->quantPrint = 5;
+    list->sizeList = 5;
+    list->index = 0;
+    list->scrollIndex = 0;
+
+    Screen_listSelectLoad(list);
+
+    this->parameters = list;
+}
+
+void Sc_menuLoop(Screen_window *this) {
+    Screen_listSelectLoad(this->parameters);
+    Screen_listSelectPrint();
+    if (Keyboard_keyEsc()) {
+        Screen_windowClose();
+    }
+}
+
+void Sc_menuEnd(Screen_window *this) {
+    Util_memTop(this->title);
+}
+
+void Sc_menuResume(Screen_window *this) {
+    Screen_listItem *itens;
+    Screen_list *list = this->parameters;
+
+    itens = Util_memPush(5 * sizeof (Screen_listItem));
 
     itens[0].description = Lang_load(&lang->alarms);
     itens[0].click = &Sc_menuClick;
@@ -33,33 +63,11 @@ void Sc_menuStart(Screen_window *this) {
     itens[4].click = &Sc_menuClick;
     itens[4].parameter = &Sc_status;
 
-    Screen_list *list = Util_memPush(sizeof (Screen_list));
     list->itens = itens;
-    list->quantPrint = 5;
-    list->sizeList = 5;
-    list->index = 0;
-    list->scrollIndex = 0;
-
-    Screen_listSelectLoad(list);
-
-    this->title = Lang_load(&lang->menu);
-    this->parameters = list;
 }
 
-void Sc_menuBody(Screen_window *this) {
-    Screen_listSelectLoad(this->parameters);
-    Screen_listSelectPrint();
-    if (Keyboard_keyEsc()) {
-        Screen_windowClose();
-    }
+void Sc_menuPause(Screen_window *this) {
+    Screen_list *list = this->parameters;
+    Util_memTop(list->itens);
 }
-
-void Sc_menuEnd(Screen_window *this) {
-    Screen_listItem *itens;
-    Screen_list *list;
-    list = (this->parameters);
-    itens = list->itens;
-
-    Util_memTop(itens);
-}
-Screen_window Sc_menu = {0, Sc_menuBody, Sc_menuStart, Sc_menuEnd};
+Screen_window Sc_menu = {0, Sc_menuLoop, Sc_menuStart, Sc_menuEnd, Sc_menuResume, Sc_menuPause};

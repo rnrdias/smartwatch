@@ -61,31 +61,55 @@ char Screen_hasEditNumRun() {
     return mastEditNumRun != 0;
 }
 
-char stackPont;
+char stackPont, antStackPont;
 Screen_window *stack[stackSize];
 
 #define stackPush(x) stack[++stackPont]=x
 #define stackPop() stack[stackPont--]
+#define stackWindow()  ((Screen_window *)stack[stackPont])
+#define stackWindowPrev()  ((Screen_window *)stack[stackPont-1])
+#define stackWindowNext()  ((Screen_window *)stack[stackPont+1])
 
 void Screen_windowOpen(Screen_window *win) {
     stackPush(win);
-    scrollValue = 0;
-    if (win->start != 0)
-        win->start(win);
 }
 
 void Screen_windowClose() {
-    Screen_window *aux = stackPop();
-    if (aux->end != 0)
-        aux->end(aux);
+    stackPop();
 }
 
 void Screen_loop() {
+    //carregamento de screen
+    if (antStackPont < stackPont) {
+        antStackPont = stackPont;
+        //pausa tela anterior
+        if (stackPont > 0)
+            if (stackWindowPrev()->pause != 0)
+                stackWindowPrev()->pause(stackWindowPrev());
+
+        //inicializa proxima tela
+        if (stackWindow()->start != 0)
+            stackWindow()->start(stackWindow());
+        if (stackWindow()->resume != 0)
+            stackWindow()->resume(stackWindow());
+        mastEditNumRun = 0;
+    } else if (antStackPont > stackPont) {
+        antStackPont = stackPont;
+        //finaliza tela
+        if (stackWindowNext()->pause)
+            stackWindowNext()->pause(stackWindowNext());
+        if (stackWindowNext()->end != 0)
+            stackWindowNext()->end(stackWindowNext());
+        //retorna a tela anterior
+        if (stackWindow()->resume != 0)
+            stackWindow()->resume(stackWindow());
+    }
+
     if (stackPont >= 0) {
         if (stack[stackPont]->title != 0) {
             Screen_windowLoadHead(stack[stackPont]->title);
         }
-        stack[stackPont]->body(stack[stackPont]);
+        stack[stackPont]->loop(stack[stackPont]);
     }
     //scroll process
     if (!Screen_hasEditNumRun() && scrollValue) {
@@ -103,9 +127,10 @@ void Screen_initialize() {
     mastEditNumRunIndex = 0;
     scrollValue = 0;
     stackPont = -1;
+    antStackPont = -1;
 }
 
-void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr) {
+void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list * arg_ptr) {
     if (*str == 'y') {
         if (mastEditNumRunIndex < mastEditNumRun) {
             mastEditNumRun = 0;
@@ -190,7 +215,7 @@ void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr) 
 
 Screen_list *listAux;
 
-void Screen_listSelectLoad(Screen_list *list) {
+void Screen_listSelectLoad(Screen_list * list) {
     listAux = list;
 }
 

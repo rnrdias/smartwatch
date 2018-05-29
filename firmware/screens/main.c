@@ -6,7 +6,7 @@
 
 #include "screens.h"
 
-void Sc_mainBody(Screen_window *this) {
+void Sc_mainLoop(Screen_window *this) {
     char *weekday = Lang_load(&lang->sunday + RTC_getWeekday());
 
     Std_printf("%r\n");
@@ -24,4 +24,4 @@ void Sc_mainBody(Screen_window *this) {
         Screen_windowOpen(&Sc_status);
     }
 }
-Screen_window Sc_main = {0, Sc_mainBody, 0, 0};
+Screen_window Sc_main = {0, Sc_mainLoop, 0, 0, 0, 0};

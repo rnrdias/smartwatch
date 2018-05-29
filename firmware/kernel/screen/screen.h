@@ -137,9 +137,11 @@ extern "C" {
      */
     typedef struct Screen_window_t {
         char *title;
-        void (*body)(struct Screen_window_t * this);
+        void (*loop)(struct Screen_window_t * this);
         void (*start)(struct Screen_window_t * this);
         void (*end)(struct Screen_window_t * this);
+        void (*resume)(struct Screen_window_t * this);
+        void (*pause)(struct Screen_window_t * this);
         //void (*resume)(struct DC_window_t * this);
         //void (*stop)(struct DC_window_t * this);
         void *parameters;
