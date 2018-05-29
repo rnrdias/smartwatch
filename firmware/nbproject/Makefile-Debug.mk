@@ -62,7 +62,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/language/language.o \
 	${OBJECTDIR}/language/pt_br.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/mem.o \
 	${OBJECTDIR}/screens/alarms.o \
 	${OBJECTDIR}/screens/alarms_ringing.o \
 	${OBJECTDIR}/screens/alarms_settings.o \
@@ -234,11 +233,6 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
-
-${OBJECTDIR}/mem.o: mem.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/mem.o mem.c
 
 ${OBJECTDIR}/screens/alarms.o: screens/alarms.c
 	${MKDIR} -p ${OBJECTDIR}/screens

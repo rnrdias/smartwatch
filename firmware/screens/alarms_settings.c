@@ -110,19 +110,21 @@ void Sc_alarmsSettingsLoop(Screen_window *this) {
             n->aux = 0;
         }
     }
-
-    Std_printf("  %w%t%1d%t:%t%1d%t\r\n", &Font_numeric_16, n->hour.editRun, (int) n->hour.numView, 0, n->minute.editRun, (int) n->minute.numView, 0);
-    Std_printf("%w ", &Font_alfanum_6);
+    //load variables
     Std_printf("%y");
     for (char i = 0; i < 10; i++) {
-        Std_printf("%x", aux);
-        if (i >= 2) {
-            char *weekday = Lang_load(&lang->sunday + i - 2);
-            Std_printf("%t%m%s%m%t ", aux->editRun, (int) aux->numView, weekday, 0, 0);
-            Util_memTop(weekday);
-            if (i == 6)
-                Std_printf("     ");
-        }
+        Std_printf("%x", aux++);
+    }
+    //print screen
+    Std_printf("  %w%t%1d%t:%t%1d%t\r\n", &Font_numeric_16, n->hour.editRun, (int) n->hour.numView, 0, n->minute.editRun, (int) n->minute.numView, 0);
+    Std_printf("%w ", &Font_alfanum_6);
+    aux = &p->numbs->sun;
+    for (char i = 0; i < 8; i++) {
+        char *weekday = Lang_load(&lang->sunday + i);
+        Std_printf("%t%m%s%m%t ", aux->editRun, (int) aux->numView, weekday, 0, 0);
+        Util_memTop(weekday);
+        if (i == 4)
+            Std_printf("     ");
         aux++;
     }
 }

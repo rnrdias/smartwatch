@@ -57,7 +57,7 @@ void Alarms_initialize(void) {
         Alarms[i].weekday = 0;
         Alarms[i].aux = 0;
     }
-    AlarmsSleep.time = 0;
+    /*AlarmsSleep.time = 0;
 
     //test
     Alarms[0].hour = 0;
@@ -80,6 +80,6 @@ void Alarms_initialize(void) {
     Alarms[2].tue = 1;
     Alarms[2].wed = 1;
     Alarms[2].thu = 1;
-    Alarms[2].fri = 1;
+    Alarms[2].fri = 1;*/
 
 }
