@@ -25,21 +25,6 @@ typedef struct {
 } SC_alarmsSettingsParamNumEdit;
 
 typedef struct {
-    /*Screen_numberEditFormat hour;
-    Screen_numberEditFormat minute;
-
-    Screen_numberEditFormat sun;
-    Screen_numberEditFormat mon;
-    Screen_numberEditFormat tue;
-    Screen_numberEditFormat wed;
-    Screen_numberEditFormat thu;
-    Screen_numberEditFormat fri;
-    Screen_numberEditFormat sat;
-    Screen_numberEditFormat on;
-
-    char aux;
-    char weekday[8];*/
-
     SC_alarmsSettingsParamNumEdit *numbs;
     Alarms_paramFormat *alarm;
 } SC_alarmsSettingsParam;
@@ -52,43 +37,6 @@ void Sc_alarmsSettingsStart(Screen_window *this) {
     SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
     p->alarm = alarm;
     this->parameters = p;
-
-    /*Alarms_paramFormat *alarm = this->parameters;
-    SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
-    Screen_numberEditFormat *aux = (Screen_numberEditFormat *) p;
-    aux += 2;
-    p->alarm = alarm;
-    p->aux = 0;
-
-    p->hour.numInc = 1;
-    p->hour.numMax = 23;
-    p->hour.numMin = 0;
-    p->hour.numVar = (long *) &alarm->hour;
-    p->hour.editRun = 0;
-    p->hour.sucess = 0;
-    p->hour.type = Screen_numberEditUnsignedChar;
-
-    p->minute.numInc = 1;
-    p->minute.numMax = 59;
-    p->minute.numMin = 0;
-    p->minute.numVar = (long *) &alarm->minute;
-    p->minute.editRun = 0;
-    p->minute.sucess = 0;
-    p->minute.type = Screen_numberEditUnsignedChar;
-
-    for (char i = 0; i < 8; i++) {
-        aux->numInc = 1;
-        aux->numMax = 1;
-        aux->numMin = 0;
-        p->weekday[i] = (alarm->weekday & (1 << i)) != 0;
-        aux->numVar = (long *) &p->weekday[i];
-        aux->editRun = 0;
-        aux->sucess = 0;
-        aux->type = Screen_numberEditUnsignedChar;
-        aux++;
-    }
-
-    this->parameters = p;*/
 }
 
 void Sc_alarmsSettingsLoop(Screen_window *this) {

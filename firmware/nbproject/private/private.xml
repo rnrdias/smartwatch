@@ -11,12 +11,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/alarms_settings.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/main.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/screen/screen.h</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/screen/screen.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/language/language.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/alarms.c</file>
-            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/kernel/util.c</file>
+            <file>file:/C:/Users/RNR/Documents/Projetos/smartwatch/simulation/firmware/screens/stopwatch.c</file>
         </group>
     </open-files>
 </project-private>

@@ -6,6 +6,10 @@
 
 #include "screens.h"
 
+typedef struct {
+    
+}Sc_stopwatchParam;
+
 void Sc_stopwatchStart(Screen_window *this) {
     this->title = Lang_load(&lang->stopwatch);
 }

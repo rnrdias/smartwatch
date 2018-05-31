@@ -61,14 +61,14 @@ char Screen_hasEditNumRun() {
     return mastEditNumRun != 0;
 }
 
-char stackPont, antStackPont;
+signed char stackPont, antStackPont;
 Screen_window *stack[stackSize];
 
 #define stackPush(x) stack[++stackPont]=x
 #define stackPop() stack[stackPont--]
-#define stackWindow()  ((Screen_window *)stack[stackPont])
+/*#define stackWindow()  ((Screen_window *)stack[stackPont])
 #define stackWindowPrev()  ((Screen_window *)stack[stackPont-1])
-#define stackWindowNext()  ((Screen_window *)stack[stackPont+1])
+#define stackWindowNext()  ((Screen_window *)stack[stackPont+1])*/
 
 void Screen_windowOpen(Screen_window *win) {
     stackPush(win);
@@ -84,25 +84,25 @@ void Screen_loop() {
         antStackPont = stackPont;
         //pausa tela anterior
         if (stackPont > 0)
-            if (stackWindowPrev()->pause != 0)
-                stackWindowPrev()->pause(stackWindowPrev());
+            if (stack[stackPont-1]->pause != 0)
+                stack[stackPont-1]->pause(stack[stackPont-1]);
 
         //inicializa proxima tela
-        if (stackWindow()->start != 0)
-            stackWindow()->start(stackWindow());
-        if (stackWindow()->resume != 0)
-            stackWindow()->resume(stackWindow());
+        if (stack[stackPont]->start != 0)
+            stack[stackPont]->start(stack[stackPont]);
+        if (stack[stackPont]->resume != 0)
+            stack[stackPont]->resume(stack[stackPont]);
         mastEditNumRun = 0;
     } else if (antStackPont > stackPont) {
         antStackPont = stackPont;
         //finaliza tela
-        if (stackWindowNext()->pause)
-            stackWindowNext()->pause(stackWindowNext());
-        if (stackWindowNext()->end != 0)
-            stackWindowNext()->end(stackWindowNext());
+        if (stack[stackPont+1]->pause)
+            stack[stackPont+1]->pause(stack[stackPont+1]);
+        if (stack[stackPont+1]->end != 0)
+            stack[stackPont+1]->end(stack[stackPont+1]);
         //retorna a tela anterior
-        if (stackWindow()->resume != 0)
-            stackWindow()->resume(stackWindow());
+        if (stack[stackPont]->resume != 0)
+            stack[stackPont]->resume(stack[stackPont]);
     }
 
     if (stackPont >= 0) {

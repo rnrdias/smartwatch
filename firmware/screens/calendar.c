@@ -8,7 +8,9 @@
 
 typedef struct {
     char *title;
-    RTC_DateFormat date;
+    //char day;
+    char month;
+    int year;
     unsigned char scroll;
 } Sc_calendarParam;
 
@@ -16,9 +18,9 @@ void Sc_calendarStart(Screen_window *this) {
     //this->title = Lang_load(&lang->calendar);
     Sc_calendarParam *p = Util_memPush(sizeof (Sc_calendarParam));
     p->title = Lang_load(&lang->calendar);
-    p->date.day = RTC_date.day;
-    p->date.month = RTC_date.month;
-    p->date.year = RTC_date.year;
+    //p->day = RTC_date.day;
+    p->month = RTC_date.month;
+    p->year = RTC_date.year;
     Screen_StartScroll(&p->scroll);
     this->parameters = p;
 }
@@ -28,17 +30,17 @@ void Sc_calendarLoop(Screen_window *this) {
     Sc_calendarParam *p = this->parameters;
     Screen_StartScroll(&p->scroll);
 
-    Std_printf("%w%r%s: %d/%d\r\n%wD S T Q Q S S\r\n%w", &Font_alfanum_6, p->title, p->date.month, p->date.year, &Font_alfanum_8, &Font_alfanum_6);
+    Std_printf("%w%r%s: %d/%d\r\n%wD S T Q Q S S\r\n%w", &Font_alfanum_6, p->title, p->month, p->year, &Font_alfanum_8, &Font_alfanum_6);
 
     Std_printf("%o", p->scroll);
-    for (char i = RTC_weekdayCalc(1, p->date.month, p->date.year); i > 0; i--) {
+    for (char i = RTC_weekdayCalc(1, p->month, p->year); i > 0; i--) {
         Std_printf("   ");
     }
-    for (int i = 1; i <= RTC_monthDay[p->date.month - 1]; i++) {
+    for (int i = 1; i <= RTC_monthDay[p->month - 1]; i++) {
         if (i >= 10)
             Std_printf("%m%d%m ", 0, i, 0);
         else
-            Std_printf("%m%d %m ", 1, i, 0);
+            Std_printf("%m%d %m ", 0, i, 0);
     }
 
 
@@ -46,22 +48,27 @@ void Sc_calendarLoop(Screen_window *this) {
         Screen_windowClose();
     }
     if (Keyboard_keyEnter()) {
+        Sc_calendarEvents.parameters = p;
         Screen_windowOpen(&Sc_calendarEvents);
     }
 
     if (Keyboard_keyDown() && !UPP_scrollHasNext()) {
-        p->date.month++;
+        p->month++;
+        if (p->month > 12) {
+            p->month = 1;
+            p->year++;
+        }
         p->scroll = 0;
     }
 
     if (Keyboard_keyUp() && !p->scroll) {
-        p->date.month--;
-        if (p->date.month == 0) {
-            p->date.month = 12;
-            p->date.year--;
+        p->month--;
+        if (p->month == 0) {
+            p->month = 12;
+            p->year--;
         }
     }
-    RTC_dateValid(&p->date);
+    //RTC_dateValid(&p->date);
 }
 
 void Sc_calendarEnd(Screen_window *this) {
