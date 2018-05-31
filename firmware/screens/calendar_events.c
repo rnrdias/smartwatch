@@ -13,7 +13,6 @@ typedef struct {
     unsigned char scroll;
 } Sc_calendarParam;
 
-
 typedef struct {
     Screen_list list;
     Sc_calendarParam *calendar;
@@ -30,11 +29,11 @@ void Sc_calendarEventsClick(Screen_listItem *this) {
 
 void Sc_calendarEventsPrintItemDate(Screen_listItem *this) {
     Sc_calendarEventsNumParam *n = this->parameter;
-    
+
     if (this->isSelect) {
         Std_printf("%y%x%x", &n->month, &n->year);
     }
-    Std_printf("%m%#Def. Data\r\n %#%t%1d%t:%t%3d%t %m\r\n", this->isSelect, &Font_alfanum_8, ' ', &Font_alfanum_8, ' ', n->month.editRun, n->month.numView, 0, n->year.editRun, n->year.numView, 0, 0);
+    Std_printf("%m%#Def. Data\r\n %#%t%1d%t/%t%3d%t %m\r\n", this->isSelect, &Font_alfanum_8, ' ', &Font_alfanum_8, ' ', n->month.editRun, n->month.numView, 0, n->year.editRun, n->year.numView, 0, 0);
 }
 
 void Sc_calendarEventsStart(Screen_window *this) {
@@ -54,10 +53,10 @@ void Sc_calendarEventsStart(Screen_window *this) {
 }
 
 void Sc_calendarEventsLoop(Screen_window *this) {
-    Screen_listSelectPrint();
-    if (Keyboard_keyEsc()) {
+    if (Keyboard_keyEsc() && !Screen_hasEditNumRun()) {
         Screen_windowClose();
     }
+    Screen_listSelectPrint();
 }
 
 void Sc_calendarEventsEnd(Screen_window *this) {
@@ -93,7 +92,6 @@ void Sc_calendarEventsResume(Screen_window *this) {
     itens[4].parameter = &Sc_status;
 
     p->list.itens = itens;
-
 
     n->month.numInc = 1;
     n->month.numMax = 12;

@@ -47,6 +47,8 @@ extern "C" {
         char initfriday;
         char initsaturday;
         char initSwitchedOn;
+        char *alarm;
+        char *sleep;
     } Language;
 
     Language *lang;

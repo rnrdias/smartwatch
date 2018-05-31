@@ -25,8 +25,8 @@ void *Beep_beep(void *param) {
 pthread_t thread;
 
 void Beep_loop(void) {
-    /*if (pthread_kill(thread, 0) && Beep_param)
-        pthread_create(&thread, NULL, Beep_beep, (void *) Beep_param);*/
+    if (pthread_kill(thread, 0) && Beep_param)
+        pthread_create(&thread, NULL, Beep_beep, (void *) Beep_param);
 }
 
 void Beep_initialize(void) {

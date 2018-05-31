@@ -6,8 +6,10 @@
 
 #include "alarms.h"
 Alarms_paramFormat Alarms[ALARMS_MAX];
+Alarms_sleepParamFormat Alarms_sleep;
 
 void Alarms_ringing(char index) {
+    Sc_alarmsRinging.parameters = index;
     Screen_windowOpen(&Sc_alarmsRinging);
 }
 
@@ -40,15 +42,29 @@ void Alarms_loop(void) {
             }
         }
 
+    }
 
-        if (AlarmsSleep.time > 0) {
-            if (AlarmsSleep.time-- == 1) {
-                Alarms_ringing(0);
+    if (Alarms_sleep.enable) {
+        if (Alarms_sleep.time) {
+            Alarms_sleep.currentMinute = RTC_date.minute + Alarms_sleep.time;
+            Alarms_sleep.currentHour = RTC_date.hour;
+
+            if (Alarms_sleep.currentMinute >= 60) {
+                Alarms_sleep.currentMinute -= 60;
+                Alarms_sleep.currentHour++;
             }
+            if (Alarms_sleep.currentHour >= 24) {
+                Alarms_sleep.currentHour = 0;
+            }
+            Alarms_sleep.time = 0;
+        }
+
+        if (Alarms_sleep.currentHour == RTC_date.hour && Alarms_sleep.currentMinute == RTC_date.minute) {
+            Alarms_sleep.enable = 0;
+            Alarms_ringing(0);
         }
     }
 }
-Alarms_paramSleep AlarmsSleep;
 
 void Alarms_initialize(void) {
     for (unsigned char i = 0; i < ALARMS_MAX; i++) {
@@ -57,8 +73,11 @@ void Alarms_initialize(void) {
         Alarms[i].weekday = 0;
         Alarms[i].aux = 0;
     }
-    /*AlarmsSleep.time = 0;
-
+    Alarms_sleep.currentHour = 0;
+    Alarms_sleep.currentMinute = 0;
+    Alarms_sleep.enable = 0;
+    Alarms_sleep.time = 10;
+   
     //test
     Alarms[0].hour = 0;
     Alarms[0].minute = 1;
@@ -80,6 +99,6 @@ void Alarms_initialize(void) {
     Alarms[2].tue = 1;
     Alarms[2].wed = 1;
     Alarms[2].thu = 1;
-    Alarms[2].fri = 1;*/
+    Alarms[2].fri = 1;
 
 }

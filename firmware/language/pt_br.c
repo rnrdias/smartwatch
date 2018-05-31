@@ -25,7 +25,8 @@ CONST char pt_br_friday[] = "Sex";
 CONST char pt_br_saturday[] = "Sab";
 CONST char pt_br_switchedOn[] = "Lig";
 //seq fim
-
+CONST char pt_br_alarm[] = "Alarme";
+CONST char pt_br_sleep[] = "Soneca";
 
 CONST Language pt_br = {
     pt_br_alarms,
@@ -51,5 +52,7 @@ CONST Language pt_br = {
     'Q',
     'S',
     'S',
-    'L'
+    'L',
+    pt_br_alarm,
+    pt_br_sleep
 };
