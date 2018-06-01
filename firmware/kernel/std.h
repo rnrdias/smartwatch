@@ -10,7 +10,7 @@
 #define STD_H_
 
 #include <stdarg.h>
-
+#include "util.h"
 
 /*
  * Prototipo de saida padrão para o printf
@@ -44,25 +44,25 @@ void Std_initialize();
  * %u1+d,15 :+5
  * %%d,15   :%
  */
-void Std_printf(char *str, ...);
+void Std_printf(const char *str, ...);
 
 /*
  *  Equivalente oa Std_printf mas com a saida redirecionavel para outra função
  */
-void Std_fprintf(void (*functionPtr)(char), char *str, ...);
+void Std_fprintf(void (*functionPtr)(char), const char *str, ...);
 
 /*
  * Equivalente oa Std_printf mas com a saida um string
  */
-void Std_sprintf(char *source, char *str, ...);
+void Std_sprintf(char *source, const char *str, ...);
 
 /*
  * Função de extenção das funcionalidades do Std print
  */
-void (*Std_extends)(void (*functionPtr)(char), char*, va_list *arg_ptr);
+void (*Std_extends)(void (*functionPtr)(char), const char*, va_list *arg_ptr);
 
 /*
  * Função de impressão rapida sem uso de comandos. ex: '%c, %d ...'.
  */
-void Std_put(char *str);
+void Std_put(const char *str);
 #endif /* STD_H_ */

@@ -16,3 +16,15 @@
 char Util_toggleSeg() {
     return RTC_date.second % 2;
 }
+
+
+char RVCB(const void *var){
+	return *(char *)var;
+}
+
+int RVCW(const void *var){
+	return *(int *)var;
+}
+
+
+#define _CONST // define const variable

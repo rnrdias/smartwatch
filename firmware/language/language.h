@@ -23,37 +23,37 @@ extern "C" {
 #include "../kernel/util.h"
 
     typedef struct {
-        char *alarms;
-        char *calendar;
-        char *calendarEvents;
-        char *settings;
-        char *stopwatch;
-        char *status;
-        char *menu;
-        char *settingsDateHour;
-        char *sunday;
-        char *monday;
-        char *tuesday;
-        char *wednesday;
-        char *thursday;
-        char *friday;
-        char *saturday;
-        char *switchedOn;
-        char initSunday;
-        char initmonday;
-        char inittuesday;
-        char initwednesday;
-        char initthursday;
-        char initfriday;
-        char initsaturday;
-        char initSwitchedOn;
-        char *alarm;
-        char *sleep;
+        const char *alarms;
+        const char *calendar;
+        const char *calendarEvents;
+        const char *settings;
+        const char *stopwatch;
+        const char *status;
+        const char *menu;
+        const char *settingsDateHour;
+        const char *sunday;
+        const char *monday;
+        const char *tuesday;
+        const char *wednesday;
+        const char *thursday;
+        const char *friday;
+        const char *saturday;
+        const char *switchedOn;
+        const char initSunday;
+        const char initmonday;
+        const char inittuesday;
+        const char initwednesday;
+        const char initthursday;
+        const char initfriday;
+        const char initsaturday;
+        const char initSwitchedOn;
+        const char *alarm;
+        const char *sleep;
     } Language;
 
-    Language *lang;
+    const Language *lang;
 
-    char *Lang_load(char **end);
+    char *Lang_load(const char * const* end);
     char *Lang_loadCharacter(char *end);
     extern const Language pt_br;
 

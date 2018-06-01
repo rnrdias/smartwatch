@@ -18,6 +18,8 @@
 extern "C" {
 #endif
 #include <stdarg.h>
+#include "../util.h"
+
 #define stackSize 10 // define o tamanho maximo da pilha de janelas
 
     /*
@@ -127,6 +129,9 @@ extern "C" {
      */
     char Screen_getScrollStop();
 
+
+    struct Screen_windowLoad_t;
+
     /*
      * Estrutura de definição de janelas
      * *title(DC_window *this) : um ponteiro para o titulo da janela
@@ -137,24 +142,32 @@ extern "C" {
      */
     typedef struct Screen_window_t {
         char *title;
-        void (*loop)(struct Screen_window_t * this);
-        void (*start)(struct Screen_window_t * this);
-        void (*end)(struct Screen_window_t * this);
-        void (*resume)(struct Screen_window_t * this);
-        void (*pause)(struct Screen_window_t * this);
-        //void (*resume)(struct DC_window_t * this);
-        //void (*stop)(struct DC_window_t * this);
-        void *parameters;
+        void (*loop)(struct Screen_windowLoad_t * this);
+        void (*start)(struct Screen_windowLoad_t * this);
+        void (*end)(struct Screen_windowLoad_t * this);
+        void (*resume)(struct Screen_windowLoad_t * this);
+        void (*pause)(struct Screen_windowLoad_t * this);
     } Screen_window;
+
+    /*
+     * Estrutura de definição de janelas
+     * windows : contem definições das janelas
+     * *parameters : ponteiro para parametros
+     */
+    typedef struct Screen_windowLoad_t {
+        const struct Screen_window_t *windows;
+        void *parameters;
+    } Screen_windowLoad;
+
 
     /*
      * prototipo para a impressão do titulo da janela
      */
-    void Screen_windowLoadHead(char *title);
+    void Screen_windowLoadHead(const char *title);
     /*
      * função para abertura da janela
      */
-    void Screen_windowOpen(Screen_window *win);
+    void Screen_windowOpen(Screen_windowLoad *win);
     /*
      * função para o fechamento da janela
      */
@@ -177,7 +190,7 @@ extern "C" {
      * 
      * ex: "%y %e %e",&num1,&num2 : num1 e num2 são estruturas DC_numberEdit 
      */
-    void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr);
+    void Screen_Std_Extends(void (*functionPtr)(char), const char *str, va_list *arg_ptr);
     /*
      * Retorna se existe alguma edição em andamento
      */

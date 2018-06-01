@@ -24,8 +24,8 @@ int main(int argc, char** argv) {
     lang = &pt_br;
     Start_initialize();
     App_initialize();
-    Screen_windowOpen(&Sc_main);
-
+    //Screen_windowOpen(&Sc_main);
+    
     while (1) {
         App_loop();
         Start_loop();

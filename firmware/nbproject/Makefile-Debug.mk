@@ -49,8 +49,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/fonts/numeric_16.o \
 	${OBJECTDIR}/kernel/fonts/numeric_24.o \
 	${OBJECTDIR}/kernel/kernel.o \
-	${OBJECTDIR}/kernel/screen/debug.o \
-	${OBJECTDIR}/kernel/screen/notepad.o \
 	${OBJECTDIR}/kernel/screen/screen.o \
 	${OBJECTDIR}/kernel/settings/keyboard.o \
 	${OBJECTDIR}/kernel/settings/screens.o \
@@ -62,18 +60,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/util.o \
 	${OBJECTDIR}/language/language.o \
 	${OBJECTDIR}/language/pt_br.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/screens/alarms.o \
-	${OBJECTDIR}/screens/alarms_ringing.o \
-	${OBJECTDIR}/screens/alarms_settings.o \
-	${OBJECTDIR}/screens/calendar.o \
-	${OBJECTDIR}/screens/calendar_events.o \
-	${OBJECTDIR}/screens/main.o \
-	${OBJECTDIR}/screens/menu.o \
-	${OBJECTDIR}/screens/settings.o \
-	${OBJECTDIR}/screens/settings_date_hour.o \
-	${OBJECTDIR}/screens/status.o \
-	${OBJECTDIR}/screens/stopwatch.o
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -170,16 +157,6 @@ ${OBJECTDIR}/kernel/kernel.o: kernel/kernel.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/kernel.o kernel/kernel.c
 
-${OBJECTDIR}/kernel/screen/debug.o: kernel/screen/debug.c
-	${MKDIR} -p ${OBJECTDIR}/kernel/screen
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/screen/debug.o kernel/screen/debug.c
-
-${OBJECTDIR}/kernel/screen/notepad.o: kernel/screen/notepad.c
-	${MKDIR} -p ${OBJECTDIR}/kernel/screen
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/screen/notepad.o kernel/screen/notepad.c
-
 ${OBJECTDIR}/kernel/screen/screen.o: kernel/screen/screen.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/screen
 	${RM} "$@.d"
@@ -239,61 +216,6 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
-
-${OBJECTDIR}/screens/alarms.o: screens/alarms.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms.o screens/alarms.c
-
-${OBJECTDIR}/screens/alarms_ringing.o: screens/alarms_ringing.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms_ringing.o screens/alarms_ringing.c
-
-${OBJECTDIR}/screens/alarms_settings.o: screens/alarms_settings.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/alarms_settings.o screens/alarms_settings.c
-
-${OBJECTDIR}/screens/calendar.o: screens/calendar.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/calendar.o screens/calendar.c
-
-${OBJECTDIR}/screens/calendar_events.o: screens/calendar_events.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/calendar_events.o screens/calendar_events.c
-
-${OBJECTDIR}/screens/main.o: screens/main.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/main.o screens/main.c
-
-${OBJECTDIR}/screens/menu.o: screens/menu.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/menu.o screens/menu.c
-
-${OBJECTDIR}/screens/settings.o: screens/settings.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/settings.o screens/settings.c
-
-${OBJECTDIR}/screens/settings_date_hour.o: screens/settings_date_hour.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/settings_date_hour.o screens/settings_date_hour.c
-
-${OBJECTDIR}/screens/status.o: screens/status.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/status.o screens/status.c
-
-${OBJECTDIR}/screens/stopwatch.o: screens/stopwatch.c
-	${MKDIR} -p ${OBJECTDIR}/screens
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/stopwatch.o screens/stopwatch.c
 
 # Subprojects
 .build-subprojects:

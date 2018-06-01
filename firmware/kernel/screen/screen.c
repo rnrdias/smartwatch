@@ -62,15 +62,16 @@ char Screen_hasEditNumRun() {
 }
 
 signed char stackPont, antStackPont;
-Screen_window *stack[stackSize];
+Screen_windowLoad *stack[stackSize];
 
 #define stackPush(x) stack[++stackPont]=x
 #define stackPop() stack[stackPont--]
+
 /*#define stackWindow()  ((Screen_window *)stack[stackPont])
 #define stackWindowPrev()  ((Screen_window *)stack[stackPont-1])
 #define stackWindowNext()  ((Screen_window *)stack[stackPont+1])*/
 
-void Screen_windowOpen(Screen_window *win) {
+void Screen_windowOpen(Screen_windowLoad *win) {
     stackPush(win);
 }
 
@@ -82,34 +83,43 @@ void Screen_loop() {
     //carregamento de screen
     if (antStackPont < stackPont) {
         antStackPont = stackPont;
+        void (*pause)(Screen_windowLoad * this) = RVCW(stack[stackPont - 1]->windows->pause);
+        void (*start)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->start);
+        void (*resume)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->resume);
+
         //pausa tela anterior
-        if (stackPont > 0)
-            if (stack[stackPont-1]->pause != 0)
-                stack[stackPont-1]->pause(stack[stackPont-1]);
+        if (stackPont > 0) {
+            if (pause != 0)
+                pause(stack[stackPont - 1]);
+        }
 
         //inicializa proxima tela
-        if (stack[stackPont]->start != 0)
-            stack[stackPont]->start(stack[stackPont]);
-        if (stack[stackPont]->resume != 0)
-            stack[stackPont]->resume(stack[stackPont]);
+        if (start != 0)
+            start(stack[stackPont]);
+        if (resume != 0)
+            resume(stack[stackPont]);
         mastEditNumRun = 0;
     } else if (antStackPont > stackPont) {
+        void (*pause)(Screen_windowLoad * this) = RVCW(stack[stackPont + 1]->windows->pause);
+        void (*end)(Screen_windowLoad * this) = RVCW(stack[stackPont + 1]->windows->end);
+        void (*resume)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->resume);
         antStackPont = stackPont;
         //finaliza tela
-        if (stack[stackPont+1]->pause)
-            stack[stackPont+1]->pause(stack[stackPont+1]);
-        if (stack[stackPont+1]->end != 0)
-            stack[stackPont+1]->end(stack[stackPont+1]);
+        if (pause != 0)
+            pause(stack[stackPont + 1]);
+        if (end != 0)
+            end(stack[stackPont + 1]);
         //retorna a tela anterior
-        if (stack[stackPont]->resume != 0)
-            stack[stackPont]->resume(stack[stackPont]);
+        if (resume != 0)
+            resume(stack[stackPont]);
     }
 
     if (stackPont >= 0) {
-        if (stack[stackPont]->title != 0) {
-            Screen_windowLoadHead(stack[stackPont]->title);
+        void (*loop)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->loop);
+        if (stack[stackPont]->windows->title != 0) {
+            Screen_windowLoadHead(stack[stackPont]->windows->title);
         }
-        stack[stackPont]->loop(stack[stackPont]);
+        loop(stack[stackPont]);
     }
     //scroll process
     if (!Screen_hasEditNumRun() && scrollValue) {
@@ -130,8 +140,10 @@ void Screen_initialize() {
     antStackPont = -1;
 }
 
-void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list * arg_ptr) {
-    if (*str == 'y') {
+void Screen_Std_Extends(void (*functionPtr)(char), const char *vstr, va_list * arg_ptr) {
+    char str = RVCB(vstr);
+
+    if (str == 'y') {
         if (mastEditNumRunIndex < mastEditNumRun) {
             mastEditNumRun = 0;
             mastEditNumApl = 0;
@@ -150,7 +162,7 @@ void Screen_Std_Extends(void (*functionPtr)(char), char *str, va_list * arg_ptr)
         mastEditNumRunIndex = 0;
     }
 
-    if (*str == 'x') {
+    if (str == 'x') {
         Screen_numberEditFormat *aux;
         aux = va_arg(*arg_ptr, Screen_numberEditFormat *);
 

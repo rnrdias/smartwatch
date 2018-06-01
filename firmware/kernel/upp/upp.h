@@ -74,7 +74,7 @@ extern "C" {
         };
     } UPP_flag;
 
-    UPP_BitmapFormat *UPP_fontDefault;
+    const UPP_BitmapFormat *UPP_fontDefault;
 
     /*
      * Função de inicialização da UPP
@@ -91,7 +91,7 @@ extern "C" {
     /*
      * Carrega uma imagem bitmap
      */
-    char UPP_loadBitmap(UPP_BitmapFormat *font, unsigned char index);
+    char UPP_loadBitmap(const UPP_BitmapFormat *font, unsigned char index);
     /*
      * Limpa display e seta para a posição inicial
      */
@@ -118,7 +118,7 @@ extern "C" {
      * UPP_POSITION_CENTER : para o centro
      * UPP_POSITION_RIGHT : para a direita
      */
-    void UPP_positionBitmap(UPP_BitmapFormat *bitmap, unsigned char size, char position);
+    void UPP_positionBitmap(const UPP_BitmapFormat *bitmap, unsigned char size, char position);
     /*
      * Carrega uma mensagem para uma determinada posição.
      * UPP_POSITION_LEFT : para esquerda
@@ -150,7 +150,7 @@ extern "C" {
      * %# : Preenche a linha com um bitmap ("%#",&bitmap,index)
      * %o : Set posição do scroll
      */
-    void UPP_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr);
+    void UPP_Std_Extends(void (*functionPtr)(char), const char *str, va_list *arg_ptr);
 
 #ifdef __cplusplus
 }

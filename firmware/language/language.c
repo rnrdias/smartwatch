@@ -6,7 +6,7 @@
 
 #include "language.h"
 
-char *Lang_load(char **end) {
+char *Lang_load(const char * const* end) {
     char *str = (char *) RCW(end);
     char *strPush = Util_memPush(20);
     char *rstr = strPush;

@@ -23,10 +23,10 @@ extern "C" {
 #define STATUS_BAR_HEAD 6,1,0,1
 
     typedef struct _StatusBar_paramFormat {
-        UPP_BitmapFormat *icon;
-        char *title;
-        char *description;
-        char *function;
+        const UPP_BitmapFormat *icon;
+        const char *title;
+        const char *description;
+        const char *function;
     } StatusBar_paramFormat;
 
     typedef struct _StatusBar_registerFormat {

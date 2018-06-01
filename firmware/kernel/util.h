@@ -35,13 +35,24 @@ extern unsigned char Util_stringLenth(char *string);
 /*
  * Aloca variavel na pilha de memoria
  */
-void *Util_memPush(unsigned int size);
+extern void *Util_memPush(unsigned int size);
 /*
  * Retira variavel da pilha de memoria
  */
-void Util_memTop(void *p);
+extern void Util_memTop(void *p);
 /*
  * Retorna quantidade de memoria alocada
  */
-unsigned int Util_memGetSizeAloc();
+extern unsigned int Util_memGetSizeAloc();
+/*
+* read variable or const byte
+*/
+extern char RVCB(const void *var);
+
+/*
+* read variable or const word
+*/
+extern int RVCW(const void *var);
+
+
 #endif /* UTIL_H_ */

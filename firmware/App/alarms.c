@@ -46,8 +46,8 @@ StatusBar_registerFormat SB_register = {
 //_____________________APP__________________________
 
 void Alarms_ringing(char index) {
-    Sc_alarmsRinging.parameters = index;
-    Screen_windowOpen(&Sc_alarmsRinging);
+    //Sc_alarmsRinging.parameters = index;
+    //Screen_windowOpen(&Sc_alarmsRinging);
 }
 
 void Alarms_loop(void) {

@@ -31,7 +31,7 @@ extern "C" {
 
 
     char lcdBuffer[504];
-    void Std_extend(void (*functionPtr)(char), char *str, va_list *arg_ptr);
+    void Std_extend(void (*functionPtr)(char),const char *str, va_list *arg_ptr);
 
 #ifdef __cplusplus
 }

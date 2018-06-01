@@ -17,7 +17,7 @@ void Std_out(char val) {
     UPP_loadTextChar(val);
 }
 
-void Std_extend(void (*functionPtr)(char), char *str, va_list *arg_ptr) {
+void Std_extend(void (*functionPtr)(char),const char *str, va_list *arg_ptr) {
     UPP_Std_Extends(functionPtr, str, arg_ptr);
     Screen_Std_Extends(functionPtr, str, arg_ptr);
 }

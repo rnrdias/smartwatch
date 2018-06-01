@@ -55,8 +55,8 @@ void UPP_loadText(char *message) {
         UPP_loadTextChar(*(message++));
 }
 
-char UPP_loadBitmap(UPP_BitmapFormat *bitmap, unsigned char index) {
-    unsigned char *bitmapDados;
+char UPP_loadBitmap(const UPP_BitmapFormat *bitmap, unsigned char index) {
+    const unsigned char *bitmapDados;
     unsigned char x, y;
 
     //Validate input
@@ -175,7 +175,7 @@ void UPP_setScroll(unsigned char num) {
 
 }
 
-void UPP_positionBitmap(UPP_BitmapFormat *bitmap, unsigned char quantElem, char position) {
+void UPP_positionBitmap(const UPP_BitmapFormat *bitmap, unsigned char quantElem, char position) {
     if (position == 1) {
         UPP_setCursorXY(1, GET_CURSOR_Y());
     } else {
@@ -199,42 +199,44 @@ void UPP_positionText(char *message, char position) {
 /*char textPosition;
 char textBuffer[50];
 char *posTextBuffer*/
-void UPP_Std_Extends(void (*functionPtr)(char), char *str, va_list *arg_ptr) {
-    if (*str == 'w') {
+void UPP_Std_Extends(void (*functionPtr)(char), const char *vstr, va_list *arg_ptr) {
+    char str = RVCB(vstr);
+
+    if (str == 'w') {
         UPP_fontDefault = va_arg(*arg_ptr, UPP_BitmapFormat *);
-    } else if (*str == 'b') {
+    } else if (str == 'b') {
         UPP_flag.boxBegin = va_arg(*arg_ptr, unsigned int);
-    } else if (*str == 'e') {
+    } else if (str == 'e') {
         UPP_flag.boxEnd = va_arg(*arg_ptr, unsigned int);
-    } else if (*str == 'r') {
+    } else if (str == 'r') {
         UPP_clear();
-    } else if (*str == 'm') {
+    } else if (str == 'm') {
         UPP_flag.invert = va_arg(*arg_ptr, unsigned int);
-    } else if (*str == 't') {
+    } else if (str == 't') {
         UPP_flag.toggle = va_arg(*arg_ptr, unsigned int);
-    } else if (*str == '<') {
+    } else if (str == '<') {
         setTextPosition = UPP_POSITION_LEFT;
-    } else if (*str == '>') {
+    } else if (str == '>') {
         setTextPosition = UPP_POSITION_RIGHT;
-    } else if (*str == '|') {
+    } else if (str == '|') {
         setTextPosition = UPP_POSITION_CENTER;
-    } else if (*str == 'g') {
+    } else if (str == 'g') {
         UPP_setCursorXY(0, 0);
-    } else if (*str == '#') {
+    } else if (str == '#') {
         UPP_BitmapFormat *bf = va_arg(*arg_ptr, UPP_BitmapFormat *);
         char index = va_arg(*arg_ptr, unsigned int);
         UPP_fillInLine(bf, index);
-    } else if (*str == 'o') {
+    } else if (str == 'o') {
         UPP_setScroll(va_arg(*arg_ptr, unsigned int));
     }
 
     if (setTextPosition != 0) {
         unsigned int quant = 0;
-        while (*str) {
-            if (*str == '\r' || *str == '\n')
+        while (str) {
+            if (str == '\r' || str == '\n')
                 break;
             quant++;
-            str++;
+            str = RVCB(++vstr);
         }
         UPP_positionBitmap(UPP_fontDefault, quant, setTextPosition);
         setTextPosition = 0;
