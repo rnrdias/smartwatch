@@ -19,6 +19,7 @@ extern "C" {
 #endif
 #include "../kernel/drivers/real_time_clock.h"
 #include "../screens/screens.h"
+#include "status_bar/status_bar.h"
 
 #define ALARMS_MAX 5
 

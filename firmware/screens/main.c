@@ -5,11 +5,17 @@
  */
 
 #include "screens.h"
+#include "../App/status_bar/status_bar.h"
+
+void Sc_mainStart(Screen_window *this) {
+    StatusBar_initialize();
+}
 
 void Sc_mainLoop(Screen_window *this) {
     char *weekday = Lang_load(&lang->sunday + RTC_getWeekday());
 
-    Std_printf("%r\n");
+    Std_printf("%r");
+    StatusBar_print();
     UPP_setCursorXY(5, 1);
     Std_printf("%w%1d:%1d%w\n%1d\r\n", &Font_numeric_16, RTC_date.hour, RTC_date.minute, &Font_alfanum_8, RTC_date.second);
     Std_printf("%s %1d-%1d-%3d", weekday, RTC_date.day, RTC_date.month, RTC_date.year);
@@ -24,4 +30,4 @@ void Sc_mainLoop(Screen_window *this) {
         Screen_windowOpen(&Sc_status);
     }
 }
-Screen_window Sc_main = {0, Sc_mainLoop, 0, 0, 0, 0};
+Screen_window Sc_main = {0, Sc_mainLoop, Sc_mainStart, 0, 0, 0};

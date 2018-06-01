@@ -8,6 +8,43 @@
 Alarms_paramFormat Alarms[ALARMS_MAX];
 Alarms_sleepParamFormat Alarms_sleep;
 
+
+
+//___________________ICON______________________________
+
+CONST UPP_BitmapFormat SB_icon = {
+    0x06,
+    0x01,
+    0x00,
+    0x01,
+    {
+        0x00, 0x7e, 0x7e, 0x7e, 0x7e, 0x00
+    }
+};
+
+StatusBar_paramFormat SB = {
+    &SB_icon,
+    0,
+    0,
+    0,
+};
+
+StatusBar_paramFormat *SB_iconLoop() {
+    if (Alarms_sleep.enable)
+        return &SB;
+    else
+        return 0;
+}
+
+StatusBar_registerFormat SB_register = {
+    SB_iconLoop,
+    0
+};
+
+
+
+//_____________________APP__________________________
+
 void Alarms_ringing(char index) {
     Sc_alarmsRinging.parameters = index;
     Screen_windowOpen(&Sc_alarmsRinging);
@@ -77,7 +114,10 @@ void Alarms_initialize(void) {
     Alarms_sleep.currentMinute = 0;
     Alarms_sleep.enable = 0;
     Alarms_sleep.time = 10;
-   
+
+    StatusBar_register(&SB_register);
+
+
     //test
     Alarms[0].hour = 0;
     Alarms[0].minute = 1;
@@ -102,3 +142,6 @@ void Alarms_initialize(void) {
     Alarms[2].fri = 1;
 
 }
+
+
+

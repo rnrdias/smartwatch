@@ -21,6 +21,7 @@ void Sc_calendarStart(Screen_window *this) {
     //p->day = RTC_date.day;
     p->month = RTC_date.month;
     p->year = RTC_date.year;
+    p->scroll = 0;
     Screen_StartScroll(&p->scroll);
     this->parameters = p;
 }

@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/App/alarms.o \
 	${OBJECTDIR}/App/app.o \
+	${OBJECTDIR}/App/status_bar/status_bar.o \
 	${OBJECTDIR}/hardware.o \
 	${OBJECTDIR}/kernel/drivers/beep_simulator.o \
 	${OBJECTDIR}/kernel/drivers/cpu_control.o \
@@ -108,6 +109,11 @@ ${OBJECTDIR}/App/app.o: App/app.c
 	${MKDIR} -p ${OBJECTDIR}/App
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/app.o App/app.c
+
+${OBJECTDIR}/App/status_bar/status_bar.o: App/status_bar/status_bar.c
+	${MKDIR} -p ${OBJECTDIR}/App/status_bar
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/status_bar/status_bar.o App/status_bar/status_bar.c
 
 ${OBJECTDIR}/hardware.o: hardware.c
 	${MKDIR} -p ${OBJECTDIR}
