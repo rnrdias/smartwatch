@@ -141,7 +141,7 @@ extern "C" {
      * *parameters : ponteiro para parametros
      */
     typedef struct Screen_window_t {
-        char *title;
+        const char *title;
         void (*loop)(struct Screen_windowLoad_t * this);
         void (*start)(struct Screen_windowLoad_t * this);
         void (*end)(struct Screen_windowLoad_t * this);
@@ -155,7 +155,7 @@ extern "C" {
      * *parameters : ponteiro para parametros
      */
     typedef struct Screen_windowLoad_t {
-        const struct Screen_window_t *windows;
+        struct Screen_window_t * windows;
         void *parameters;
     } Screen_windowLoad;
 

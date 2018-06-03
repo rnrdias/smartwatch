@@ -23,10 +23,10 @@ void Start_loop(void) {
 
 void Start_initialize(void) {
     Hardware_initialize();
+	LCD_initialize();
     UPP_initialize();
     Std_initialize();
     Screen_initialize();
-    LCD_inicialize();
     Std_extends = Std_extend;
     UPP_fontDefault = &Font_alfanum_8;
     RTC_initialize();

@@ -22,16 +22,16 @@ CONST UPP_BitmapFormat SB_icon = {
     }
 };
 
-StatusBar_paramFormat SB = {
-    &SB_icon,
+CONST StatusBar_paramFormat SB = {
+    _LC(&SB_icon),
     0,
     0,
     0,
 };
 
-StatusBar_paramFormat *SB_iconLoop() {
+const StatusBar_paramFormat *SB_iconLoop() {
     if (Alarms_sleep.enable)
-        return &SB;
+        return _LC(&SB);
     else
         return 0;
 }

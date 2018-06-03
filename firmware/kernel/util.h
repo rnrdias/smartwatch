@@ -45,14 +45,14 @@ extern void Util_memTop(void *p);
  */
 extern unsigned int Util_memGetSizeAloc();
 /*
-* read variable or const byte
-*/
+ * read variable or const byte
+ */
 extern char RVCB(const void *var);
 
 /*
-* read variable or const word
-*/
-extern int RVCW(const void *var);
+ * read variable or const word
+ */
+extern void *RVCW(const void *var);
 
 
 #endif /* UTIL_H_ */

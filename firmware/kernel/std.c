@@ -198,7 +198,7 @@ void Std_sprintf(char *source, const char *str, ...) {
 
 void Std_put(const char *str) {
     char s;
-    while (s = RVCB(str++))
+    while ((s = RVCB(str++)))
         Std_out(s);
 }
 

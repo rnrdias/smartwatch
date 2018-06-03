@@ -27,17 +27,17 @@ extern "C" {
 #include "../language/language.h"
 #include "../kernel/drivers/beep_simulator.h"
 
-    Screen_window Sc_main;
-    Screen_window Sc_menu;
+    extern Screen_window Sc_main;
+    extern Screen_window Sc_status;
+    /*Screen_window Sc_menu;
     Screen_window Sc_alarms;
     Screen_window Sc_calendar;
     Screen_window Sc_settings;
-    Screen_window Sc_status;
     Screen_window Sc_stopwatch;
     Screen_window Sc_calendarEvents;
     Screen_window Sc_alarmsSettings;
     Screen_window Sc_settingsDateHour;
-    Screen_window Sc_alarmsRinging;
+    Screen_window Sc_alarmsRinging;*/
 
 
 #ifdef __cplusplus

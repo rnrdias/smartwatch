@@ -82,13 +82,13 @@ void Screen_windowClose() {
 void Screen_loop() {
     //carregamento de screen
     if (antStackPont < stackPont) {
+        void (*start)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont]->windows->start);
+        void (*resume)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont]->windows->resume);
         antStackPont = stackPont;
-        void (*pause)(Screen_windowLoad * this) = RVCW(stack[stackPont - 1]->windows->pause);
-        void (*start)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->start);
-        void (*resume)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->resume);
 
         //pausa tela anterior
         if (stackPont > 0) {
+            void (*pause)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont - 1]->windows->pause);
             if (pause != 0)
                 pause(stack[stackPont - 1]);
         }
@@ -100,9 +100,9 @@ void Screen_loop() {
             resume(stack[stackPont]);
         mastEditNumRun = 0;
     } else if (antStackPont > stackPont) {
-        void (*pause)(Screen_windowLoad * this) = RVCW(stack[stackPont + 1]->windows->pause);
-        void (*end)(Screen_windowLoad * this) = RVCW(stack[stackPont + 1]->windows->end);
-        void (*resume)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->resume);
+        void (*pause)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont + 1]->windows->pause);
+        void (*end)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont + 1]->windows->end);
+        void (*resume)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont]->windows->resume);
         antStackPont = stackPont;
         //finaliza tela
         if (pause != 0)
@@ -114,8 +114,9 @@ void Screen_loop() {
             resume(stack[stackPont]);
     }
 
+	
     if (stackPont >= 0) {
-        void (*loop)(Screen_windowLoad * this) = RVCW(stack[stackPont]->windows->loop);
+        void (*loop)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont]->windows->loop);
         if (stack[stackPont]->windows->title != 0) {
             Screen_windowLoadHead(stack[stackPont]->windows->title);
         }

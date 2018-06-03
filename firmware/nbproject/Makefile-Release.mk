@@ -60,7 +60,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/util.o \
 	${OBJECTDIR}/language/language.o \
 	${OBJECTDIR}/language/pt_br.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/screens/main.o \
+	${OBJECTDIR}/screens/status.o
 
 
 # C Compiler Flags
@@ -216,6 +218,16 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/screens/main.o: screens/main.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/main.o screens/main.c
+
+${OBJECTDIR}/screens/status.o: screens/status.c
+	${MKDIR} -p ${OBJECTDIR}/screens
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/status.o screens/status.c
 
 # Subprojects
 .build-subprojects:

@@ -11,5 +11,6 @@ void App_loop(void) {
 }
 
 void App_initialize(void) {
+    StatusBar_initialize();
     Alarms_initialize();
 }

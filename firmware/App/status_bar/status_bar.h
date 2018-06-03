@@ -30,7 +30,7 @@ extern "C" {
     } StatusBar_paramFormat;
 
     typedef struct _StatusBar_registerFormat {
-        StatusBar_paramFormat *(*functionRegister)(void);
+        const StatusBar_paramFormat *(*functionRegister)(void);
         struct _StatusBar_registerFormat *p;
     } StatusBar_registerFormat;
 

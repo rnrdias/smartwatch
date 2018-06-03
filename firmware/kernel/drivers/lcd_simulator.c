@@ -47,6 +47,6 @@ void LCD_sendBuffer(char *buffer) {
     //printf("%d%d%d%d\n\n", BA, BB, BC, BD);
 }
 
-void LCD_inicialize(void) {
+void LCD_initialize(void) {
     gotoxy(0, 0);
 }
