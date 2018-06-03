@@ -24,21 +24,21 @@ typedef struct {
 } Sc_calendarEventsNumParam;
 
 void Sc_calendarEventsClick(Screen_listItem *this) {
-    Screen_windowOpen(this->parameter);
+    //Screen_windowOpen(this->parameter);
 }
-
+CONST char Sc_calendarEventsPrintItemDateScreen[] = "%m%#Def. Data\r\n %#%t%1d%t/%t%3d%t %m\r\n";
 void Sc_calendarEventsPrintItemDate(Screen_listItem *this) {
     Sc_calendarEventsNumParam *n = this->parameter;
 
     if (this->isSelect) {
         Std_printf("%y%x%x", &n->month, &n->year);
     }
-    Std_printf("%m%#Def. Data\r\n %#%t%1d%t/%t%3d%t %m\r\n", this->isSelect, &Font_alfanum_8, ' ', &Font_alfanum_8, ' ', n->month.editRun, n->month.numView, 0, n->year.editRun, n->year.numView, 0, 0);
+    Std_printf(_LC(Sc_calendarEventsPrintItemDateScreen), this->isSelect, &Font_alfanum_8, ' ', &Font_alfanum_8, ' ', n->month.editRun, n->month.numView, 0, n->year.editRun, n->year.numView, 0, 0);
 }
 
-void Sc_calendarEventsStart(Screen_window *this) {
+void Sc_calendarEventsStart(Screen_windowLoad *this) {
     Sc_calendarEventsParam *p;
-    this->title = Lang_load(&lang->calendarEvents);
+    this->windows->title = (char*) RVCW(_LC(&lang->calendarEvents));
     p = Util_memPush(sizeof (Sc_calendarEventsParam));
     p->calendar = this->parameters;
 
@@ -52,18 +52,18 @@ void Sc_calendarEventsStart(Screen_window *this) {
     this->parameters = p;
 }
 
-void Sc_calendarEventsLoop(Screen_window *this) {
+void Sc_calendarEventsLoop(Screen_windowLoad *this) {
     if (Keyboard_keyEsc() && !Screen_hasEditNumRun()) {
         Screen_windowClose();
     }
     Screen_listSelectPrint();
 }
 
-void Sc_calendarEventsEnd(Screen_window *this) {
-    Util_memTop(this->title);
+void Sc_calendarEventsEnd(Screen_windowLoad *this) {
+    Util_memTop(this->parameters);
 }
 
-void Sc_calendarEventsResume(Screen_window *this) {
+void Sc_calendarEventsResume(Screen_windowLoad *this) {
     Sc_calendarEventsParam *p = this->parameters;
     Screen_listItem *itens = Util_memPush(5 * sizeof (Screen_listItem));
     Sc_calendarEventsNumParam *n = Util_memPush(sizeof (Sc_calendarEventsNumParam));
@@ -75,19 +75,19 @@ void Sc_calendarEventsResume(Screen_window *this) {
     itens[0].itemPrintSize = 2;
 
 
-    itens[1].description = Lang_load(&lang->calendar);
+    itens[1].description = (char*) RVCW(_LC(&lang->calendar));
     itens[1].click = &Sc_calendarEventsClick;
     itens[1].parameter = &Sc_status;
 
-    itens[2].description = Lang_load(&lang->settings);
+    itens[2].description = (char*) RVCW(_LC(&lang->settings));
     itens[2].click = &Sc_calendarEventsClick;
     itens[2].parameter = &Sc_status;
 
-    itens[3].description = Lang_load(&lang->stopwatch);
+    itens[3].description = (char*) RVCW(_LC(&lang->stopwatch));
     itens[3].click = &Sc_calendarEventsClick;
     itens[3].parameter = &Sc_status;
 
-    itens[4].description = Lang_load(&lang->status);
+    itens[4].description = (char*) RVCW(_LC(&lang->status));
     itens[4].click = &Sc_calendarEventsClick;
     itens[4].parameter = &Sc_status;
 
@@ -111,7 +111,7 @@ void Sc_calendarEventsResume(Screen_window *this) {
 
 }
 
-void Sc_calendarEventsPause(Screen_window *this) {
+void Sc_calendarEventsPause(Screen_windowLoad *this) {
     Sc_calendarEventsParam *p = this->parameters;
     Util_memTop(p->list.itens);
 }

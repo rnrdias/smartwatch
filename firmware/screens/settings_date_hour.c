@@ -15,8 +15,8 @@ typedef struct {
     Screen_numberEditFormat year;
 } SC_settingsDateHourParam;
 
-void Sc_settingsDateHourStart(Screen_window *this) {
-    this->title = Lang_load(&lang->settingsDateHour);
+void Sc_settingsDateHourStart(Screen_windowLoad *this) {
+    this->windows->title = (char*) RVCW(_LC(&lang->settingsDateHour));
     /*SC_settingsDateHourParam *p = Util_memPush(sizeof (SC_settingsDateHourParam));
     p->hour.numInc = 1;
     p->hour.numMax = 23;
@@ -61,7 +61,7 @@ void Sc_settingsDateHourStart(Screen_window *this) {
     this->parameters = p;*/
 }
 
-void Sc_settingsDateHourLoop(Screen_window *this) {
+void Sc_settingsDateHourLoop(Screen_windowLoad *this) {
     SC_settingsDateHourParam *p = this->parameters;
     if (Keyboard_keyEsc() && !Screen_hasEditNumRun()) {
         Screen_windowClose();
@@ -73,11 +73,11 @@ void Sc_settingsDateHourLoop(Screen_window *this) {
 
 }
 
-void Sc_settingsDateHourEnd(Screen_window *this) {
-    Util_memTop(this->title);
+void Sc_settingsDateHourEnd(Screen_windowLoad *this) {
+    Util_memTop(this->parameters);
 }
 
-void Sc_settingsDateHourResume(Screen_window *this) {
+void Sc_settingsDateHourResume(Screen_windowLoad *this) {
     SC_settingsDateHourParam *p = Util_memPush(sizeof (SC_settingsDateHourParam));
     p->hour.numInc = 1;
     p->hour.numMax = 23;
@@ -122,7 +122,7 @@ void Sc_settingsDateHourResume(Screen_window *this) {
     this->parameters = p;
 }
 
-void Sc_settingsDateHourPause(Screen_window *this) {
+void Sc_settingsDateHourPause(Screen_windowLoad *this) {
     Util_memTop(this->parameters);
 }
 

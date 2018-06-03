@@ -9,14 +9,18 @@
 #include "screens.h"
 #include "../App/alarms.h"
 
+Screen_windowLoad Sc_alarmsScLoad = {0, 0};
+
 void Sc_alarmsClick(Screen_listItem *this) {
-    Sc_alarmsSettings.parameters = this->parameter;
-    Screen_windowOpen(&Sc_alarmsSettings);
+    Sc_alarmsScLoad.parameters = this->parameter;
+    Sc_alarmsScLoad.windows = &Sc_alarmsSettings;
+    Screen_windowOpen(&Sc_alarmsScLoad);
+    //Sc_alarmsSettings.parameters = this->parameter;
+    //Screen_windowOpen(&Sc_alarmsSettings);
 }
 
-void Sc_alarmsStart(Screen_window *this) {
-    //Screen_listItem *itens;
-    this->title = Lang_load(&lang->alarms);
+void Sc_alarmsStart(Screen_windowLoad *this) {
+    this->windows->title = (char*) RVCW(_LC(&lang->alarms));
 
     Screen_list *list = Util_memPush(sizeof (Screen_list));
     list->itens = 0;
@@ -30,7 +34,7 @@ void Sc_alarmsStart(Screen_window *this) {
     this->parameters = list;
 }
 
-void Sc_alarmsLoop(Screen_window *this) {
+void Sc_alarmsLoop(Screen_windowLoad *this) {
     Screen_listSelectLoad(this->parameters);
     Screen_listSelectPrint();
     if (Keyboard_keyEsc()) {
@@ -41,11 +45,11 @@ void Sc_alarmsLoop(Screen_window *this) {
     }
 }
 
-void Sc_alarmsEnd(Screen_window *this) {
-    Util_memTop(this->title);
+void Sc_alarmsEnd(Screen_windowLoad *this) {
+    Util_memTop(this->parameters);
 }
 
-void Sc_alarmsResume(Screen_window *this) {
+void Sc_alarmsResume(Screen_windowLoad *this) {
     Screen_listItem *itens;
     itens = Util_memPush(ALARMS_MAX * sizeof (Screen_listItem));
 
@@ -69,7 +73,7 @@ void Sc_alarmsResume(Screen_window *this) {
     l->itens = itens;
 }
 
-void Sc_alarmsPause(Screen_window *this) {
+void Sc_alarmsPause(Screen_windowLoad *this) {
     Screen_list *l = this->parameters;
     Util_memTop(l->itens);
 }

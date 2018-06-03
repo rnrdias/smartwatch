@@ -14,10 +14,10 @@ typedef struct {
     unsigned char scroll;
 } Sc_calendarParam;
 
-void Sc_calendarStart(Screen_window *this) {
+void Sc_calendarStart(Screen_windowLoad *this) {
     //this->title = Lang_load(&lang->calendar);
     Sc_calendarParam *p = Util_memPush(sizeof (Sc_calendarParam));
-    p->title = Lang_load(&lang->calendar);
+    p->title = (char*) RVCW(_LC(&lang->calendar));
     //p->day = RTC_date.day;
     p->month = RTC_date.month;
     p->year = RTC_date.year;
@@ -26,12 +26,14 @@ void Sc_calendarStart(Screen_window *this) {
     this->parameters = p;
 }
 
-void Sc_calendarLoop(Screen_window *this) {
+CONST char Sc_calendarScreen[] = "%w%r%s: %d/%d\r\n%wD S T Q Q S S\r\n%w";
+Screen_windowLoad SC_calendarScLoad = {0, 0};
+void Sc_calendarLoop(Screen_windowLoad *this) {
     //Util_memTop(this->parameters);
     Sc_calendarParam *p = this->parameters;
     Screen_StartScroll(&p->scroll);
 
-    Std_printf("%w%r%s: %d/%d\r\n%wD S T Q Q S S\r\n%w", &Font_alfanum_6, p->title, p->month, p->year, &Font_alfanum_8, &Font_alfanum_6);
+    Std_printf(_LC(Sc_calendarScreen), &Font_alfanum_6, p->title, p->month, p->year, &Font_alfanum_8, &Font_alfanum_6);
 
     Std_printf("%o", p->scroll);
     for (char i = RTC_weekdayCalc(1, p->month, p->year); i > 0; i--) {
@@ -49,8 +51,9 @@ void Sc_calendarLoop(Screen_window *this) {
         Screen_windowClose();
     }
     if (Keyboard_keyEnter()) {
-        Sc_calendarEvents.parameters = p;
-        Screen_windowOpen(&Sc_calendarEvents);
+        SC_calendarScLoad.windows = &Sc_calendarEvents;
+        SC_calendarScLoad.parameters = p;
+        Screen_windowOpen(&SC_calendarScLoad);
     }
 
     if (Keyboard_keyDown() && !UPP_scrollHasNext()) {
@@ -72,7 +75,7 @@ void Sc_calendarLoop(Screen_window *this) {
     //RTC_dateValid(&p->date);
 }
 
-void Sc_calendarEnd(Screen_window *this) {
+void Sc_calendarEnd(Screen_windowLoad *this) {
     Util_memTop(this->parameters);
 }
 

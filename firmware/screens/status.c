@@ -12,7 +12,7 @@ void Sc_statusStart(Screen_windowLoad *this) {
 
 void Sc_statusLoop(Screen_windowLoad *this) {
     if (Keyboard_keyEsc()) {
-
+        
         Screen_windowClose();
     }
 }

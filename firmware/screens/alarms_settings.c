@@ -29,17 +29,18 @@ typedef struct {
     Alarms_paramFormat *alarm;
 } SC_alarmsSettingsParam;
 
-char tmp;
 
-void Sc_alarmsSettingsStart(Screen_window *this) {
-    this->title = Lang_load(&lang->alarms);
-    Alarms_paramFormat *alarm = this->parameters;
+void Sc_alarmsSettingsStart(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
+    Alarms_paramFormat *alarm = this->parameters;
+    this->windows->title = (char*) RVCW(_LC(&lang->alarms));
     p->alarm = alarm;
     this->parameters = p;
 }
 
-void Sc_alarmsSettingsLoop(Screen_window *this) {
+//CONST char Sc_alarmsSettingsScreen[] = "  %w%t%1d%t:%t%1d%t\r\n";
+
+void Sc_alarmsSettingsLoop(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = this->parameters;
     SC_alarmsSettingsParamNumEdit *n = p->numbs;
     Screen_numberEditFormat *aux = &p->numbs->hour;
@@ -68,20 +69,19 @@ void Sc_alarmsSettingsLoop(Screen_window *this) {
     Std_printf("%w ", &Font_alfanum_6);
     aux = &p->numbs->sun;
     for (char i = 0; i < 8; i++) {
-        char *weekday = Lang_load(&lang->sunday + i);
+        char *weekday = (char*) RVCW(_LC(&lang->sunday + i));
         Std_printf("%t%m%s%m%t ", aux->editRun, (int) aux->numView, weekday, 0, 0);
-        Util_memTop(weekday);
         if (i == 4)
             Std_printf("     ");
         aux++;
     }
 }
 
-void Sc_alarmsSettingsEnd(Screen_window *this) {
-    Util_memTop(this->title);
+void Sc_alarmsSettingsEnd(Screen_windowLoad *this) {
+    Util_memTop(this->parameters);
 }
 
-void Sc_alarmsSettingsResume(Screen_window *this) {
+void Sc_alarmsSettingsResume(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = this->parameters;
     SC_alarmsSettingsParamNumEdit *n = Util_memPush(sizeof (SC_alarmsSettingsParamNumEdit));
     Screen_numberEditFormat *aux = (Screen_numberEditFormat *) n;
@@ -119,7 +119,7 @@ void Sc_alarmsSettingsResume(Screen_window *this) {
     }
 }
 
-void Sc_alarmsSettingsPause(Screen_window *this) {
+void Sc_alarmsSettingsPause(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = this->parameters;
     Util_memTop(p->numbs);
 }

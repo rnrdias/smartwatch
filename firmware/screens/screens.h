@@ -29,15 +29,15 @@ extern "C" {
 
     extern Screen_window Sc_main;
     extern Screen_window Sc_status;
-    /*Screen_window Sc_menu;
-    Screen_window Sc_alarms;
-    Screen_window Sc_calendar;
-    Screen_window Sc_settings;
-    Screen_window Sc_stopwatch;
-    Screen_window Sc_calendarEvents;
-    Screen_window Sc_alarmsSettings;
-    Screen_window Sc_settingsDateHour;
-    Screen_window Sc_alarmsRinging;*/
+    extern Screen_window Sc_menu;
+    extern Screen_window Sc_alarms;
+    extern Screen_window Sc_calendar;
+    extern Screen_window Sc_settings;
+    extern Screen_window Sc_stopwatch;
+    extern Screen_window Sc_calendarEvents;
+    extern Screen_window Sc_alarmsSettings;
+    extern Screen_window Sc_settingsDateHour;
+    extern Screen_window Sc_alarmsRinging;
 
 
 #ifdef __cplusplus

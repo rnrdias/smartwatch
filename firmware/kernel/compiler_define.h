@@ -20,7 +20,7 @@ Define configurações para o compilador personalizadas
 */
 
 
-#define _LC(x) x
+#define _LC(x) (x+0x80000000)
 
 
 #define CONST const

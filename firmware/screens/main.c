@@ -10,7 +10,7 @@
 CONST char dsHour[] = "%w%1d:%1d%w\n%1d\r\n";
 CONST char dsDate[] = "%s %1d-%1d-%3d";
 
-Screen_windowLoad sc_load = {0, 0};
+Screen_windowLoad Sc_mainScLoad = {0, 0};
 
 void Sc_mainLoop(Screen_windowLoad *this) {
 
@@ -25,12 +25,13 @@ void Sc_mainLoop(Screen_windowLoad *this) {
 
 
     if (Keyboard_keyEnter()) {
-        //Screen_windowOpen(&Sc_menu);
+        Sc_mainScLoad.windows = &Sc_menu;
+        Screen_windowOpen(&Sc_mainScLoad);
     }
 
     if (Keyboard_keyEsc()) {
-        sc_load.windows = _LC(&Sc_status);
-        Screen_windowOpen(&sc_load);
+        Sc_mainScLoad.windows = &Sc_status;
+        Screen_windowOpen(&Sc_mainScLoad);
     }
 }
 Screen_window Sc_main = {0, Sc_mainLoop, 0, 0, 0, 0};

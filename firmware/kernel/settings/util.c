@@ -18,11 +18,11 @@ char Util_toggleSeg() {
 }
 
 char RVCB(const void *var) {
-    return *(char *) var;
+    return *(char *) ((int) var & 0x7fffffff);
 }
 
 void *RVCW(const void *var) {
-    return *(int *)var;
+    return *(int *) ((int) var & 0x7fffffff);
 }
 
 

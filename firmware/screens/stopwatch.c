@@ -10,11 +10,11 @@ typedef struct {
     
 }Sc_stopwatchParam;
 
-void Sc_stopwatchStart(Screen_window *this) {
-    this->title = Lang_load(&lang->stopwatch);
+void Sc_stopwatchStart(Screen_windowLoad *this) {
+    this->windows->title = (char*) RVCW(_LC(&lang->stopwatch));
 }
 
-void Sc_stopwatchLoop(Screen_window *this) {
+void Sc_stopwatchLoop(Screen_windowLoad *this) {
     Std_printf("%w%2d:%1d%w\n%1d\r", &Font_numeric_16, 0, 0, &Font_alfanum_8, 0);
     Std_printf("178:33:45\r\n");
     Std_printf("212:15:17\r\n");
@@ -24,7 +24,7 @@ void Sc_stopwatchLoop(Screen_window *this) {
     }
 }
 
-void Sc_stopwatchEnd(Screen_window *this) {
-    Util_memTop(this->title);
+void Sc_stopwatchEnd(Screen_windowLoad *this) {
+    //Util_memTop(this->title);
 }
 Screen_window Sc_stopwatch = {0, Sc_stopwatchLoop, Sc_stopwatchStart, Sc_stopwatchEnd, 0, 0};

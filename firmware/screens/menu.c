@@ -6,13 +6,16 @@
 
 #include "screens.h"
 
+Screen_windowLoad SC_menuScLoad = {0, 0};
+
 void Sc_menuClick(Screen_listItem *this) {
-    Screen_windowOpen(this->parameter);
+    SC_menuScLoad.windows = this->parameter;
+    Screen_windowOpen(&SC_menuScLoad);
 }
 
-void Sc_menuStart(Screen_window *this) {
-    this->title = Lang_load(&lang->menu);
-    
+void Sc_menuStart(Screen_windowLoad *this) {
+    this->windows->title = (char*) RVCW(_LC(&lang->menu));
+
     Screen_list *list = Util_memPush(sizeof (Screen_list));
     //list->itens = itens;
     list->quantPrint = 5;
@@ -25,7 +28,7 @@ void Sc_menuStart(Screen_window *this) {
     this->parameters = list;
 }
 
-void Sc_menuLoop(Screen_window *this) {
+void Sc_menuLoop(Screen_windowLoad *this) {
     Screen_listSelectLoad(this->parameters);
     Screen_listSelectPrint();
     if (Keyboard_keyEsc()) {
@@ -33,40 +36,40 @@ void Sc_menuLoop(Screen_window *this) {
     }
 }
 
-void Sc_menuEnd(Screen_window *this) {
-    Util_memTop(this->title);
+void Sc_menuEnd(Screen_windowLoad *this) {
+    Util_memTop(this->parameters);
 }
 
-void Sc_menuResume(Screen_window *this) {
+void Sc_menuResume(Screen_windowLoad *this) {
     Screen_listItem *itens;
     Screen_list *list = this->parameters;
 
     itens = Util_memPush(5 * sizeof (Screen_listItem));
 
-    itens[0].description = Lang_load(&lang->alarms);
+    itens[0].description = (char*) RVCW(_LC(&lang->alarms));
     itens[0].click = &Sc_menuClick;
     itens[0].parameter = &Sc_alarms;
 
-    itens[1].description = Lang_load(&lang->calendar);
+    itens[1].description = (char*) RVCW(_LC(&lang->calendar));
     itens[1].click = &Sc_menuClick;
     itens[1].parameter = &Sc_calendar;
 
-    itens[2].description = Lang_load(&lang->settings);
+    itens[2].description = (char*) RVCW(_LC(&lang->settings));
     itens[2].click = &Sc_menuClick;
     itens[2].parameter = &Sc_settings;
 
-    itens[3].description = Lang_load(&lang->stopwatch);
+    itens[3].description = (char*) RVCW(_LC(&lang->stopwatch));
     itens[3].click = &Sc_menuClick;
     itens[3].parameter = &Sc_stopwatch;
 
-    itens[4].description = Lang_load(&lang->status);
+    itens[4].description = (char*) RVCW(_LC(&lang->status));
     itens[4].click = &Sc_menuClick;
     itens[4].parameter = &Sc_status;
 
     list->itens = itens;
 }
 
-void Sc_menuPause(Screen_window *this) {
+void Sc_menuPause(Screen_windowLoad *this) {
     Screen_list *list = this->parameters;
     Util_memTop(list->itens);
 }

@@ -21,7 +21,7 @@
 #include "App/app.h"
 
 int main(int argc, char** argv) {
-    Screen_windowLoad sc_main = {_LC(&Sc_main), 0};
+    Screen_windowLoad sc_main = {&Sc_main, 0};
     lang = &pt_br;
     Start_initialize();
     App_initialize();
