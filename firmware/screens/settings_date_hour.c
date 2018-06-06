@@ -16,7 +16,7 @@ typedef struct {
 } SC_settingsDateHourParam;
 
 void Sc_settingsDateHourStart(Screen_windowLoad *this) {
-    this->windows->title = (char*) RVCW(_LC(&lang->settingsDateHour));
+    this->windows->title = (char*) RVCW(&lang->settingsDateHour);
     /*SC_settingsDateHourParam *p = Util_memPush(sizeof (SC_settingsDateHourParam));
     p->hour.numInc = 1;
     p->hour.numMax = 23;

@@ -17,7 +17,7 @@ typedef struct {
 void Sc_calendarStart(Screen_windowLoad *this) {
     //this->title = Lang_load(&lang->calendar);
     Sc_calendarParam *p = Util_memPush(sizeof (Sc_calendarParam));
-    p->title = (char*) RVCW(_LC(&lang->calendar));
+    p->title = (char*) RVCW(&lang->calendar);
     //p->day = RTC_date.day;
     p->month = RTC_date.month;
     p->year = RTC_date.year;

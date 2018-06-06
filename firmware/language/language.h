@@ -55,7 +55,8 @@ extern "C" {
 
     char *Lang_load(const char * const* end);
     char *Lang_loadCharacter(char *end);
-    extern const Language pt_br;
+    extern const Language *pt_br;
+
 
 
 #ifdef __cplusplus

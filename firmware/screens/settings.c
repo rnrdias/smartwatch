@@ -15,7 +15,7 @@ void Sc_settingsClick(Screen_listItem *this) {
 
 void Sc_settingsStart(Screen_windowLoad *this) {
     //this->title = Lang_load(&lang->settings);
-    this->windows->title = (char*) RVCW(_LC(&lang->settings));
+    this->windows->title = (char*) RVCW(&lang->settings);
 
     Screen_list *list = Util_memPush(sizeof (Screen_list));
     //list->itens = itens;
@@ -47,7 +47,7 @@ void Sc_settingsResume(Screen_windowLoad *this) {
 
     itens = Util_memPush(1 * sizeof (Screen_listItem));
 
-    itens[0].description = (char*) RVCW(_LC(&lang->settingsDateHour));
+    itens[0].description = (char*) RVCW(&lang->settingsDateHour);
     itens[0].click = &Sc_settingsClick;
     itens[0].parameter = &Sc_settingsDateHour;
 

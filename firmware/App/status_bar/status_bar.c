@@ -23,7 +23,7 @@ void StatusBar_register(StatusBar_registerFormat *r) {
 }
 
 void StatusBar_initialize() {
-    //root = 0;
+    root = 0;
 }
 
 void StatusBar_print() {
@@ -32,7 +32,7 @@ void StatusBar_print() {
     while (aux) {
         const StatusBar_paramFormat *b = aux->functionRegister();
         if (b)
-            Std_printf("%w%c", b->icon, 0);
+            Std_printf("%w%c", (char*) RVCW(&b->icon), 0);
         aux = aux->p;
     }
     Std_printf("\r\n");

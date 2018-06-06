@@ -28,7 +28,7 @@ CONST char pt_br_switchedOn[] = "Lig";
 CONST char pt_br_alarm[] = "Alarme";
 CONST char pt_br_sleep[] = "Soneca";
 
-CONST Language pt_br = {
+CONST Language _pt_br = {
     _LC(pt_br_alarms),
     _LC(pt_br_calendar),
     _LC(pt_br_calendarEvents),
@@ -56,3 +56,5 @@ CONST Language pt_br = {
     _LC(pt_br_alarm),
     _LC(pt_br_sleep)
 };
+
+CONST Language *pt_br = _LC((char *)&_pt_br);

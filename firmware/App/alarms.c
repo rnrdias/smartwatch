@@ -44,10 +44,11 @@ StatusBar_registerFormat SB_register = {
 
 
 //_____________________APP__________________________
-
+Screen_windowLoad Alarms_ringingSCLoad = {0, 0};
 void Alarms_ringing(char index) {
-    //Sc_alarmsRinging.parameters = index;
-    //Screen_windowOpen(&Sc_alarmsRinging);
+    Alarms_ringingSCLoad.parameters = index;
+    Alarms_ringingSCLoad.windows = &Sc_alarmsRinging;
+    Screen_windowOpen(&Alarms_ringingSCLoad);
 }
 
 void Alarms_loop(void) {

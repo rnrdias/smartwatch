@@ -12,7 +12,7 @@ typedef struct {
 } Sc_alarmsRingingParam;
 
 void Sc_alarmsRingingStart(Screen_windowLoad *this) {
-    this->windows->title = (char*) RVCW(_LC(&lang->alarms));
+    this->windows->title = (char*) RVCW(&lang->alarms);
     Sc_alarmsRingingParam *p = Util_memPush(sizeof (Sc_alarmsRingingParam));
     p->index = (char) this->parameters;
     p->beep.frequency = 2000;
@@ -28,11 +28,11 @@ void Sc_alarmsRingingStart(Screen_windowLoad *this) {
 void Sc_alarmsRingingLoop(Screen_windowLoad *this) {
     Sc_alarmsRingingParam *p = this->parameters;
     if (p->index != 0) {
-        char *str = Lang_load(&lang->alarm);
+        char *str = RVCW(&lang->alarm);
         Std_printf("%s:%d\r\n%1d:%1d", str, p->index, Alarms[p->index - 1].hour, Alarms[p->index - 1].minute);
         Util_memTop(str);
     } else {
-        char *str = Lang_load(&lang->sleep);
+        char *str = RVCW(&lang->sleep);
         Std_printf("%s", str);
         Util_memTop(str);
     }

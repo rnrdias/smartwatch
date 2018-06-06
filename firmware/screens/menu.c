@@ -14,7 +14,7 @@ void Sc_menuClick(Screen_listItem *this) {
 }
 
 void Sc_menuStart(Screen_windowLoad *this) {
-    this->windows->title = (char*) RVCW(_LC(&lang->menu));
+    this->windows->title = (char*) RVCW(&lang->menu);
 
     Screen_list *list = Util_memPush(sizeof (Screen_list));
     //list->itens = itens;
@@ -46,23 +46,23 @@ void Sc_menuResume(Screen_windowLoad *this) {
 
     itens = Util_memPush(5 * sizeof (Screen_listItem));
 
-    itens[0].description = (char*) RVCW(_LC(&lang->alarms));
+    itens[0].description = (char*) RVCW(&lang->alarms);
     itens[0].click = &Sc_menuClick;
     itens[0].parameter = &Sc_alarms;
 
-    itens[1].description = (char*) RVCW(_LC(&lang->calendar));
+    itens[1].description = (char*) RVCW(&lang->calendar);
     itens[1].click = &Sc_menuClick;
     itens[1].parameter = &Sc_calendar;
 
-    itens[2].description = (char*) RVCW(_LC(&lang->settings));
+    itens[2].description = (char*) RVCW(&lang->settings);
     itens[2].click = &Sc_menuClick;
     itens[2].parameter = &Sc_settings;
 
-    itens[3].description = (char*) RVCW(_LC(&lang->stopwatch));
+    itens[3].description = (char*) RVCW(&lang->stopwatch);
     itens[3].click = &Sc_menuClick;
     itens[3].parameter = &Sc_stopwatch;
 
-    itens[4].description = (char*) RVCW(_LC(&lang->status));
+    itens[4].description = (char*) RVCW(&lang->status);
     itens[4].click = &Sc_menuClick;
     itens[4].parameter = &Sc_status;
 

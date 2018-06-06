@@ -11,7 +11,7 @@ typedef struct {
 }Sc_stopwatchParam;
 
 void Sc_stopwatchStart(Screen_windowLoad *this) {
-    this->windows->title = (char*) RVCW(_LC(&lang->stopwatch));
+    this->windows->title = (char*) RVCW(&lang->stopwatch);
 }
 
 void Sc_stopwatchLoop(Screen_windowLoad *this) {

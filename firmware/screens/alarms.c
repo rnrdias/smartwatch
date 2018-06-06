@@ -20,7 +20,7 @@ void Sc_alarmsClick(Screen_listItem *this) {
 }
 
 void Sc_alarmsStart(Screen_windowLoad *this) {
-    this->windows->title = (char*) RVCW(_LC(&lang->alarms));
+    this->windows->title = (char*) RVCW(&lang->alarms);
 
     Screen_list *list = Util_memPush(sizeof (Screen_list));
     list->itens = 0;
@@ -58,7 +58,7 @@ void Sc_alarmsResume(Screen_windowLoad *this) {
         char *week = Util_memPush(9 * sizeof (char));
         for (char j = 0; j < 8; j++) {
             if (Alarms[i].weekday & (1 << j))
-                week[j] = RCB(&lang->initSunday + j);
+                week[j] = RVCB(&lang->initSunday + j);
             else
                 week[j] = '_';
         }

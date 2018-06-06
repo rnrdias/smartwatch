@@ -27,18 +27,19 @@ void Sc_calendarEventsClick(Screen_listItem *this) {
     //Screen_windowOpen(this->parameter);
 }
 CONST char Sc_calendarEventsPrintItemDateScreen[] = "%m%#Def. Data\r\n %#%t%1d%t/%t%3d%t %m\r\n";
+
 void Sc_calendarEventsPrintItemDate(Screen_listItem *this) {
     Sc_calendarEventsNumParam *n = this->parameter;
 
     if (this->isSelect) {
         Std_printf("%y%x%x", &n->month, &n->year);
     }
-    Std_printf(_LC(Sc_calendarEventsPrintItemDateScreen), this->isSelect, &Font_alfanum_8, ' ', &Font_alfanum_8, ' ', n->month.editRun, n->month.numView, 0, n->year.editRun, n->year.numView, 0, 0);
+    Std_printf(_LC(Sc_calendarEventsPrintItemDateScreen), this->isSelect, &Font_alfanum_8, ' ', &Font_alfanum_8, ' ', n->month.editRun, (int) n->month.numView, 0, n->year.editRun, (int) n->year.numView, 0, 0);
 }
 
 void Sc_calendarEventsStart(Screen_windowLoad *this) {
     Sc_calendarEventsParam *p;
-    this->windows->title = (char*) RVCW(_LC(&lang->calendarEvents));
+    this->windows->title = (char*) RVCW(&lang->calendarEvents);
     p = Util_memPush(sizeof (Sc_calendarEventsParam));
     p->calendar = this->parameters;
 
@@ -75,19 +76,19 @@ void Sc_calendarEventsResume(Screen_windowLoad *this) {
     itens[0].itemPrintSize = 2;
 
 
-    itens[1].description = (char*) RVCW(_LC(&lang->calendar));
+    itens[1].description = (char*) RVCW(&lang->calendar);
     itens[1].click = &Sc_calendarEventsClick;
     itens[1].parameter = &Sc_status;
 
-    itens[2].description = (char*) RVCW(_LC(&lang->settings));
+    itens[2].description = (char*) RVCW(&lang->settings);
     itens[2].click = &Sc_calendarEventsClick;
     itens[2].parameter = &Sc_status;
 
-    itens[3].description = (char*) RVCW(_LC(&lang->stopwatch));
+    itens[3].description = (char*) RVCW(&lang->stopwatch);
     itens[3].click = &Sc_calendarEventsClick;
     itens[3].parameter = &Sc_status;
 
-    itens[4].description = (char*) RVCW(_LC(&lang->status));
+    itens[4].description = (char*) RVCW(&lang->status);
     itens[4].click = &Sc_calendarEventsClick;
     itens[4].parameter = &Sc_status;
 

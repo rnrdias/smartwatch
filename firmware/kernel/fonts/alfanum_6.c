@@ -7,7 +7,7 @@
 
 #include "fonts.h"
 
-CONST UPP_BitmapFormat Font_alfanum_6 = {
+CONST UPP_BitmapFormat _Font_alfanum_6 = {
     0x04,
     0x01,
     0x20,

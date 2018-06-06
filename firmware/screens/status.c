@@ -7,7 +7,7 @@
 #include "screens.h"
 
 void Sc_statusStart(Screen_windowLoad *this) {
-    this->windows->title = (char*) RVCW(_LC(&lang->status));
+    this->windows->title = (char*) RVCW(&lang->status);
 }
 
 void Sc_statusLoop(Screen_windowLoad *this) {

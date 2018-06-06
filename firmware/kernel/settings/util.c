@@ -16,13 +16,21 @@
 char Util_toggleSeg() {
     return RTC_date.second % 2;
 }
+#define CONSTMAX ((long long int)1<<(sizeof(char *)*8-2))
 
 char RVCB(const void *var) {
-    return *(char *) ((int) var & 0x7fffffff);
+    if ((long long int) var & CONSTMAX) {
+        var = (long long int) var & CONSTMAX - 1;
+    }
+    return *(char *) var;
 }
+//risco de gerar erros inesperados
 
 void *RVCW(const void *var) {
-    return *(int *) ((int) var & 0x7fffffff);
+    if ((long long int) var & CONSTMAX) {
+        var = (long long int) var & CONSTMAX - 1;
+    }
+    return *(long long int *) var;
 }
 
 

@@ -7,7 +7,7 @@
 
 #include "fonts.h"
 
-CONST UPP_BitmapFormat Font_numeric_24 = {
+CONST UPP_BitmapFormat _Font_numeric_24 = {
     0x0e,
     0x03,
     0x2d,

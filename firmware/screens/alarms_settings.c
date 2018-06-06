@@ -33,7 +33,7 @@ typedef struct {
 void Sc_alarmsSettingsStart(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
     Alarms_paramFormat *alarm = this->parameters;
-    this->windows->title = (char*) RVCW(_LC(&lang->alarms));
+    this->windows->title = (char*) RVCW(&lang->alarms);
     p->alarm = alarm;
     this->parameters = p;
 }
@@ -69,7 +69,7 @@ void Sc_alarmsSettingsLoop(Screen_windowLoad *this) {
     Std_printf("%w ", &Font_alfanum_6);
     aux = &p->numbs->sun;
     for (char i = 0; i < 8; i++) {
-        char *weekday = (char*) RVCW(_LC(&lang->sunday + i));
+        char *weekday = (char*) RVCW(&lang->sunday + i);
         Std_printf("%t%m%s%m%t ", aux->editRun, (int) aux->numView, weekday, 0, 0);
         if (i == 4)
             Std_printf("     ");

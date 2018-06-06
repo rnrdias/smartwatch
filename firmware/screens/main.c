@@ -15,12 +15,12 @@ Screen_windowLoad Sc_mainScLoad = {0, 0};
 void Sc_mainLoop(Screen_windowLoad *this) {
 
     char *weekday = (char *) (&lang->sunday + RTC_getWeekday());
-    weekday = (char *) RVCW(_LC(weekday));
+    weekday = (char *) RVCW(weekday);
     Std_printf("%r");
     StatusBar_print();
     UPP_setCursorXY(5, 1);
     Std_printf(_LC(dsHour), &Font_numeric_16, RTC_date.hour, RTC_date.minute, &Font_alfanum_8, RTC_date.second);
-    Std_printf(_LC(dsDate), _LC(weekday), RTC_date.day, RTC_date.month, RTC_date.year);
+    Std_printf(_LC(dsDate), weekday, RTC_date.day, RTC_date.month, RTC_date.year);
     Std_printf("%s", "info");
 
 

@@ -60,9 +60,9 @@ char UPP_loadBitmap(const UPP_BitmapFormat *bitmap, unsigned char index) {
     unsigned char x, y;
 
     //Validate input
-    if (RCB(&bitmap->start) > index)
+    if (RVCB(&bitmap->start) > index)
         return 1;
-    if ((RCB(&bitmap->size) + RCB(&bitmap->start)) < index)
+    if ((RVCB(&bitmap->size) + RVCB(&bitmap->start)) < index)
         return 1;
     if (UPP_flag.boxBegin >= UPP_getDisplayWidth())
         return 1;
@@ -70,9 +70,9 @@ char UPP_loadBitmap(const UPP_BitmapFormat *bitmap, unsigned char index) {
         return 1;*/
 
     //load variables
-    index -= RCB(&bitmap->start);
-    bitmapDados = (bitmap->data + (index * RCB(&bitmap->width) * RCB(&bitmap->height)));
-    y = RCB(&bitmap->height);
+    index -= RVCB(&bitmap->start);
+    bitmapDados = (bitmap->data + (index * RVCB(&bitmap->width) * RVCB(&bitmap->height)));
+    y = RVCB(&bitmap->height);
 
     if (UPP_flag.boxBegin > GET_CURSOR_X() || UPP_flag.boxEnd == GET_CURSOR_X()) {
         UPP_setCursorXY(UPP_flag.boxBegin, GET_CURSOR_Y());
@@ -80,9 +80,9 @@ char UPP_loadBitmap(const UPP_BitmapFormat *bitmap, unsigned char index) {
 
     //process
     while (1) {
-        x = RCB(&bitmap->width);
+        x = RVCB(&bitmap->width);
         while (x) {
-            if (bufferAdd(RCB(bitmapDados++))) {
+            if (bufferAdd(RVCB(bitmapDados++))) {
                 cursIndex += x;
                 break;
             }
@@ -93,7 +93,7 @@ char UPP_loadBitmap(const UPP_BitmapFormat *bitmap, unsigned char index) {
             }
         }
         if (--y) {
-            cursIndex -= (RCB(&bitmap->width) - x);
+            cursIndex -= (RVCB(&bitmap->width) - x);
             CURSOR_YP();
         } else if (UPP_flag.boxEnd == GET_CURSOR_X() && GET_CURSOR_X() != 0) {
             CURSOR_YP();
@@ -103,7 +103,7 @@ char UPP_loadBitmap(const UPP_BitmapFormat *bitmap, unsigned char index) {
         }
     }
     if (UPP_flag.boxEnd != GET_CURSOR_X())
-        cursIndex -= UPP_getDisplayWidth() * (RCB(&bitmap->height) - 1);
+        cursIndex -= UPP_getDisplayWidth() * (RVCB(&bitmap->height) - 1);
     return 0;
 }
 
@@ -119,7 +119,7 @@ char setTextPosition;
 
 void UPP_loadTextChar(char message) {
     if (message == '\n')
-        UPP_setCursorXY(GET_CURSOR_X(), GET_CURSOR_Y() + RCB(&UPP_fontDefault->height));
+        UPP_setCursorXY(GET_CURSOR_X(), GET_CURSOR_Y() + RVCB(&UPP_fontDefault->height));
     else if (message == '\r')
         UPP_setCursorXY(0, GET_CURSOR_Y());
     else if (UPP_fontDefault != 0)
@@ -179,8 +179,8 @@ void UPP_positionBitmap(const UPP_BitmapFormat *bitmap, unsigned char quantElem,
     if (position == 1) {
         UPP_setCursorXY(1, GET_CURSOR_Y());
     } else {
-        //char x = (UPP_getDisplayWidth() - (size * RCB(&bitmap->width)));
-        char x = (UPP_flag.boxEnd - (quantElem * RCB(&bitmap->width)));
+        //char x = (UPP_getDisplayWidth() - (size * RVCB(&bitmap->width)));
+        char x = (UPP_flag.boxEnd - (quantElem * RVCB(&bitmap->width)));
         if (position == 2) {
             UPP_setCursorXY(x / 2, GET_CURSOR_Y());
         } else if (position == 3) {
