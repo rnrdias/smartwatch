@@ -6,18 +6,18 @@
 
 #include "beep_simulator.h"
 #include <pthread.h>
-#include <windows.h>
+//#include <windows.h>
 
 void *Beep_beep(void *param) {
     Beep_paramFormat *p = (Beep_paramFormat *) param;
-    while (p->repeat && p->masterRepeat) {
+    /*while (p->repeat && p->masterRepeat) {
         Beep(p->frequency, p->frequencyDelay);
         Sleep(p->repeatDelay);
         p->repeat--;
         if (!(p->repeat % p->masterRepeat)) {
             Sleep(p->masterRepeatDelay);
         }
-    }
+    }*/
     p->repeat = 0;
     pthread_exit(NULL);
 }

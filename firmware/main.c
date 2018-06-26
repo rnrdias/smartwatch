@@ -14,11 +14,12 @@
 
 
 #include <stdio.h>
-#include <conio.h>
-#include <windows.h>
+//#include <conio.h>
+//#include <windows.h>
 
 #include "main.h"
 #include "App/app.h"
+#include <unistd.h> 
 
 int main(int argc, char** argv) {
     Screen_windowLoad sc_main = {&Sc_main, 0};
@@ -32,7 +33,6 @@ int main(int argc, char** argv) {
         App_loop();
         Start_loop();
         LCD_sendBuffer(lcdBuffer);
-        //printf("%d%d%d%d\n\n", Keyboard_keyEnter(), Keyboard_keyEsc(), Keyboard_keyUp(), Keyboard_keyDown());
-        //hardwareLoop();
+        usleep(100 * 1000);
     }
 }

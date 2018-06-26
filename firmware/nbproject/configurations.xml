@@ -111,6 +111,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandLine>-std=c99</commandLine>
+        </cTool>
       </compileType>
       <item path="App/alarms.c" ex="false" tool="0" flavor2="0">
       </item>

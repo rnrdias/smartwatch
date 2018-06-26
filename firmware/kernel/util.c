@@ -5,7 +5,7 @@
  * Created on 12 de Mar�o de 2018, 14:23
  */
 
-#include "Util.h"
+#include "util.h"
 
 unsigned char Util_parityCalc(unsigned char value, unsigned char Imp_nPar) {
     if (((value >> 0)&0x01)^((value >> 1)&0x01)^((value >> 2)&0x01)^((value >> 3)&0x01)^((value >> 4)&0x01)\

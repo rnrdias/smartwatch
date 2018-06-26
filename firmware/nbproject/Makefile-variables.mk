@@ -7,13 +7,13 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=MinGW_TDM-Windows
-CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW_TDM-Windows
+CND_PLATFORM_Debug=GNU-Linux
+CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
 CND_ARTIFACT_NAME_Debug=firmware
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW_TDM-Windows/firmware
-CND_PACKAGE_DIR_Debug=dist/Debug/MinGW_TDM-Windows/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/firmware
+CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
 CND_PACKAGE_NAME_Debug=firmware.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW_TDM-Windows/package/firmware.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/firmware.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW_TDM-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW_TDM-Windows

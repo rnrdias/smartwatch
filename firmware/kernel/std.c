@@ -11,7 +11,7 @@
  * 03/05 Correção bug do sinal positivo
 
  */
-#include "Std.h"
+#include "std.h"
 
 
 //#define Std_buffer(val) Std_out(val)
@@ -157,7 +157,7 @@ void Std_vaprintf(void (*functionPtr)(char), const char *vstr, va_list arg_ptr) 
             } else {
                 isComand = 0;
                 if (Std_extends != 0)
-                    (*Std_extends)(functionPtr, vstr, &arg_ptr);
+                    (*Std_extends)(functionPtr, vstr, arg_ptr);
             }
         } else {
             (*functionPtr)(str);

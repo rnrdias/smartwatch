@@ -12,8 +12,7 @@ CONST char dsDate[] = "%s %1d-%1d-%3d";
 
 Screen_windowLoad Sc_mainScLoad = {0, 0};
 
-void Sc_mainLoop(Screen_windowLoad *this) {
-
+void Sc_mainLoop(Screen_windowLoad *this) {    
     char *weekday = (char *) (&lang->sunday + RTC_getWeekday());
     weekday = (char *) RVCW(weekday);
     Std_printf("%r");

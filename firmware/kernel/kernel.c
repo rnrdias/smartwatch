@@ -23,7 +23,7 @@ void Start_loop(void) {
 
 void Start_initialize(void) {
     Hardware_initialize();
-	LCD_initialize();
+    LCD_initialize();
     UPP_initialize();
     Std_initialize();
     Screen_initialize();

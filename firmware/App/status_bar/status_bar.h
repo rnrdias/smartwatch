@@ -37,7 +37,7 @@ extern "C" {
     void StatusBar_register(StatusBar_registerFormat *r);
     void StatusBar_initialize();
     void StatusBar_print();
-
+    void StatusBar_check(void (*functionPtr)(const StatusBar_paramFormat *s));
 
 #ifdef __cplusplus
 }

@@ -22,9 +22,10 @@ CONST UPP_BitmapFormat SB_icon = {
     }
 };
 
+CONST char title[] = "Soneca";
 CONST StatusBar_paramFormat SB = {
     _LC(&SB_icon),
-    0,
+    _LC(&title),
     0,
     0,
 };

@@ -26,14 +26,23 @@ void StatusBar_initialize() {
     root = 0;
 }
 
-void StatusBar_print() {
+void StatusBar_check(void (*functionPtr)(const StatusBar_paramFormat *s)) {
     StatusBar_registerFormat *aux = root;
-    Std_printf("\r");
     while (aux) {
         const StatusBar_paramFormat *b = aux->functionRegister();
         if (b)
-            Std_printf("%w%c", (char*) RVCW(&b->icon), 0);
+            functionPtr(b);
         aux = aux->p;
     }
+}
+
+void StatusBar_printIcon(const StatusBar_paramFormat *s) {
+    Std_printf("%w%c", (char*) RVCW(&s->icon), 0);
+}
+
+void StatusBar_print() {
+    StatusBar_registerFormat *aux = root;
+    Std_printf("\r");
+    StatusBar_check(StatusBar_printIcon);
     Std_printf("\r\n");
 }

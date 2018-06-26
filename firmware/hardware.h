@@ -18,8 +18,8 @@
 extern "C" {
 #endif
 #include <stdio.h>
-#include <conio.h>
-#include <windows.h>
+//#include <conio.h>
+//#include <windows.h>
 
     char letra;
     void Hardware_initialize(void);

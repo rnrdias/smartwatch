@@ -7,10 +7,14 @@
 #include "lcd_simulator.h"
 
 void gotoxy(int x, int y) {
-    COORD coord;
+    //to windows
+/*  COORD coord;
     coord.X = x;
     coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);*/
+    
+    //to linux
+    printf("%c[%d;%df",0x1B,y,x);
 }
 
 #define displayWidth() 84
