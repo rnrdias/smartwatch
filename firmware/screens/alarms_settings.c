@@ -26,13 +26,13 @@ typedef struct {
 
 typedef struct {
     SC_alarmsSettingsParamNumEdit *numbs;
-    Alarms_paramFormat *alarm;
+    App_alarms_paramFormat *alarm;
 } SC_alarmsSettingsParam;
 
 
 void Sc_alarmsSettingsStart(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
-    Alarms_paramFormat *alarm = this->parameters;
+    App_alarms_paramFormat *alarm = this->parameters;
     this->windows->title = (char*) RVCW(&lang->alarms);
     p->alarm = alarm;
     this->parameters = p;

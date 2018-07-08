@@ -5,12 +5,15 @@
  */
 
 #include "app.h"
+#include "stopwatch.h"
 
 void App_loop(void) {
-    Alarms_loop();
+    App_alarms_loop();
+    App_stopwatch_loop();
 }
 
 void App_initialize(void) {
     StatusBar_initialize();
-    Alarms_initialize();
+    App_alarms_initialize();
+    App_stopwatch_initialize();
 }

@@ -33,6 +33,6 @@ int main(int argc, char** argv) {
         App_loop();
         Start_loop();
         LCD_sendBuffer(lcdBuffer);
-        usleep(100 * 1000);
+        //usleep(100 * 1000);
     }
 }

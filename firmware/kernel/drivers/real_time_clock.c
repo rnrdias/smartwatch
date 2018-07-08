@@ -59,9 +59,18 @@ void RTC_dateValid(RTC_DateFormat *date) {
     if (date->month == 0)
         date->month = 1;
 }
+unsigned char RTC_secondAdd;
+
+void RTC_secondIncr() {
+    RTC_secondAdd++;
+}
 
 void RTC_loop() {
-    RTC_dateValid(&RTC_date);
+    while (RTC_secondAdd) {
+        RTC_date.second++;
+        RTC_secondAdd--;
+        RTC_dateValid(&RTC_date);
+    }
 }
 
 void RTC_initialize() {
@@ -70,5 +79,6 @@ void RTC_initialize() {
     RTC_date.second = 0;
     RTC_date.day = 1;
     RTC_date.month = 1;
-    RTC_date.year = 1900;
+    RTC_date.year = 2018;
+    RTC_secondAdd = 0;
 }

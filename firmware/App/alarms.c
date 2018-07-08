@@ -5,14 +5,14 @@
  */
 
 #include "alarms.h"
-Alarms_paramFormat Alarms[ALARMS_MAX];
-Alarms_sleepParamFormat Alarms_sleep;
+App_alarms_paramFormat Alarms[ALARMS_MAX];
+App_alarms_sleepParamFormat Alarms_sleep;
 
 
 
 //___________________ICON______________________________
 
-CONST UPP_BitmapFormat SB_icon = {
+CONST UPP_BitmapFormat SB_alamesIcon = {
     0x06,
     0x01,
     0x00,
@@ -22,23 +22,23 @@ CONST UPP_BitmapFormat SB_icon = {
     }
 };
 
-CONST char title[] = "Soneca";
-CONST StatusBar_paramFormat SB = {
-    _LC(&SB_icon),
-    _LC(&title),
+CONST char SB_alarmsTitle[] = "Soneca";
+CONST StatusBar_paramFormat SB_alarms = {
+    _LC(&SB_alamesIcon),
+    _LC(&SB_alarmsTitle),
     0,
     0,
 };
 
-const StatusBar_paramFormat *SB_iconLoop() {
+const StatusBar_paramFormat *SB_alarmsLoop() {
     if (Alarms_sleep.enable)
-        return _LC(&SB);
+        return _LC(&SB_alarms);
     else
         return 0;
 }
 
-StatusBar_registerFormat SB_register = {
-    SB_iconLoop,
+StatusBar_registerFormat SB_alarmsRegister = {
+    SB_alarmsLoop,
     0
 };
 
@@ -46,13 +46,13 @@ StatusBar_registerFormat SB_register = {
 
 //_____________________APP__________________________
 Screen_windowLoad Alarms_ringingSCLoad = {0, 0};
-void Alarms_ringing(char index) {
+void App_alarms_ringing(char index) {
     Alarms_ringingSCLoad.parameters = index;
     Alarms_ringingSCLoad.windows = &Sc_alarmsRinging;
     Screen_windowOpen(&Alarms_ringingSCLoad);
 }
 
-void Alarms_loop(void) {
+void App_alarms_loop(void) {
     static char antMinute;
 
     if (antMinute != RTC_date.minute) {
@@ -70,7 +70,7 @@ void Alarms_loop(void) {
                     && Alarms[i].hour == RTC_date.hour
                     && Alarms[i].minute == RTC_date.minute) {
                 if (Alarms[i].aux == 0) {
-                    Alarms_ringing(i + 1);
+                    App_alarms_ringing(i + 1);
                     Alarms[i].aux = 1;
                     if (Alarms[i].weekday == 0x80) {
                         Alarms[i].on = 0;
@@ -100,12 +100,12 @@ void Alarms_loop(void) {
 
         if (Alarms_sleep.currentHour == RTC_date.hour && Alarms_sleep.currentMinute == RTC_date.minute) {
             Alarms_sleep.enable = 0;
-            Alarms_ringing(0);
+            App_alarms_ringing(0);
         }
     }
 }
 
-void Alarms_initialize(void) {
+void App_alarms_initialize(void) {
     for (unsigned char i = 0; i < ALARMS_MAX; i++) {
         Alarms[i].hour = 0;
         Alarms[i].minute = 0;
@@ -117,7 +117,7 @@ void Alarms_initialize(void) {
     Alarms_sleep.enable = 0;
     Alarms_sleep.time = 10;
 
-    StatusBar_register(&SB_register);
+    StatusBar_register(&SB_alarmsRegister);
 
 
     //test

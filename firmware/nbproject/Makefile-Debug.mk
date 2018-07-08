@@ -38,12 +38,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/App/alarms.o \
 	${OBJECTDIR}/App/app.o \
 	${OBJECTDIR}/App/status_bar/status_bar.o \
+	${OBJECTDIR}/App/stopwatch.o \
 	${OBJECTDIR}/hardware.o \
 	${OBJECTDIR}/kernel/drivers/beep_simulator.o \
 	${OBJECTDIR}/kernel/drivers/cpu_control.o \
+	${OBJECTDIR}/kernel/drivers/interruption.o \
 	${OBJECTDIR}/kernel/drivers/keyboard.o \
 	${OBJECTDIR}/kernel/drivers/lcd_simulator.o \
 	${OBJECTDIR}/kernel/drivers/real_time_clock.o \
+	${OBJECTDIR}/kernel/drivers/time_ms.o \
 	${OBJECTDIR}/kernel/fonts/alfanum_6.o \
 	${OBJECTDIR}/kernel/fonts/alfanum_8.o \
 	${OBJECTDIR}/kernel/fonts/numeric_16.o \
@@ -53,6 +56,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/settings/keyboard.o \
 	${OBJECTDIR}/kernel/settings/screens.o \
 	${OBJECTDIR}/kernel/settings/std.o \
+	${OBJECTDIR}/kernel/settings/time_ms.o \
 	${OBJECTDIR}/kernel/settings/upp.o \
 	${OBJECTDIR}/kernel/settings/util.o \
 	${OBJECTDIR}/kernel/std.o \
@@ -113,6 +117,11 @@ ${OBJECTDIR}/App/status_bar/status_bar.o: App/status_bar/status_bar.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/status_bar/status_bar.o App/status_bar/status_bar.c
 
+${OBJECTDIR}/App/stopwatch.o: App/stopwatch.c
+	${MKDIR} -p ${OBJECTDIR}/App
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/stopwatch.o App/stopwatch.c
+
 ${OBJECTDIR}/hardware.o: hardware.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -128,6 +137,11 @@ ${OBJECTDIR}/kernel/drivers/cpu_control.o: kernel/drivers/cpu_control.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/cpu_control.o kernel/drivers/cpu_control.c
 
+${OBJECTDIR}/kernel/drivers/interruption.o: kernel/drivers/interruption.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/interruption.o kernel/drivers/interruption.c
+
 ${OBJECTDIR}/kernel/drivers/keyboard.o: kernel/drivers/keyboard.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
 	${RM} "$@.d"
@@ -142,6 +156,11 @@ ${OBJECTDIR}/kernel/drivers/real_time_clock.o: kernel/drivers/real_time_clock.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/real_time_clock.o kernel/drivers/real_time_clock.c
+
+${OBJECTDIR}/kernel/drivers/time_ms.o: kernel/drivers/time_ms.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/time_ms.o kernel/drivers/time_ms.c
 
 ${OBJECTDIR}/kernel/fonts/alfanum_6.o: kernel/fonts/alfanum_6.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/fonts
@@ -187,6 +206,11 @@ ${OBJECTDIR}/kernel/settings/std.o: kernel/settings/std.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/settings
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/settings/std.o kernel/settings/std.c
+
+${OBJECTDIR}/kernel/settings/time_ms.o: kernel/settings/time_ms.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/settings
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/settings/time_ms.o kernel/settings/time_ms.c
 
 ${OBJECTDIR}/kernel/settings/upp.o: kernel/settings/upp.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/settings

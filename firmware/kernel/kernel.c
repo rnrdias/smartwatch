@@ -12,7 +12,8 @@ void Start_loop(void) {
     Keyboard_loop();
     Hardware_loop();
     Beep_loop();
-    RTC_date.second++;
+    TMS_loop();
+    //RTC_date.second++;
     RTC_loop();
     Screen_loop();
     if (Keyboard_keyDown() || Keyboard_getKeyEnter() || Keyboard_getKeyEsc() || Keyboard_getKeyUp()) {
@@ -29,6 +30,7 @@ void Start_initialize(void) {
     Screen_initialize();
     Std_extends = Std_extend;
     UPP_fontDefault = &Font_alfanum_8;
+    TMS_initialize();
     RTC_initialize();
     Beep_initialize();
 }

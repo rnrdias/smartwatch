@@ -13,6 +13,8 @@
         <itemPath>App/alarms.h</itemPath>
         <itemPath>App/app.c</itemPath>
         <itemPath>App/app.h</itemPath>
+        <itemPath>App/stopwatch.c</itemPath>
+        <itemPath>App/stopwatch.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="kernel" projectFiles="true">
         <logicalFolder name="f3" displayName="drivers" projectFiles="true">
@@ -20,12 +22,16 @@
           <itemPath>kernel/drivers/beep_simulator.h</itemPath>
           <itemPath>kernel/drivers/cpu_control.c</itemPath>
           <itemPath>kernel/drivers/cpu_control.h</itemPath>
+          <itemPath>kernel/drivers/interruption.c</itemPath>
+          <itemPath>kernel/drivers/interruption.h</itemPath>
           <itemPath>kernel/drivers/keyboard.c</itemPath>
           <itemPath>kernel/drivers/keyboard.h</itemPath>
           <itemPath>kernel/drivers/lcd_simulator.c</itemPath>
           <itemPath>kernel/drivers/lcd_simulator.h</itemPath>
           <itemPath>kernel/drivers/real_time_clock.c</itemPath>
           <itemPath>kernel/drivers/real_time_clock.h</itemPath>
+          <itemPath>kernel/drivers/time_ms.c</itemPath>
+          <itemPath>kernel/drivers/time_ms.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f5" displayName="fonts" projectFiles="true">
           <itemPath>kernel/fonts/alfanum_6.c</itemPath>
@@ -43,6 +49,7 @@
           <itemPath>kernel/settings/screens.c</itemPath>
           <itemPath>kernel/settings/settings.h</itemPath>
           <itemPath>kernel/settings/std.c</itemPath>
+          <itemPath>kernel/settings/time_ms.c</itemPath>
           <itemPath>kernel/settings/upp.c</itemPath>
           <itemPath>kernel/settings/util.c</itemPath>
         </logicalFolder>
@@ -127,6 +134,10 @@
       </item>
       <item path="App/status_bar/status_bar.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="App/stopwatch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App/stopwatch.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hardware.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="hardware.h" ex="false" tool="3" flavor2="0">
@@ -141,6 +152,10 @@
       </item>
       <item path="kernel/drivers/cpu_control.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/drivers/interruption.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/interruption.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="kernel/drivers/keyboard.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/drivers/keyboard.h" ex="false" tool="3" flavor2="0">
@@ -152,6 +167,10 @@
       <item path="kernel/drivers/real_time_clock.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/drivers/real_time_clock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/time_ms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/time_ms.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/fonts/alfanum_6.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -178,6 +197,8 @@
       <item path="kernel/settings/settings.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/settings/std.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/time_ms.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/settings/upp.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -262,6 +283,10 @@
       </item>
       <item path="App/status_bar/status_bar.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="App/stopwatch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="App/stopwatch.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="hardware.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="hardware.h" ex="false" tool="3" flavor2="0">
@@ -276,6 +301,10 @@
       </item>
       <item path="kernel/drivers/cpu_control.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/drivers/interruption.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/interruption.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="kernel/drivers/keyboard.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/drivers/keyboard.h" ex="false" tool="3" flavor2="0">
@@ -287,6 +316,10 @@
       <item path="kernel/drivers/real_time_clock.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/drivers/real_time_clock.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/drivers/time_ms.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/drivers/time_ms.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/fonts/alfanum_6.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -313,6 +346,8 @@
       <item path="kernel/settings/settings.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/settings/std.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/settings/time_ms.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/settings/upp.c" ex="false" tool="0" flavor2="0">
       </item>

@@ -7,7 +7,8 @@
 #include "screens.h"
 
 typedef struct {
-    
+    unsigned char hour;
+    unsigned char data;
 }Sc_stopwatchParam;
 
 void Sc_stopwatchStart(Screen_windowLoad *this) {
@@ -15,7 +16,7 @@ void Sc_stopwatchStart(Screen_windowLoad *this) {
 }
 
 void Sc_stopwatchLoop(Screen_windowLoad *this) {
-    Std_printf("%w%2d:%1d%w\n%1d\r", &Font_numeric_16, 0, 0, &Font_alfanum_8, 0);
+    Std_printf("%w%2d:%1d%w\n%1d\r", &Font_numeric_16, 0, RTC_date.second, &Font_alfanum_8, TMS_ms);
     Std_printf("178:33:45\r\n");
     Std_printf("212:15:17\r\n");
     Std_printf("318:46:05\r\n");

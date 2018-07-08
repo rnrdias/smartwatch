@@ -10,16 +10,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/main.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/settings/upp.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/compiler_define.h</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/screen/screen.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/upp/upp.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/settings/std.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/std.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/settings/util.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/screens/main.c</file>
-            <file>file:/home/rnr/Documentos/Ruby/smartwatch/simulation/firmware/kernel/fonts/fonts.h</file>
+            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/stopwatch.h</file>
+            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/alarms.c</file>
+            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/alarms.h</file>
+            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/stopwatch.c</file>
+            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/kernel/drivers/real_time_clock.h</file>
         </group>
     </open-files>
 </project-private>

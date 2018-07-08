@@ -30,6 +30,7 @@ extern "C" {
     } RTC_DateFormat;
 
     RTC_DateFormat RTC_date;
+    
 
     //unsigned char RTC_hour, RTC_minute, RTC_second, RTC_day, RTC_month;
     //unsigned int RTC_year;
@@ -38,6 +39,8 @@ extern "C" {
     unsigned char RTC_getWeekday();
     void RTC_dateValid(RTC_DateFormat *date);
 
+    void RTC_secondIncr(void);
+    
     void RTC_initialize();
     void RTC_loop();
 

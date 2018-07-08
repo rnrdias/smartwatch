@@ -44,7 +44,7 @@ extern "C" {
             unsigned sat : 1;
             unsigned on : 1;
         };
-    } Alarms_paramFormat;
+    } App_alarms_paramFormat;
     
     
     typedef struct{
@@ -52,15 +52,15 @@ extern "C" {
         unsigned char currentMinute;
         unsigned char time;
         unsigned char enable;
-    }Alarms_sleepParamFormat;
+    }App_alarms_sleepParamFormat;
     
-    extern Alarms_paramFormat Alarms[ALARMS_MAX];
-    extern Alarms_sleepParamFormat Alarms_sleep;
+    extern App_alarms_paramFormat Alarms[ALARMS_MAX];
+    extern App_alarms_sleepParamFormat Alarms_sleep;
     
-    void Alarms_ringing(char index);
+    void App_alarms_ringing(char index);
 
-    void Alarms_initialize(void);
-    void Alarms_loop(void);
+    void App_alarms_initialize(void);
+    void App_alarms_loop(void);
 
     //void Alarms_sleep(void);
 
