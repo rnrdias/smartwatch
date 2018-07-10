@@ -55,4 +55,20 @@ extern char RVCB(const void *var);
 extern void *RVCW(const void *var);
 
 
+
+typedef struct _Util_eventHandler {
+    void *data;
+    struct _Util_eventHandler *next;
+} Util_eventHandle;
+
+/*
+ * Registers events
+ */
+extern void Util_registerEventHandler(Util_eventHandle **root, Util_eventHandle *add);
+
+/*
+ * Unregisters events
+ */
+extern unsigned char Util_unregisterEventHandler(Util_eventHandle **root, Util_eventHandle *add);
+
 #endif /* UTIL_H_ */

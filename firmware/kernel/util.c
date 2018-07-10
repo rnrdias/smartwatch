@@ -49,3 +49,36 @@ void Util_memTop(void *p) {
 unsigned int Util_memGetSizeAloc() {
     return mem - indexTop;
 }
+
+void Util_registerEventHandler(Util_eventHandle **root, Util_eventHandle *add) {
+    Util_eventHandle *aux;
+    if (*root == 0) {
+        *root = add;
+    } else {
+        aux = *root;
+        while (aux->next)aux = aux->next;
+        aux->next = add;
+    }
+    add->next = 0;
+}
+
+unsigned char Util_unregisterEventHandler(Util_eventHandle **root, Util_eventHandle *add) {
+    if (*root) {
+        void *id = add->data;
+        Util_eventHandle *aux = *root;
+
+        if ((*root)->data == id) {
+            *root = (*root)->next;
+            return 1;
+        } else {
+            while (aux->next) {
+                if (aux->next->data == id) {
+                    aux->next = aux->next->next;
+                    return 1;
+                }
+                aux = aux->next;
+            }
+        }
+    }
+    return 0;
+}
