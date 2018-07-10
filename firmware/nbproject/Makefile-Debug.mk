@@ -42,21 +42,21 @@ OBJECTFILES= \
 	${OBJECTDIR}/hardware.o \
 	${OBJECTDIR}/kernel/drivers/beep_simulator.o \
 	${OBJECTDIR}/kernel/drivers/cpu_control.o \
-	${OBJECTDIR}/kernel/drivers/interruption.o \
+	${OBJECTDIR}/kernel/drivers/interruption_simulator.o \
 	${OBJECTDIR}/kernel/drivers/keyboard.o \
 	${OBJECTDIR}/kernel/drivers/lcd_simulator.o \
 	${OBJECTDIR}/kernel/drivers/real_time_clock.o \
-	${OBJECTDIR}/kernel/drivers/time_ms.o \
+	${OBJECTDIR}/kernel/drivers/time_ms_simulator.o \
 	${OBJECTDIR}/kernel/fonts/alfanum_6.o \
 	${OBJECTDIR}/kernel/fonts/alfanum_8.o \
 	${OBJECTDIR}/kernel/fonts/numeric_16.o \
 	${OBJECTDIR}/kernel/fonts/numeric_24.o \
 	${OBJECTDIR}/kernel/kernel.o \
 	${OBJECTDIR}/kernel/screen/screen.o \
+	${OBJECTDIR}/kernel/settings/interruption.o \
 	${OBJECTDIR}/kernel/settings/keyboard.o \
 	${OBJECTDIR}/kernel/settings/screens.o \
 	${OBJECTDIR}/kernel/settings/std.o \
-	${OBJECTDIR}/kernel/settings/time_ms.o \
 	${OBJECTDIR}/kernel/settings/upp.o \
 	${OBJECTDIR}/kernel/settings/util.o \
 	${OBJECTDIR}/kernel/std.o \
@@ -75,7 +75,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/screens/settings.o \
 	${OBJECTDIR}/screens/settings_date_hour.o \
 	${OBJECTDIR}/screens/status.o \
-	${OBJECTDIR}/screens/stopwatch.o
+	${OBJECTDIR}/screens/stopwatch.o \
+	${OBJECTDIR}/test_util.o
 
 
 # C Compiler Flags
@@ -137,10 +138,10 @@ ${OBJECTDIR}/kernel/drivers/cpu_control.o: kernel/drivers/cpu_control.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/cpu_control.o kernel/drivers/cpu_control.c
 
-${OBJECTDIR}/kernel/drivers/interruption.o: kernel/drivers/interruption.c
+${OBJECTDIR}/kernel/drivers/interruption_simulator.o: kernel/drivers/interruption_simulator.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/interruption.o kernel/drivers/interruption.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/interruption_simulator.o kernel/drivers/interruption_simulator.c
 
 ${OBJECTDIR}/kernel/drivers/keyboard.o: kernel/drivers/keyboard.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
@@ -157,10 +158,10 @@ ${OBJECTDIR}/kernel/drivers/real_time_clock.o: kernel/drivers/real_time_clock.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/real_time_clock.o kernel/drivers/real_time_clock.c
 
-${OBJECTDIR}/kernel/drivers/time_ms.o: kernel/drivers/time_ms.c
+${OBJECTDIR}/kernel/drivers/time_ms_simulator.o: kernel/drivers/time_ms_simulator.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/time_ms.o kernel/drivers/time_ms.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/time_ms_simulator.o kernel/drivers/time_ms_simulator.c
 
 ${OBJECTDIR}/kernel/fonts/alfanum_6.o: kernel/fonts/alfanum_6.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/fonts
@@ -192,6 +193,11 @@ ${OBJECTDIR}/kernel/screen/screen.o: kernel/screen/screen.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/screen/screen.o kernel/screen/screen.c
 
+${OBJECTDIR}/kernel/settings/interruption.o: kernel/settings/interruption.c
+	${MKDIR} -p ${OBJECTDIR}/kernel/settings
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/settings/interruption.o kernel/settings/interruption.c
+
 ${OBJECTDIR}/kernel/settings/keyboard.o: kernel/settings/keyboard.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/settings
 	${RM} "$@.d"
@@ -206,11 +212,6 @@ ${OBJECTDIR}/kernel/settings/std.o: kernel/settings/std.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/settings
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/settings/std.o kernel/settings/std.c
-
-${OBJECTDIR}/kernel/settings/time_ms.o: kernel/settings/time_ms.c
-	${MKDIR} -p ${OBJECTDIR}/kernel/settings
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/settings/time_ms.o kernel/settings/time_ms.c
 
 ${OBJECTDIR}/kernel/settings/upp.o: kernel/settings/upp.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/settings
@@ -306,6 +307,11 @@ ${OBJECTDIR}/screens/stopwatch.o: screens/stopwatch.c
 	${MKDIR} -p ${OBJECTDIR}/screens
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/screens/stopwatch.o screens/stopwatch.c
+
+${OBJECTDIR}/test_util.o: test_util.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/test_util.o test_util.c
 
 # Subprojects
 .build-subprojects:

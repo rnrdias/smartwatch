@@ -50,6 +50,8 @@ unsigned int Util_memGetSizeAloc() {
     return mem - indexTop;
 }
 
+
+
 void Util_registerEventHandler(Util_eventHandle **root, Util_eventHandle *add) {
     Util_eventHandle *aux;
     if (*root == 0) {

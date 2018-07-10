@@ -11,15 +11,15 @@
  * Created on 7 de Julho de 2018, 23:05
  */
 
-#include "time_ms.h"
+#include "time_ms_simulator.h"
 
 void TMS_initialize(void) {
-
+    TMS_ACC = 0;
 }
 
 void TMS_loop(void) {
-    if (++TMS_ms > 100) {
-        TMS_ms = 0;
-        TMS_process();
-    }
+    //TMS_ms = (INT_ACC * 100) / 128;
+    if (++TMS_ACC > 127)
+        TMS_ACC = 0;
+    INT_coreTimerMS();
 }

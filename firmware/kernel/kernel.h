@@ -21,7 +21,8 @@ extern "C" {
 #include "settings/settings.h"
 #include "drivers/real_time_clock.h"
 #include "drivers/beep_simulator.h"
-#include "drivers/time_ms.h"
+#include "drivers/time_ms_simulator.h"
+#include "drivers/interruption_simulator.h"
 
     void Start_initialize();
 

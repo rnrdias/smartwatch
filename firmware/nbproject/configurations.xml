@@ -22,16 +22,16 @@
           <itemPath>kernel/drivers/beep_simulator.h</itemPath>
           <itemPath>kernel/drivers/cpu_control.c</itemPath>
           <itemPath>kernel/drivers/cpu_control.h</itemPath>
-          <itemPath>kernel/drivers/interruption.c</itemPath>
-          <itemPath>kernel/drivers/interruption.h</itemPath>
+          <itemPath>kernel/drivers/interruption_simulator.c</itemPath>
+          <itemPath>kernel/drivers/interruption_simulator.h</itemPath>
           <itemPath>kernel/drivers/keyboard.c</itemPath>
           <itemPath>kernel/drivers/keyboard.h</itemPath>
           <itemPath>kernel/drivers/lcd_simulator.c</itemPath>
           <itemPath>kernel/drivers/lcd_simulator.h</itemPath>
           <itemPath>kernel/drivers/real_time_clock.c</itemPath>
           <itemPath>kernel/drivers/real_time_clock.h</itemPath>
-          <itemPath>kernel/drivers/time_ms.c</itemPath>
-          <itemPath>kernel/drivers/time_ms.h</itemPath>
+          <itemPath>kernel/drivers/time_ms_simulator.c</itemPath>
+          <itemPath>kernel/drivers/time_ms_simulator.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f5" displayName="fonts" projectFiles="true">
           <itemPath>kernel/fonts/alfanum_6.c</itemPath>
@@ -45,11 +45,11 @@
           <itemPath>kernel/screen/screen.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f4" displayName="settings" projectFiles="true">
+          <itemPath>kernel/settings/interruption.c</itemPath>
           <itemPath>kernel/settings/keyboard.c</itemPath>
           <itemPath>kernel/settings/screens.c</itemPath>
           <itemPath>kernel/settings/settings.h</itemPath>
           <itemPath>kernel/settings/std.c</itemPath>
-          <itemPath>kernel/settings/time_ms.c</itemPath>
           <itemPath>kernel/settings/upp.c</itemPath>
           <itemPath>kernel/settings/util.c</itemPath>
         </logicalFolder>
@@ -92,6 +92,7 @@
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
+      <itemPath>test_util.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
@@ -152,9 +153,15 @@
       </item>
       <item path="kernel/drivers/cpu_control.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="kernel/drivers/interruption.c" ex="false" tool="0" flavor2="0">
+      <item path="kernel/drivers/interruption_simulator.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
       </item>
-      <item path="kernel/drivers/interruption.h" ex="false" tool="3" flavor2="0">
+      <item path="kernel/drivers/interruption_simulator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="kernel/drivers/keyboard.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -168,9 +175,9 @@
       </item>
       <item path="kernel/drivers/real_time_clock.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="kernel/drivers/time_ms.c" ex="false" tool="0" flavor2="0">
+      <item path="kernel/drivers/time_ms_simulator.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="kernel/drivers/time_ms.h" ex="false" tool="3" flavor2="0">
+      <item path="kernel/drivers/time_ms_simulator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/fonts/alfanum_6.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -190,6 +197,8 @@
       </item>
       <item path="kernel/screen/screen.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/settings/interruption.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="kernel/settings/keyboard.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/settings/screens.c" ex="false" tool="0" flavor2="0">
@@ -197,8 +206,6 @@
       <item path="kernel/settings/settings.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/settings/std.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="kernel/settings/time_ms.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/settings/upp.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -249,6 +256,8 @@
       <item path="screens/status.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/stopwatch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test_util.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -301,9 +310,15 @@
       </item>
       <item path="kernel/drivers/cpu_control.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="kernel/drivers/interruption.c" ex="false" tool="0" flavor2="0">
+      <item path="kernel/drivers/interruption_simulator.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
       </item>
-      <item path="kernel/drivers/interruption.h" ex="false" tool="3" flavor2="0">
+      <item path="kernel/drivers/interruption_simulator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="kernel/drivers/keyboard.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -317,9 +332,9 @@
       </item>
       <item path="kernel/drivers/real_time_clock.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="kernel/drivers/time_ms.c" ex="false" tool="0" flavor2="0">
+      <item path="kernel/drivers/time_ms_simulator.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="kernel/drivers/time_ms.h" ex="false" tool="3" flavor2="0">
+      <item path="kernel/drivers/time_ms_simulator.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/fonts/alfanum_6.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -339,6 +354,8 @@
       </item>
       <item path="kernel/screen/screen.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="kernel/settings/interruption.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="kernel/settings/keyboard.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/settings/screens.c" ex="false" tool="0" flavor2="0">
@@ -346,8 +363,6 @@
       <item path="kernel/settings/settings.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/settings/std.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="kernel/settings/time_ms.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/settings/upp.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -398,6 +413,8 @@
       <item path="screens/status.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="screens/stopwatch.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test_util.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>

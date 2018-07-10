@@ -12,7 +12,7 @@ void Start_loop(void) {
     Keyboard_loop();
     Hardware_loop();
     Beep_loop();
-    TMS_loop();
+    //TMS_loop();
     //RTC_date.second++;
     RTC_loop();
     Screen_loop();
@@ -33,6 +33,7 @@ void Start_initialize(void) {
     TMS_initialize();
     RTC_initialize();
     Beep_initialize();
+    INT_initialize();
 }
 
 

@@ -26,14 +26,19 @@ extern "C" {
 #include "../drivers/lcd_simulator.h"
 #include "../drivers/keyboard.h"
 #include "../../hardware.h"
-#include "../drivers/time_ms.h" 
+#include "../drivers/time_ms_simulator.h" 
 #include "../drivers/real_time_clock.h"
 #include "../drivers/beep_simulator.h"
 
 
     char lcdBuffer[504];
-    void Std_extend(void (*functionPtr)(char),const char *str, va_list *arg_ptr);
+    void Std_extend(void (*functionPtr)(char), const char *str, va_list *arg_ptr);
 
+
+    void App_INT_buttonUp(void);
+    void APP_INT_buttonDown(void);
+    void APP_INT_timerMS(void);
+    
 #ifdef __cplusplus
 }
 #endif 

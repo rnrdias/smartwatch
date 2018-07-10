@@ -21,6 +21,10 @@
 #include "App/app.h"
 #include <unistd.h> 
 
+void MAIN_INT_Process(void);
+
+
+
 int main(int argc, char** argv) {
     Screen_windowLoad sc_main = {&Sc_main, 0};
     lang = pt_br;
@@ -33,6 +37,19 @@ int main(int argc, char** argv) {
         App_loop();
         Start_loop();
         LCD_sendBuffer(lcdBuffer);
-        //usleep(100 * 1000);
+        usleep(100 * 1000);
+        for (unsigned int i = 0; i < 12; i++)
+            TMS_loop();
+        MAIN_INT_Process();
+    }
+}
+
+void MAIN_INT_Process() {
+    if (Keyboard_getKeyUp()) {
+        INT_coreButtonUp();
+    }
+
+    if (Keyboard_getKeyDown()) {
+        INT_coreButtonDown();
     }
 }

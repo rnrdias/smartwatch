@@ -20,28 +20,37 @@ extern "C" {
 
 #include "status_bar/status_bar.h"
 #include "../kernel/drivers/real_time_clock.h"
+#include "../kernel/drivers/interruption_simulator.h"
 
-#define App_stopwatchMax 5
+#define APP_STOPWATCH_MAX_HISTORY 5
 
     typedef struct {
-        unsigned char enable;
-        RTC_DateFormat date;
+        unsigned char auxMillesimal;
     } App_stopwatchTimeCoreFormat;
 
     typedef struct {
-        unsigned char minute;
-        unsigned char second;
+        unsigned long int second;
         unsigned char millesimal;
     } App_stopwatchTimeBaseFormat;
 
     typedef struct {
         unsigned char index;
-        App_stopwatchTimeBaseFormat time[App_stopwatchMax];
+        App_stopwatchTimeBaseFormat time[APP_STOPWATCH_MAX_HISTORY];
     } App_stopwatchTimeHistoryFormat;
 
-    App_stopwatchTimeCoreFormat App_stopwatchTimeCore;
-    App_stopwatchTimeHistoryFormat App_stopwatchTimeHistory;
+    typedef struct {
+        unsigned char enable;
+        unsigned char enableControl;
+        App_stopwatchTimeBaseFormat timeCurrent;
+        App_stopwatchTimeHistoryFormat timeHistory;
+    } App_stopwatchTimeFormat;
 
+
+    App_stopwatchTimeCoreFormat App_stopwatchTimeCore;
+    App_stopwatchTimeFormat App_stopwatchTime;
+
+    void App_stopwatch_addHistory(void);
+    App_stopwatchTimeBaseFormat *App_stopwatch_getHistory(unsigned char index);
 
     void App_stopwatch_loop(void);
     void App_stopwatch_initialize(void);
