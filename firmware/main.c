@@ -46,10 +46,10 @@ int main(int argc, char** argv) {
 
 void MAIN_INT_Process() {
     if (Keyboard_getKeyUp()) {
-        INT_coreButtonUp();
+        Int_coreButtonUp();
     }
 
     if (Keyboard_getKeyDown()) {
-        INT_coreButtonDown();
+        Int_coreButtonDown();
     }
 }

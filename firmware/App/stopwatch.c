@@ -9,13 +9,8 @@
 //___________________ICON______________________________
 
 CONST UPP_BitmapFormat SB_stopwatchIcon = {
-    0x06,
-    0x01,
-    0x00,
-    0x01,
-    {
-        0x00, 0x7e, 0x00, 0x00, 0x7e, 0x00
-    }
+    STATUS_BAR_HEAD
+    {0x00, 0x7e, 0x00, 0x00, 0x7e, 0x00}
 };
 
 CONST char SB_stopwatchTitle[] = "Stopwatch";
@@ -34,8 +29,8 @@ const StatusBar_paramFormat *SB_stopwatchLoop() {
 }
 
 StatusBar_registerFormat SB_stopwatchRegister = {
-    SB_stopwatchLoop,
-    0
+    0,
+    SB_stopwatchLoop
 };
 
 //___________________________function control________________________________
@@ -98,29 +93,25 @@ void App_stopwatch_intButtonDown(void) {
     }
 }
 
-INT_eventData App_stopwatchIntTimerMSEventData = {App_stopwatch_intTimerMS};
-Util_eventHandle App_stopwatchIntTimerMSEventHandle = {&App_stopwatchIntTimerMSEventData};
+Int_event App_stopwatchIntEventTimerMS = {0, App_stopwatch_intTimerMS};
 
+Int_event App_stopwatchIntEventButtonUp = {0, App_stopwatch_intButtonUp};
 
-INT_eventData App_stopwatchIntButtonUpEventData = {App_stopwatch_intButtonUp};
-Util_eventHandle App_stopwatchIntButtonUpEventHandle = {&App_stopwatchIntButtonUpEventData};
-
-INT_eventData App_stopwatchIntButtonDownEventData = {App_stopwatch_intButtonDown};
-Util_eventHandle App_stopwatchIntButtonDownEventHandle = {&App_stopwatchIntButtonDownEventData};
+Int_event App_stopwatchIntEventButtonDown = {0, App_stopwatch_intButtonDown};
 
 //___________________________APP__________________________
 
 void App_stopwatch_loop(void) {
     if (App_stopwatchTime.enableControl) {
-        INT_register(&App_stopwatchIntButtonUpEventHandle, INT_BUTTON_UP);
-        INT_register(&App_stopwatchIntButtonDownEventHandle, INT_BUTTON_DOWN);
+        Int_register(&App_stopwatchIntEventButtonUp, INT_BUTTON_UP);
+        Int_register(&App_stopwatchIntEventButtonDown, INT_BUTTON_DOWN);
     } else {
-        INT_unregister(&App_stopwatchIntButtonUpEventHandle, INT_BUTTON_UP);
-        INT_unregister(&App_stopwatchIntButtonDownEventHandle, INT_BUTTON_DOWN);
+        Int_unregister(&App_stopwatchIntEventButtonUp, INT_BUTTON_UP);
+        Int_unregister(&App_stopwatchIntEventButtonDown, INT_BUTTON_DOWN);
     }
 }
 
 void App_stopwatch_initialize(void) {
     StatusBar_register(&SB_stopwatchRegister);
-    INT_register(&App_stopwatchIntTimerMSEventHandle, INT_TIMER_MS);
+    Int_register(&App_stopwatchIntEventTimerMS, INT_TIMER_MS);
 }

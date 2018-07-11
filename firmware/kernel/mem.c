@@ -10,7 +10,7 @@
 #define Mem_allocSize(size) (Mem + Mem_index);Mem_index += size
 
 typedef struct {
-    Util_list iten;
+    Util_list item;
     unsigned int size;
     void **var;
 } Mem_allocFormat;
@@ -29,7 +29,7 @@ void _Mem_alloc(void **var, unsigned int size) {
         m->var = var;
         m->size = size + sizeof (Mem_allocFormat);
         *var = Mem_allocSize(size);
-        Util_listAdd(&Mem_root, &m->iten);
+        Util_listAdd(&Mem_root, &m->item);
     }
 }
 
@@ -57,29 +57,29 @@ void Mem_restructure(void) {
 
     if (blockCurrent != (void *) Mem_root) {
         blockCurrent->size = 0;
-        blockCurrent->iten.next = Mem_root;
+        blockCurrent->item.next = Mem_root;
     }
 
     while (1) {
         void *blockCurrentEnd = blockCurrent->size + (void *) blockCurrent;
 
-        if (!blockCurrent->iten.next) {
+        if (!blockCurrent->item.next) {
             Mem_index = blockCurrentEnd - (void*) Mem_root;
             break;
         }
 
-        void *blockCurrentNext = (void *) blockCurrent->iten.next;
+        void *blockCurrentNext = (void *) blockCurrent->item.next;
         if (blockCurrentNext - blockCurrentEnd != 0) {
             Mem_moveData(blockCurrentEnd, blockCurrentNext, ((Mem_allocFormat*) blockCurrentNext)->size);
             if (blockCurrent != blockCurrentEnd)
-                blockCurrent->iten.next = blockCurrentEnd;
+                blockCurrent->item.next = blockCurrentEnd;
             else {
                 Mem_root = (Util_list*) blockCurrent;
                 *blockCurrent->var = &blockCurrent->var + 1;
                 continue;
             }
         }
-        blockCurrent = (Mem_allocFormat*) blockCurrent->iten.next;
+        blockCurrent = (Mem_allocFormat*) blockCurrent->item.next;
         *blockCurrent->var = &blockCurrent->var + 1;
     }
 }

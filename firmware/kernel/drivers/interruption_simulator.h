@@ -24,16 +24,17 @@ extern "C" {
 #define INT_BUTTON_DOWN 3
 
     typedef struct {
+        Util_list item;
         void (*function)(void);
-    } INT_eventData;
+    } Int_event;
 
-    extern void INT_timerMS(void);
-    extern void INT_buttonUp(void);
-    extern void INT_buttonDown(void);
+    extern void Int_timerMS(void);
+    extern void Int_buttonUp(void);
+    extern void Int_buttonDown(void);
 
-    void INT_initialize(void);
-    void INT_register(Util_eventHandle *e, unsigned char i);
-    void INT_unregister(Util_eventHandle *e, unsigned char i);
+    void Int_initialize(void);
+    void Int_register(Int_event *e, unsigned char i);
+    void Int_unregister(Int_event *e, unsigned char i);
 #ifdef __cplusplus
 }
 #endif

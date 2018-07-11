@@ -35,7 +35,7 @@ void Start_initialize(void) {
     TMS_initialize();
     RTC_initialize();
     Beep_initialize();
-    INT_initialize();
+    Int_initialize();
 }
 
 

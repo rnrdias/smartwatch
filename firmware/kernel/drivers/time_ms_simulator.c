@@ -21,5 +21,5 @@ void TMS_loop(void) {
     //TMS_ms = (INT_ACC * 100) / 128;
     if (++TMS_ACC > 127)
         TMS_ACC = 0;
-    INT_coreTimerMS();
+    Int_coreTimerMS();
 }

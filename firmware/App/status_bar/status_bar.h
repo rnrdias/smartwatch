@@ -19,8 +19,11 @@ extern "C" {
 #endif
 
 #include "../../kernel/upp/upp.h"
+#include "../../kernel/std.h"
+#include "../../kernel/upp/upp.h"
+#include "../../kernel/util.h"
 
-#define STATUS_BAR_HEAD 6,1,0,1
+#define STATUS_BAR_HEAD 0x06,0x01,0x00,0x01,
 
     typedef struct _StatusBar_paramFormat {
         const UPP_BitmapFormat *icon;
@@ -30,8 +33,8 @@ extern "C" {
     } StatusBar_paramFormat;
 
     typedef struct _StatusBar_registerFormat {
+        Util_list item;
         const StatusBar_paramFormat *(*functionRegister)(void);
-        struct _StatusBar_registerFormat *p;
     } StatusBar_registerFormat;
 
     void StatusBar_register(StatusBar_registerFormat *r);

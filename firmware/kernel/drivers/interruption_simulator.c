@@ -6,63 +6,64 @@
 
 #include "interruption_simulator.h"
 
-Util_eventHandle *INT_rootTimeMs;
-Util_eventHandle *INT_rootButtonUp;
-Util_eventHandle *INT_rootButtonDown;
+Util_list *Int_rootTimeMs;
+Util_list *Int_rootButtonUp;
+Util_list *Int_rootButtonDown;
 
-void INT_register(Util_eventHandle *e, unsigned char i) {
+void Int_register(Int_event *e, unsigned char i) {
     switch (i) {
         case INT_TIMER_MS:
-            Util_registerEventHandler(&INT_rootTimeMs, e);
+            Util_listAdd(&Int_rootTimeMs, &e->item);
             break;
         case INT_BUTTON_UP:
-            Util_registerEventHandler(&INT_rootButtonUp, e);
+            Util_listAdd(&Int_rootButtonUp, &e->item);
             break;
         case INT_BUTTON_DOWN:
-            Util_registerEventHandler(&INT_rootButtonDown, e);
+            Util_listAdd(&Int_rootButtonDown, &e->item);
             break;
     }
 }
 
-void INT_unregister(Util_eventHandle *e, unsigned char i) {
+void Int_unregister(Int_event *e, unsigned char i) {
     switch (i) {
         case INT_TIMER_MS:
-            Util_unregisterEventHandler(&INT_rootTimeMs, e);
+            Util_listRemove(&Int_rootTimeMs, &e->item);
             break;
         case INT_BUTTON_UP:
-            Util_unregisterEventHandler(&INT_rootButtonUp, e);
+            Util_listRemove(&Int_rootButtonUp, &e->item);
             break;
         case INT_BUTTON_DOWN:
-            Util_unregisterEventHandler(&INT_rootButtonDown, e);
+            Util_listRemove(&Int_rootButtonDown, &e->item);
             break;
     }
 }
 
-void INT_processEventHandle(Util_eventHandle *e) {
-    Util_eventHandle *aux = e;
+void Int_processEventHandle(Util_list *e) {
+    Int_event *aux = (Int_event *) e;
     while (aux) {
-        ((INT_eventData*) (aux->data))->function();
-        aux = aux->next;
+        if (aux->function)
+            aux->function();
+        aux = (Int_event *) aux->item.next;
     }
 }
 
-void INT_coreTimerMS() {
-    INT_timerMS();
-    INT_processEventHandle(INT_rootTimeMs);
+void Int_coreTimerMS() {
+    Int_timerMS();
+    Int_processEventHandle(Int_rootTimeMs);
 }
 
-void INT_coreButtonUp() {
-    INT_buttonUp();
-    INT_processEventHandle(INT_rootButtonUp);
+void Int_coreButtonUp() {
+    Int_buttonUp();
+    Int_processEventHandle(Int_rootButtonUp);
 }
 
-void INT_coreButtonDown() {
-    INT_buttonDown();
-    INT_processEventHandle(INT_rootButtonDown);
+void Int_coreButtonDown() {
+    Int_buttonDown();
+    Int_processEventHandle(Int_rootButtonDown);
 }
 
-void INT_initialize(void) {
-    INT_rootTimeMs = 0;
-    INT_rootButtonUp = 0;
-    INT_rootButtonDown = 0;
+void Int_initialize(void) {
+    Int_rootTimeMs = 0;
+    Int_rootButtonUp = 0;
+    Int_rootButtonDown = 0;
 }

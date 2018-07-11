@@ -5,7 +5,7 @@
  */
 #include "settings.h"
 
-void INT_timerMS() {
+void Int_timerMS() {
     static unsigned char tmpAntAcc = 0;
     if (tmpAntAcc > TMS_ACC) {
         RTC_secondIncr();
@@ -13,10 +13,10 @@ void INT_timerMS() {
     tmpAntAcc = TMS_ACC;
 }
 
-void INT_buttonUp(void) {
+void Int_buttonUp(void) {
 
 }
 
-void INT_buttonDown(void) {
+void Int_buttonDown(void) {
 
 }

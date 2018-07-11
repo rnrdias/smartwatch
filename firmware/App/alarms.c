@@ -13,13 +13,8 @@ App_alarms_sleepParamFormat Alarms_sleep;
 //___________________ICON______________________________
 
 CONST UPP_BitmapFormat SB_alamesIcon = {
-    0x06,
-    0x01,
-    0x00,
-    0x01,
-    {
-        0x00, 0x7e, 0x7e, 0x7e, 0x7e, 0x00
-    }
+    STATUS_BAR_HEAD //0x06,0x01,0x00,0x01,
+    {0x00, 0x7e, 0x7e, 0x7e, 0x7e, 0x00}
 };
 
 CONST char SB_alarmsTitle[] = "Soneca";
@@ -38,14 +33,15 @@ const StatusBar_paramFormat *SB_alarmsLoop() {
 }
 
 StatusBar_registerFormat SB_alarmsRegister = {
-    SB_alarmsLoop,
-    0
+    0,
+    SB_alarmsLoop
 };
 
 
 
 //_____________________APP__________________________
 Screen_windowLoad Alarms_ringingSCLoad = {0, 0};
+
 void App_alarms_ringing(char index) {
     Alarms_ringingSCLoad.parameters = index;
     Alarms_ringingSCLoad.windows = &Sc_alarmsRinging;

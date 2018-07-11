@@ -62,23 +62,4 @@ extern void Util_listAdd(Util_list **root, Util_list *element);
 extern unsigned char Util_listRemove(Util_list **root, Util_list *element);
 
 
-/*
- * Registers events define
- */
-
-typedef struct _Util_eventHandler {
-    void *data;
-    struct _Util_eventHandler *next;
-} Util_eventHandle;
-
-/*
- * Registers events
- */
-extern void Util_registerEventHandler(Util_eventHandle **root, Util_eventHandle *add);
-
-/*
- * Unregisters events
- */
-extern unsigned char Util_unregisterEventHandler(Util_eventHandle **root, Util_eventHandle *add);
-
 #endif /* UTIL_H_ */

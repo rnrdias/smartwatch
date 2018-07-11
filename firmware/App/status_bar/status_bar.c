@@ -5,21 +5,11 @@
  */
 
 #include "status_bar.h"
-#include "../../kernel/std.h"
 
-
-StatusBar_registerFormat *root;
+Util_list *root;
 
 void StatusBar_register(StatusBar_registerFormat *r) {
-    StatusBar_registerFormat *aux;
-    if (root == 0) {
-        root = r;
-    } else {
-        aux = root;
-        while (aux->p)aux = aux->p;
-        aux->p = r;
-    }
-    r->p = 0;
+    Util_listAdd(&root, &r->item);
 }
 
 void StatusBar_initialize() {
@@ -27,12 +17,12 @@ void StatusBar_initialize() {
 }
 
 void StatusBar_check(void (*functionPtr)(const StatusBar_paramFormat *s)) {
-    StatusBar_registerFormat *aux = root;
+    StatusBar_registerFormat *aux = (StatusBar_registerFormat*) root;
     while (aux) {
         const StatusBar_paramFormat *b = aux->functionRegister();
         if (b)
             functionPtr(b);
-        aux = aux->p;
+        aux = (StatusBar_registerFormat*) aux->item.next;
     }
 }
 
@@ -41,7 +31,7 @@ void StatusBar_printIcon(const StatusBar_paramFormat *s) {
 }
 
 void StatusBar_print() {
-    StatusBar_registerFormat *aux = root;
+    StatusBar_registerFormat *aux = (StatusBar_registerFormat*) root;
     Std_printf("\r");
     StatusBar_check(StatusBar_printIcon);
     Std_printf("\r\n");
