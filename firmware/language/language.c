@@ -5,28 +5,3 @@
  */
 
 #include "language.h"
-
-char *Lang_load(const char * const* end) {
-    char *str = (char *) RCW(end);
-    char *strPush = Util_memPush(20);
-    char *rstr = strPush;
-    char data;
-    char index = 0;
-
-    do {
-        data = RCB(str++);
-        *(rstr++) = data;
-        index++;
-    } while (data);
-
-    Util_memTop(strPush);
-    Util_memPush(index);
-
-    return strPush;
-}
-
-char *Lang_loadCharacter(char *end) {
-    char *character = Util_memPush(1);
-    *character = (char *) RCB(end);
-    return character;
-}

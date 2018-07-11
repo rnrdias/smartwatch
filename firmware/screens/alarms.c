@@ -22,8 +22,9 @@ void Sc_alarmsClick(Screen_listItem *this) {
 void Sc_alarmsStart(Screen_windowLoad *this) {
     this->windows->title = (char*) RVCW(&lang->alarms);
 
-    Screen_list *list = Util_memPush(sizeof (Screen_list));
-    list->itens = 0;
+    Mem_alloc(this->parameters, sizeof (Screen_list));
+
+    Screen_list *list = this->parameters;
     list->quantPrint = 5;
     list->sizeList = 5;
     list->index = 0;
@@ -31,7 +32,6 @@ void Sc_alarmsStart(Screen_windowLoad *this) {
 
     Screen_listSelectLoad(list);
 
-    this->parameters = list;
 }
 
 void Sc_alarmsLoop(Screen_windowLoad *this) {
@@ -46,16 +46,17 @@ void Sc_alarmsLoop(Screen_windowLoad *this) {
 }
 
 void Sc_alarmsEnd(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    Mem_free(this->parameters);
 }
 
 void Sc_alarmsResume(Screen_windowLoad *this) {
-    Screen_listItem *itens;
-    itens = Util_memPush(ALARMS_MAX * sizeof (Screen_listItem));
+    Screen_list *l = this->parameters;
 
+    Mem_alloc(l->itens, ALARMS_MAX * sizeof (Screen_listItem));
+
+    Screen_listItem *itens = l->itens;
     for (unsigned char i = 0; i < ALARMS_MAX; i++) {
-        char *str = Util_memPush(15 * sizeof (char));
-        char *week = Util_memPush(9 * sizeof (char));
+        char week[9];
         for (char j = 0; j < 8; j++) {
             if (Alarms[i].weekday & (1 << j))
                 week[j] = RVCB(&lang->initSunday + j);
@@ -63,19 +64,21 @@ void Sc_alarmsResume(Screen_windowLoad *this) {
                 week[j] = '_';
         }
         week[8] = '\0';
-        Std_sprintf(str, "%1d:%1d %s", Alarms[i].hour, Alarms[i].minute, week);
-        itens[i].description = str;
+        Mem_alloc(itens[i].description, 15 * sizeof (char));
+        Std_sprintf(itens[i].description, "%1d:%1d %s", Alarms[i].hour, Alarms[i].minute, week);
         itens[i].click = &Sc_alarmsClick;
         itens[i].parameter = &Alarms[i];
     }
 
-    Screen_list *l = this->parameters;
-    l->itens = itens;
+
 }
 
 void Sc_alarmsPause(Screen_windowLoad *this) {
     Screen_list *l = this->parameters;
-    Util_memTop(l->itens);
+    for (unsigned char i = 0; i < ALARMS_MAX; i++) {
+        Mem_free(l->itens[i].description);
+    }
+    Mem_free(l->itens);
 }
 
 Screen_window Sc_alarms = {0, Sc_alarmsLoop, Sc_alarmsStart, Sc_alarmsEnd, Sc_alarmsResume, Sc_alarmsPause};

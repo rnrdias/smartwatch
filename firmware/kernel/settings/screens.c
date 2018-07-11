@@ -34,7 +34,7 @@ char Screen_getScrollStop() {
 }
 
 void Screen_windowLoadHead(const char *title) {
-    Std_printf("%r%w%#%s %d\r\n%w", &Font_alfanum_6, &Font_alfanum_8, '_', title, Util_memGetSizeAloc() , &Font_alfanum_8);
+    Std_printf("%r%w%#%s %d\r\n%w", &Font_alfanum_6, &Font_alfanum_8, '_', title, Mem_getSizeAlloc() , &Font_alfanum_8);
 }
 
 void Screen_listSelectOutPrint(Screen_listItem *item) {

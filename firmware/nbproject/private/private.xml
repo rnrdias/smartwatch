@@ -9,19 +9,6 @@
     </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/stopwatch.h</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/alarms.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/kernel/kernel.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/alarms.h</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/screens/stopwatch.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/kernel/drivers/real_time_clock.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/kernel/drivers/time_ms_simulator.h</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/kernel/settings/interruption.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/stopwatch.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/main.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/App/settings.c</file>
-            <file>file:/home/rnr/Documentos/Projetos/smartwatch/simulation/firmware/kernel/drivers/time_ms_simulator.c</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

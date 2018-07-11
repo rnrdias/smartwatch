@@ -52,6 +52,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/fonts/numeric_16.o \
 	${OBJECTDIR}/kernel/fonts/numeric_24.o \
 	${OBJECTDIR}/kernel/kernel.o \
+	${OBJECTDIR}/kernel/mem.o \
 	${OBJECTDIR}/kernel/screen/screen.o \
 	${OBJECTDIR}/kernel/settings/interruption.o \
 	${OBJECTDIR}/kernel/settings/keyboard.o \
@@ -187,6 +188,11 @@ ${OBJECTDIR}/kernel/kernel.o: kernel/kernel.c
 	${MKDIR} -p ${OBJECTDIR}/kernel
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/kernel.o kernel/kernel.c
+
+${OBJECTDIR}/kernel/mem.o: kernel/mem.c
+	${MKDIR} -p ${OBJECTDIR}/kernel
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/mem.o kernel/mem.c
 
 ${OBJECTDIR}/kernel/screen/screen.o: kernel/screen/screen.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/screen

@@ -17,6 +17,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#include "../kernel/mem.h"
 #include "../kernel/drivers/time_ms_simulator.h"
 #include "../kernel/drivers/real_time_clock.h"
 #include "../kernel/screen/screen.h"

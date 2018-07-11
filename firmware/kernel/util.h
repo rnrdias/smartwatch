@@ -33,18 +33,6 @@ extern char Util_toggleSeg();
  */
 extern unsigned char Util_stringLenth(char *string);
 /*
- * Aloca variavel na pilha de memoria
- */
-extern void *Util_memPush(unsigned int size);
-/*
- * Retira variavel da pilha de memoria
- */
-extern void Util_memTop(void *p);
-/*
- * Retorna quantidade de memoria alocada
- */
-extern unsigned int Util_memGetSizeAloc();
-/*
  * read variable or const byte
  */
 extern char RVCB(const void *var);
@@ -54,7 +42,29 @@ extern char RVCB(const void *var);
  */
 extern void *RVCW(const void *var);
 
+/*
+ * List define
+ */
+typedef struct Util__list {
+    struct Util__list *next;
+} Util_list;
 
+/*
+ * Add elements in list
+ */
+extern void Util_listAdd(Util_list **root, Util_list *element);
+
+/*
+ * Remove elements in list
+ * return 1 to found element
+ * return 0 to not found element
+ */
+extern unsigned char Util_listRemove(Util_list **root, Util_list *element);
+
+
+/*
+ * Registers events define
+ */
 
 typedef struct _Util_eventHandler {
     void *data;

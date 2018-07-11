@@ -24,33 +24,36 @@ unsigned char Util_stringLenth(char *string) {
     return i;
 }
 
-
-char mem[Util_malloc_max];
-
-typedef struct {
-    char var;
-} aloc;
-
-char *indexTop = mem;
-
-void *Util_memPush(unsigned int size) {
-    char *p = indexTop;
-    if (size + indexTop >= mem + Util_malloc_max)
-        return 0;
-    indexTop += size;
-    return p;
+void Util_listAdd(Util_list **root, Util_list *element) {
+    Util_list *aux;
+    if (*root == 0) {
+        *root = element;
+    } else {
+        aux = *root;
+        while (aux->next)aux = aux->next;
+        aux->next = element;
+    }
+    element->next = 0;
 }
 
-void Util_memTop(void *p) {
-    if (p >= mem && p <= mem + Util_malloc_max)
-        indexTop = p;
+unsigned char Util_listRemove(Util_list **root, Util_list *element) {
+    if (*root) {
+        Util_list *aux = *root;
+        if (*root == element) {
+            *root = (*root)->next;
+            return 1;
+        } else {
+            while (aux->next) {
+                if (aux->next == element) {
+                    aux->next = aux->next->next;
+                    return 1;
+                }
+                aux = aux->next;
+            }
+        }
+    }
+    return 0;
 }
-
-unsigned int Util_memGetSizeAloc() {
-    return mem - indexTop;
-}
-
-
 
 void Util_registerEventHandler(Util_eventHandle **root, Util_eventHandle *add) {
     Util_eventHandle *aux;

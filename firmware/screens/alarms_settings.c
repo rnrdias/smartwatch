@@ -29,13 +29,14 @@ typedef struct {
     App_alarms_paramFormat *alarm;
 } SC_alarmsSettingsParam;
 
-
 void Sc_alarmsSettingsStart(Screen_windowLoad *this) {
-    SC_alarmsSettingsParam *p = Util_memPush(sizeof (SC_alarmsSettingsParam));
     App_alarms_paramFormat *alarm = this->parameters;
+
+    Mem_alloc(this->parameters, sizeof (SC_alarmsSettingsParam));
+
+    SC_alarmsSettingsParam *p = this->parameters;
     this->windows->title = (char*) RVCW(&lang->alarms);
     p->alarm = alarm;
-    this->parameters = p;
 }
 
 //CONST char Sc_alarmsSettingsScreen[] = "  %w%t%1d%t:%t%1d%t\r\n";
@@ -78,15 +79,16 @@ void Sc_alarmsSettingsLoop(Screen_windowLoad *this) {
 }
 
 void Sc_alarmsSettingsEnd(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    Mem_free(this->parameters);
 }
 
 void Sc_alarmsSettingsResume(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = this->parameters;
-    SC_alarmsSettingsParamNumEdit *n = Util_memPush(sizeof (SC_alarmsSettingsParamNumEdit));
+
+    Mem_alloc(p->numbs, sizeof (SC_alarmsSettingsParamNumEdit));
+    SC_alarmsSettingsParamNumEdit *n = p->numbs;
     Screen_numberEditFormat *aux = (Screen_numberEditFormat *) n;
     aux += 2;
-    p->numbs = n;
 
     n->aux = 0;
 
@@ -121,7 +123,7 @@ void Sc_alarmsSettingsResume(Screen_windowLoad *this) {
 
 void Sc_alarmsSettingsPause(Screen_windowLoad *this) {
     SC_alarmsSettingsParam *p = this->parameters;
-    Util_memTop(p->numbs);
+    Mem_free(p->numbs);
 }
 
 

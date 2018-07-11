@@ -74,11 +74,13 @@ void Sc_settingsDateHourLoop(Screen_windowLoad *this) {
 }
 
 void Sc_settingsDateHourEnd(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    //Util_memTop(this->parameters);
 }
 
 void Sc_settingsDateHourResume(Screen_windowLoad *this) {
-    SC_settingsDateHourParam *p = Util_memPush(sizeof (SC_settingsDateHourParam));
+    Mem_alloc(this->parameters, sizeof (SC_settingsDateHourParam));
+
+    SC_settingsDateHourParam *p = this->parameters;
     p->hour.numInc = 1;
     p->hour.numMax = 23;
     p->hour.numMin = 0;
@@ -119,11 +121,11 @@ void Sc_settingsDateHourResume(Screen_windowLoad *this) {
     p->year.sucess = 0;
     p->year.type = Screen_numberEditUnsignedInt;
 
-    this->parameters = p;
+
 }
 
 void Sc_settingsDateHourPause(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    Mem_free(this->parameters);
 }
 
 Screen_window Sc_settingsDateHour = {0, Sc_settingsDateHourLoop, Sc_settingsDateHourStart, Sc_settingsDateHourEnd, Sc_settingsDateHourResume, Sc_settingsDateHourPause};

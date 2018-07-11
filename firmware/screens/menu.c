@@ -16,7 +16,9 @@ void Sc_menuClick(Screen_listItem *this) {
 void Sc_menuStart(Screen_windowLoad *this) {
     this->windows->title = (char*) RVCW(&lang->menu);
 
-    Screen_list *list = Util_memPush(sizeof (Screen_list));
+    Mem_alloc(this->parameters, sizeof (Screen_list));
+
+    Screen_list *list = this->parameters;
     //list->itens = itens;
     list->quantPrint = 5;
     list->sizeList = 5;
@@ -24,8 +26,6 @@ void Sc_menuStart(Screen_windowLoad *this) {
     list->scrollIndex = 0;
 
     Screen_listSelectLoad(list);
-
-    this->parameters = list;
 }
 
 void Sc_menuLoop(Screen_windowLoad *this) {
@@ -37,15 +37,15 @@ void Sc_menuLoop(Screen_windowLoad *this) {
 }
 
 void Sc_menuEnd(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    Mem_free(this->parameters);
 }
 
 void Sc_menuResume(Screen_windowLoad *this) {
-    Screen_listItem *itens;
     Screen_list *list = this->parameters;
 
-    itens = Util_memPush(5 * sizeof (Screen_listItem));
+    Mem_alloc(list->itens, 5 * sizeof (Screen_listItem));
 
+    Screen_listItem *itens = list->itens;
     itens[0].description = (char*) RVCW(&lang->alarms);
     itens[0].click = &Sc_menuClick;
     itens[0].parameter = &Sc_alarms;
@@ -71,6 +71,6 @@ void Sc_menuResume(Screen_windowLoad *this) {
 
 void Sc_menuPause(Screen_windowLoad *this) {
     Screen_list *list = this->parameters;
-    Util_memTop(list->itens);
+    Mem_free(list->itens);
 }
 Screen_window Sc_menu = {0, Sc_menuLoop, Sc_menuStart, Sc_menuEnd, Sc_menuResume, Sc_menuPause};

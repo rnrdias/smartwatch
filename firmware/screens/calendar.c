@@ -15,19 +15,20 @@ typedef struct {
 } Sc_calendarParam;
 
 void Sc_calendarStart(Screen_windowLoad *this) {
-    //this->title = Lang_load(&lang->calendar);
-    Sc_calendarParam *p = Util_memPush(sizeof (Sc_calendarParam));
+    Mem_alloc(this->parameters, sizeof (Sc_calendarParam));
+    Sc_calendarParam *p = this->parameters;
+
     p->title = (char*) RVCW(&lang->calendar);
     //p->day = RTC_date.day;
     p->month = RTC_date.month;
     p->year = RTC_date.year;
     p->scroll = 0;
     Screen_StartScroll(&p->scroll);
-    this->parameters = p;
 }
 
 CONST char Sc_calendarScreen[] = "%w%r%s: %d/%d\r\n%wD S T Q Q S S\r\n%w";
 Screen_windowLoad SC_calendarScLoad = {0, 0};
+
 void Sc_calendarLoop(Screen_windowLoad *this) {
     //Util_memTop(this->parameters);
     Sc_calendarParam *p = this->parameters;
@@ -76,7 +77,7 @@ void Sc_calendarLoop(Screen_windowLoad *this) {
 }
 
 void Sc_calendarEnd(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    Mem_free(this->parameters);
 }
 
 Screen_window Sc_calendar = {0, Sc_calendarLoop, Sc_calendarStart, Sc_calendarEnd, 0, 0};

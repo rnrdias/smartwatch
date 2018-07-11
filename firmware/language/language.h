@@ -53,8 +53,6 @@ extern "C" {
 
     const Language *lang;
 
-    char *Lang_load(const char * const* end);
-    char *Lang_loadCharacter(char *end);
     extern const Language *pt_br;
 
 

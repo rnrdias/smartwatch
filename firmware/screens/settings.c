@@ -14,10 +14,11 @@ void Sc_settingsClick(Screen_listItem *this) {
 }
 
 void Sc_settingsStart(Screen_windowLoad *this) {
-    //this->title = Lang_load(&lang->settings);
     this->windows->title = (char*) RVCW(&lang->settings);
-
-    Screen_list *list = Util_memPush(sizeof (Screen_list));
+    
+    Mem_alloc(this->parameters,sizeof (Screen_list));
+    
+    Screen_list *list = this->parameters;
     //list->itens = itens;
     list->quantPrint = 5;
     list->sizeList = 1;
@@ -25,8 +26,6 @@ void Sc_settingsStart(Screen_windowLoad *this) {
     list->scrollIndex = 0;
 
     Screen_listSelectLoad(list);
-
-    this->parameters = list;
 }
 
 void Sc_settingsLoop(Screen_windowLoad *this) {
@@ -38,14 +37,15 @@ void Sc_settingsLoop(Screen_windowLoad *this) {
 }
 
 void Sc_settingsEnd(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    Mem_free(this->parameters);
 }
 
 void Sc_settingsResume(Screen_windowLoad *this) {
     Screen_listItem *itens;
     Screen_list *list = this->parameters;
-
-    itens = Util_memPush(1 * sizeof (Screen_listItem));
+    
+    Mem_alloc(list->itens, 1 * sizeof (Screen_listItem));
+    itens = list->itens;
 
     itens[0].description = (char*) RVCW(&lang->settingsDateHour);
     itens[0].click = &Sc_settingsClick;
@@ -67,11 +67,11 @@ void Sc_settingsResume(Screen_windowLoad *this) {
      itens[4].click = &Sc_settingsClick;
      itens[4].parameter = &Sc_status;*/
 
-    list->itens = itens;
+    
 }
 
 void Sc_settingsPause(Screen_windowLoad *this) {
     Screen_list *list = this->parameters;
-    Util_memTop(list->itens);
+    Mem_free(list->itens);
 }
 Screen_window Sc_settings = {0, Sc_settingsLoop, Sc_settingsStart, Sc_settingsEnd, Sc_settingsResume, Sc_settingsPause};

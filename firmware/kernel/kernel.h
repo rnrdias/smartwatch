@@ -23,6 +23,7 @@ extern "C" {
 #include "drivers/beep_simulator.h"
 #include "drivers/time_ms_simulator.h"
 #include "drivers/interruption_simulator.h"
+#include "mem.h"
 
     void Start_initialize();
 

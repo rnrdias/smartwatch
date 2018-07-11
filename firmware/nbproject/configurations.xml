@@ -60,6 +60,8 @@
         <itemPath>kernel/compiler_define.h</itemPath>
         <itemPath>kernel/kernel.c</itemPath>
         <itemPath>kernel/kernel.h</itemPath>
+        <itemPath>kernel/mem.c</itemPath>
+        <itemPath>kernel/mem.h</itemPath>
         <itemPath>kernel/std.c</itemPath>
         <itemPath>kernel/std.h</itemPath>
         <itemPath>kernel/util.c</itemPath>
@@ -192,6 +194,10 @@
       <item path="kernel/kernel.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/kernel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/mem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/mem.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/screen/screen.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -349,6 +355,10 @@
       <item path="kernel/kernel.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="kernel/kernel.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="kernel/mem.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="kernel/mem.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="kernel/screen/screen.c" ex="false" tool="0" flavor2="0">
       </item>

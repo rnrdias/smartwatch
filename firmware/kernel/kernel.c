@@ -9,6 +9,7 @@
 Beep_paramFormat param = {2000, 250, 1, 0, 1, 0};
 
 void Start_loop(void) {
+    Mem_loop();
     Keyboard_loop();
     Hardware_loop();
     Beep_loop();
@@ -23,6 +24,7 @@ void Start_loop(void) {
 }
 
 void Start_initialize(void) {
+    Mem_initialize();
     Hardware_initialize();
     LCD_initialize();
     UPP_initialize();

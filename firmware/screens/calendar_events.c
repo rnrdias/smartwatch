@@ -39,18 +39,19 @@ void Sc_calendarEventsPrintItemDate(Screen_listItem *this) {
 
 void Sc_calendarEventsStart(Screen_windowLoad *this) {
     Sc_calendarEventsParam *p;
+ 
     this->windows->title = (char*) RVCW(&lang->calendarEvents);
-    p = Util_memPush(sizeof (Sc_calendarEventsParam));
-    p->calendar = this->parameters;
+    Sc_calendarParam *calendarParam = this->parameters;
+    Mem_alloc(this->parameters, sizeof (Sc_calendarEventsParam));
+    p = this->parameters;
 
-    //list->itens = itens;
+    p->calendar = calendarParam;
     p->list.quantPrint = 5;
     p->list.sizeList = 5;
     p->list.index = 0;
     p->list.scrollIndex = 0;
 
     Screen_listSelectLoad(&p->list);
-    this->parameters = p;
 }
 
 void Sc_calendarEventsLoop(Screen_windowLoad *this) {
@@ -61,17 +62,20 @@ void Sc_calendarEventsLoop(Screen_windowLoad *this) {
 }
 
 void Sc_calendarEventsEnd(Screen_windowLoad *this) {
-    Util_memTop(this->parameters);
+    Mem_free(this->parameters);
 }
 
 void Sc_calendarEventsResume(Screen_windowLoad *this) {
     Sc_calendarEventsParam *p = this->parameters;
-    Screen_listItem *itens = Util_memPush(5 * sizeof (Screen_listItem));
-    Sc_calendarEventsNumParam *n = Util_memPush(sizeof (Sc_calendarEventsNumParam));
+
+    Mem_alloc(p->list.itens,5 * sizeof (Screen_listItem));
+    Screen_listItem *itens = p->list.itens;
+    
+    Mem_alloc(itens[0].parameter,sizeof (Sc_calendarEventsNumParam));
+    Sc_calendarEventsNumParam *n = itens[0].parameter;
 
     itens[0].description = 0;
     itens[0].click = 0;
-    itens[0].parameter = n;
     itens[0].itemPrint = Sc_calendarEventsPrintItemDate;
     itens[0].itemPrintSize = 2;
 
@@ -92,7 +96,7 @@ void Sc_calendarEventsResume(Screen_windowLoad *this) {
     itens[4].click = &Sc_calendarEventsClick;
     itens[4].parameter = &Sc_status;
 
-    p->list.itens = itens;
+    
 
     n->month.numInc = 1;
     n->month.numMax = 12;
@@ -114,7 +118,8 @@ void Sc_calendarEventsResume(Screen_windowLoad *this) {
 
 void Sc_calendarEventsPause(Screen_windowLoad *this) {
     Sc_calendarEventsParam *p = this->parameters;
-    Util_memTop(p->list.itens);
+    Mem_free(p->list.itens[0].parameter);
+    Mem_free(p->list.itens);
 }
 
 
