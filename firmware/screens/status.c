@@ -5,7 +5,7 @@
  */
 
 #include "screens.h"
-#include "../App/status_bar/status_bar.h"
+#include "../app/status_bar/status_bar.h"
 
 void Sc_statusStart(Screen_windowLoad *this) {
     this->windows->title = (char*) RVCW(&lang->status);

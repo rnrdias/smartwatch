@@ -35,10 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/App/alarms.o \
-	${OBJECTDIR}/App/app.o \
-	${OBJECTDIR}/App/status_bar/status_bar.o \
-	${OBJECTDIR}/App/stopwatch.o \
+	${OBJECTDIR}/app/alarms.o \
+	${OBJECTDIR}/app/app.o \
+	${OBJECTDIR}/app/status_bar/status_bar.o \
+	${OBJECTDIR}/app/stopwatch.o \
 	${OBJECTDIR}/hardware.o \
 	${OBJECTDIR}/kernel/drivers/beep_simulator.o \
 	${OBJECTDIR}/kernel/drivers/cpu_control.o \
@@ -104,25 +104,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/firmware: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/firmware ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/App/alarms.o: App/alarms.c
-	${MKDIR} -p ${OBJECTDIR}/App
+${OBJECTDIR}/app/alarms.o: app/alarms.c
+	${MKDIR} -p ${OBJECTDIR}/app
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/alarms.o App/alarms.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/app/alarms.o app/alarms.c
 
-${OBJECTDIR}/App/app.o: App/app.c
-	${MKDIR} -p ${OBJECTDIR}/App
+${OBJECTDIR}/app/app.o: app/app.c
+	${MKDIR} -p ${OBJECTDIR}/app
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/app.o App/app.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/app/app.o app/app.c
 
-${OBJECTDIR}/App/status_bar/status_bar.o: App/status_bar/status_bar.c
-	${MKDIR} -p ${OBJECTDIR}/App/status_bar
+${OBJECTDIR}/app/status_bar/status_bar.o: app/status_bar/status_bar.c
+	${MKDIR} -p ${OBJECTDIR}/app/status_bar
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/status_bar/status_bar.o App/status_bar/status_bar.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/app/status_bar/status_bar.o app/status_bar/status_bar.c
 
-${OBJECTDIR}/App/stopwatch.o: App/stopwatch.c
-	${MKDIR} -p ${OBJECTDIR}/App
+${OBJECTDIR}/app/stopwatch.o: app/stopwatch.c
+	${MKDIR} -p ${OBJECTDIR}/app
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/App/stopwatch.o App/stopwatch.c
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/app/stopwatch.o app/stopwatch.c
 
 ${OBJECTDIR}/hardware.o: hardware.c
 	${MKDIR} -p ${OBJECTDIR}

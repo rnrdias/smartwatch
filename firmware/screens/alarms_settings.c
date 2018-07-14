@@ -5,7 +5,7 @@
  */
 
 #include "screens.h"
-#include "../App/alarms.h"
+#include "../app/alarms.h"
 
 typedef struct {
     Screen_numberEditFormat hour;

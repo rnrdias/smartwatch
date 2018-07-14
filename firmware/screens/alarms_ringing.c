@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 #include "screens.h"
-#include "../App/alarms.h"
+#include "../app/alarms.h"
 
 typedef struct {
     Beep_paramFormat beep;

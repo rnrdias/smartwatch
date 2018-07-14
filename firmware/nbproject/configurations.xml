@@ -6,15 +6,15 @@
                    projectFiles="true">
       <logicalFolder name="f4" displayName="App" projectFiles="true">
         <logicalFolder name="f1" displayName="status_bar" projectFiles="true">
-          <itemPath>App/status_bar/status_bar.c</itemPath>
-          <itemPath>App/status_bar/status_bar.h</itemPath>
+          <itemPath>app/status_bar/status_bar.c</itemPath>
+          <itemPath>app/status_bar/status_bar.h</itemPath>
         </logicalFolder>
-        <itemPath>App/alarms.c</itemPath>
-        <itemPath>App/alarms.h</itemPath>
-        <itemPath>App/app.c</itemPath>
-        <itemPath>App/app.h</itemPath>
-        <itemPath>App/stopwatch.c</itemPath>
-        <itemPath>App/stopwatch.h</itemPath>
+        <itemPath>app/alarms.c</itemPath>
+        <itemPath>app/alarms.h</itemPath>
+        <itemPath>app/app.c</itemPath>
+        <itemPath>app/app.h</itemPath>
+        <itemPath>app/stopwatch.c</itemPath>
+        <itemPath>app/stopwatch.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="kernel" projectFiles="true">
         <logicalFolder name="f3" displayName="drivers" projectFiles="true">
@@ -125,21 +125,21 @@
           <commandLine>-std=c99</commandLine>
         </cTool>
       </compileType>
-      <item path="App/alarms.c" ex="false" tool="0" flavor2="0">
+      <item path="app/alarms.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/alarms.h" ex="false" tool="3" flavor2="0">
+      <item path="app/alarms.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="App/app.c" ex="false" tool="0" flavor2="0">
+      <item path="app/app.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/app.h" ex="false" tool="3" flavor2="0">
+      <item path="app/app.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="App/status_bar/status_bar.c" ex="false" tool="0" flavor2="0">
+      <item path="app/status_bar/status_bar.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/status_bar/status_bar.h" ex="false" tool="3" flavor2="0">
+      <item path="app/status_bar/status_bar.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="App/stopwatch.c" ex="false" tool="0" flavor2="0">
+      <item path="app/stopwatch.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/stopwatch.h" ex="false" tool="3" flavor2="0">
+      <item path="app/stopwatch.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hardware.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -286,21 +286,21 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="App/alarms.c" ex="false" tool="0" flavor2="0">
+      <item path="app/alarms.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/alarms.h" ex="false" tool="3" flavor2="0">
+      <item path="app/alarms.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="App/app.c" ex="false" tool="0" flavor2="0">
+      <item path="app/app.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/app.h" ex="false" tool="3" flavor2="0">
+      <item path="app/app.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="App/status_bar/status_bar.c" ex="false" tool="0" flavor2="0">
+      <item path="app/status_bar/status_bar.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/status_bar/status_bar.h" ex="false" tool="3" flavor2="0">
+      <item path="app/status_bar/status_bar.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="App/stopwatch.c" ex="false" tool="0" flavor2="0">
+      <item path="app/stopwatch.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="App/stopwatch.h" ex="false" tool="3" flavor2="0">
+      <item path="app/stopwatch.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="hardware.c" ex="false" tool="0" flavor2="0">
       </item>

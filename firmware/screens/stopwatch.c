@@ -5,7 +5,7 @@
  */
 
 #include "screens.h"
-#include "../App/stopwatch.h"
+#include "../app/stopwatch.h"
 
 typedef struct {
     unsigned char hour;

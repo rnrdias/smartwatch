@@ -18,7 +18,7 @@
 //#include <windows.h>
 
 #include "main.h"
-#include "App/app.h"
+#include "app/app.h"
 #include <unistd.h> 
 
 void MAIN_INT_Process(void);

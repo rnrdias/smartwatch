@@ -5,7 +5,7 @@
  */
 
 #include "screens.h"
-#include "../App/status_bar/status_bar.h"
+#include "../app/status_bar/status_bar.h"
 
 CONST char dsHour[] = "%w%1d:%1d%w\n%1d\r\n";
 CONST char dsDate[] = "%s %1d-%1d-%3d";

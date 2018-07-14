@@ -21,7 +21,7 @@ extern "C" {
 #include "../kernel/drivers/time_ms_simulator.h"
 #include "../kernel/drivers/real_time_clock.h"
 #include "../kernel/screen/screen.h"
-#include "../kernel/screen/notepad.h"
+//#include "../kernel/screen/notepad.h"
 #include "../kernel/fonts/fonts.h"
 #include "../kernel/drivers/keyboard.h"
 #include "../kernel/std.h"

@@ -7,7 +7,7 @@
 
 
 #include "screens.h"
-#include "../App/alarms.h"
+#include "../app/alarms.h"
 
 Screen_windowLoad Sc_alarmsScLoad = {0, 0};
 
