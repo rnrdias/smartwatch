@@ -10,8 +10,6 @@
 CONST char dsHour[] = "%w%1d:%1d%w\n%1d\r\n";
 CONST char dsDate[] = "%s %1d-%1d-%3d";
 
-Screen_windowLoad Sc_mainScLoad = {0, 0};
-
 void Sc_mainLoop(Screen_windowLoad *this) {
     char *weekday = (char *) (&lang->sunday + RTC_getWeekday());
     weekday = (char *) RVCW(weekday);
@@ -24,13 +22,17 @@ void Sc_mainLoop(Screen_windowLoad *this) {
 
 
     if (Keyboard_keyEnter()) {
-        Sc_mainScLoad.windows = &Sc_menu;
-        Screen_windowOpen(&Sc_mainScLoad);
+        Screen_windowLoad scLoad;
+        scLoad.parameters = 0;
+        scLoad.windows = &Sc_menu;
+        Screen_windowOpen(&scLoad);
     }
 
     if (Keyboard_keyEsc()) {
-        Sc_mainScLoad.windows = &Sc_status;
-        Screen_windowOpen(&Sc_mainScLoad);
+        Screen_windowLoad scLoad;
+        scLoad.parameters = 0;
+        scLoad.windows = &Sc_status;
+        Screen_windowOpen(&scLoad);
     }
 }
 Screen_window Sc_main = {0, Sc_mainLoop, 0, 0, 0, 0};

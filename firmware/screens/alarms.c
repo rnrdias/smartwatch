@@ -9,14 +9,11 @@
 #include "screens.h"
 #include "../app/alarms.h"
 
-Screen_windowLoad Sc_alarmsScLoad = {0, 0};
-
 void Sc_alarmsClick(Screen_listItem *this) {
-    Sc_alarmsScLoad.parameters = this->parameter;
-    Sc_alarmsScLoad.windows = &Sc_alarmsSettings;
-    Screen_windowOpen(&Sc_alarmsScLoad);
-    //Sc_alarmsSettings.parameters = this->parameter;
-    //Screen_windowOpen(&Sc_alarmsSettings);
+    Screen_windowLoad scLoad;
+    scLoad.parameters = this->parameter;
+    scLoad.windows = &Sc_alarmsSettings;
+    Screen_windowOpen(&scLoad);
 }
 
 void Sc_alarmsStart(Screen_windowLoad *this) {

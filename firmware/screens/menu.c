@@ -6,11 +6,11 @@
 
 #include "screens.h"
 
-Screen_windowLoad SC_menuScLoad = {0, 0};
-
 void Sc_menuClick(Screen_listItem *this) {
-    SC_menuScLoad.windows = this->parameter;
-    Screen_windowOpen(&SC_menuScLoad);
+    Screen_windowLoad scLoad;
+    scLoad.windows = this->parameter;
+    scLoad.parameters = 0;
+    Screen_windowOpen(&scLoad);
 }
 
 void Sc_menuStart(Screen_windowLoad *this) {

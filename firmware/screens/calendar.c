@@ -27,7 +27,7 @@ void Sc_calendarStart(Screen_windowLoad *this) {
 }
 
 CONST char Sc_calendarScreen[] = "%w%r%s: %d/%d\r\n%wD S T Q Q S S\r\n%w";
-Screen_windowLoad SC_calendarScLoad = {0, 0};
+
 
 void Sc_calendarLoop(Screen_windowLoad *this) {
     //Util_memTop(this->parameters);
@@ -52,9 +52,10 @@ void Sc_calendarLoop(Screen_windowLoad *this) {
         Screen_windowClose();
     }
     if (Keyboard_keyEnter()) {
-        SC_calendarScLoad.windows = &Sc_calendarEvents;
-        SC_calendarScLoad.parameters = p;
-        Screen_windowOpen(&SC_calendarScLoad);
+        Screen_windowLoad scLoad;
+        scLoad.windows = &Sc_calendarEvents;
+        scLoad.parameters = p;
+        Screen_windowOpen(&scLoad);
     }
 
     if (Keyboard_keyDown() && !UPP_scrollHasNext()) {

@@ -6,18 +6,18 @@
 
 #include "screens.h"
 
-Screen_windowLoad Sc_settingsScLoad = {0, 0};
-
 void Sc_settingsClick(Screen_listItem *this) {
-    Sc_settingsScLoad.windows = this->parameter;
-    Screen_windowOpen(&Sc_settingsScLoad);
+    Screen_windowLoad scLoad;
+    scLoad.windows = this->parameter;
+    scLoad.parameters = 0;
+    Screen_windowOpen(&scLoad);
 }
 
 void Sc_settingsStart(Screen_windowLoad *this) {
     this->windows->title = (char*) RVCW(&lang->settings);
-    
-    Mem_alloc(this->parameters,sizeof (Screen_list));
-    
+
+    Mem_alloc(this->parameters, sizeof (Screen_list));
+
     Screen_list *list = this->parameters;
     //list->itens = itens;
     list->quantPrint = 5;
@@ -43,7 +43,7 @@ void Sc_settingsEnd(Screen_windowLoad *this) {
 void Sc_settingsResume(Screen_windowLoad *this) {
     Screen_listItem *itens;
     Screen_list *list = this->parameters;
-    
+
     Mem_alloc(list->itens, 1 * sizeof (Screen_listItem));
     itens = list->itens;
 
@@ -67,7 +67,7 @@ void Sc_settingsResume(Screen_windowLoad *this) {
      itens[4].click = &Sc_settingsClick;
      itens[4].parameter = &Sc_status;*/
 
-    
+
 }
 
 void Sc_settingsPause(Screen_windowLoad *this) {

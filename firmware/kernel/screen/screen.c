@@ -64,19 +64,19 @@ char Screen_hasEditNumRun() {
 signed char stackPont, antStackPont;
 Screen_windowLoad *stack[stackSize];
 
+/*#define stackNext() &stack[++stackPont]
 #define stackPush(x) stack[++stackPont]=x
-#define stackPop() stack[stackPont--]
-
-/*#define stackWindow()  ((Screen_window *)stack[stackPont])
-#define stackWindowPrev()  ((Screen_window *)stack[stackPont-1])
-#define stackWindowNext()  ((Screen_window *)stack[stackPont+1])*/
+#define stackWindow() (stack[stackPont])
+#define stackPop() stack[stackPont--]*/
 
 void Screen_windowOpen(Screen_windowLoad *win) {
-    stackPush(win);
+    Mem_alloc(stack[++stackPont], sizeof (Screen_windowLoad));
+    stack[stackPont]->parameters = win->parameters;
+    stack[stackPont]->windows = win->windows;
 }
 
 void Screen_windowClose() {
-    stackPop();
+    stackPont--;
 }
 
 void Screen_loop() {
@@ -109,12 +109,13 @@ void Screen_loop() {
             pause(stack[stackPont + 1]);
         if (end != 0)
             end(stack[stackPont + 1]);
+        Mem_free(stack[stackPont + 1]);
         //retorna a tela anterior
         if (resume != 0)
             resume(stack[stackPont]);
     }
 
-	
+
     if (stackPont >= 0) {
         void (*loop)(Screen_windowLoad * this) = (void (*)(Screen_windowLoad *))RVCW(&stack[stackPont]->windows->loop);
         if (stack[stackPont]->windows->title != 0) {

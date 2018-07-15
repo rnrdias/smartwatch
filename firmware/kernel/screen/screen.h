@@ -19,6 +19,7 @@ extern "C" {
 #endif
 #include <stdarg.h>
 #include "../util.h"
+#include "../mem.h"
 
 #define stackSize 10 // define o tamanho maximo da pilha de janelas
 
