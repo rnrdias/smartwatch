@@ -53,8 +53,9 @@ extern "C" {
 
     const Language *lang;
 
-    extern const Language *pt_br;
-
+    //extern CONST Language * const pt_br;
+    extern CONST Language _pt_br;
+#define pt_br _LC(&_pt_br)
 
 
 #ifdef __cplusplus

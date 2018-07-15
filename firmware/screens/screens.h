@@ -18,15 +18,14 @@
 extern "C" {
 #endif
 #include "../kernel/mem.h"
-#include "../kernel/drivers/time_ms_simulator.h"
+#include "../kernel/drivers/time_ms.h"
 #include "../kernel/drivers/real_time_clock.h"
 #include "../kernel/screen/screen.h"
-//#include "../kernel/screen/notepad.h"
 #include "../kernel/fonts/fonts.h"
 #include "../kernel/drivers/keyboard.h"
 #include "../kernel/std.h"
 #include "../language/language.h"
-#include "../kernel/drivers/beep_simulator.h"
+#include "../kernel/drivers/beep.h"
 
     extern Screen_window Sc_main;
     extern Screen_window Sc_status;

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "interruption_simulator.h"
+#include "interruption.h"
 
 Util_list *Int_rootTimeMs;
 Util_list *Int_rootButtonUp;

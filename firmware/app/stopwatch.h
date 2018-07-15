@@ -20,7 +20,8 @@ extern "C" {
 
 #include "status_bar/status_bar.h"
 #include "../kernel/drivers/real_time_clock.h"
-#include "../kernel/drivers/interruption_simulator.h"
+#include "../kernel/drivers/interruption.h"
+#include "../kernel/drivers/time_ms.h"
 
 #define APP_STOPWATCH_MAX_HISTORY 5
 

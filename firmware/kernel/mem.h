@@ -19,7 +19,7 @@ extern "C" {
 #endif
 #include "util.h"
 
-#define MEM_MAX 1024
+
 #define Mem_alloc(var,size) _Mem_alloc((void*)&var,size)
 #define Mem_free(var) _Mem_free((void*)&var)
 

@@ -5,7 +5,6 @@
  */
 
 #include "app.h"
-#include "stopwatch.h"
 
 void App_loop(void) {
     App_alarms_loop();

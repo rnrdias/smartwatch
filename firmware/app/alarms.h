@@ -45,18 +45,17 @@ extern "C" {
             unsigned on : 1;
         };
     } App_alarms_paramFormat;
-    
-    
-    typedef struct{
+
+    typedef struct {
         unsigned char currentHour;
         unsigned char currentMinute;
         unsigned char time;
         unsigned char enable;
-    }App_alarms_sleepParamFormat;
-    
+    } App_alarms_sleepParamFormat;
+
     extern App_alarms_paramFormat Alarms[ALARMS_MAX];
     extern App_alarms_sleepParamFormat Alarms_sleep;
-    
+
     void App_alarms_ringing(char index);
 
     void App_alarms_initialize(void);

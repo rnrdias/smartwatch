@@ -11,15 +11,15 @@
  * Created on 7 de Julho de 2018, 23:05
  */
 
-#include "time_ms_simulator.h"
+#include "time_ms.h"
 
 void TMS_initialize(void) {
-    TMS_ACC = 0;
+    TMS = 0;
 }
 
-void TMS_loop(void) {
-    //TMS_ms = (INT_ACC * 100) / 128;
-    if (++TMS_ACC > 127)
-        TMS_ACC = 0;
-    Int_coreTimerMS();
+void TMS_interrupt(void) {
+    static unsigned char acc = 0;
+    if (++acc >= TMS_INT_SEC)
+        acc = 0;
+    TMS = (acc * 100) / TMS_INT_SEC;
 }

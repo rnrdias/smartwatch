@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "beep_simulator.h"
+#include "beep.h"
 #include <pthread.h>
 //#include <windows.h>
 

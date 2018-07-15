@@ -17,12 +17,13 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-#include "interruption_simulator.h"
-#define TMS_ACC TMS_acc
-    unsigned char TMS_acc;
+#include "interruption.h"
+#define TMS_INT_SEC 128
+    unsigned char TMS;
     void TMS_initialize(void);
     void TMS_loop(void);
-
+    void TMS_initialize_interruption(void);
+    void TMS_interrupt(void);
 
 #ifdef __cplusplus
 }

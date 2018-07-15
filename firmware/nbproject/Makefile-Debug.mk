@@ -63,7 +63,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/std.o \
 	${OBJECTDIR}/kernel/upp/upp.o \
 	${OBJECTDIR}/kernel/util.o \
-	${OBJECTDIR}/language/language.o \
 	${OBJECTDIR}/language/pt_br.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/screens/alarms.o \
@@ -243,11 +242,6 @@ ${OBJECTDIR}/kernel/util.o: kernel/util.c
 	${MKDIR} -p ${OBJECTDIR}/kernel
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/util.o kernel/util.c
-
-${OBJECTDIR}/language/language.o: language/language.c
-	${MKDIR} -p ${OBJECTDIR}/language
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/language/language.o language/language.c
 
 ${OBJECTDIR}/language/pt_br.o: language/pt_br.c
 	${MKDIR} -p ${OBJECTDIR}/language

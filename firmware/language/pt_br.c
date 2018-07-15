@@ -57,4 +57,4 @@ CONST Language _pt_br = {
     _LC(pt_br_sleep)
 };
 
-CONST Language *pt_br = _LC((char *)&_pt_br);
+//CONST Language * const pt_br = (const Language *) _LC((void *)&_pt_br);

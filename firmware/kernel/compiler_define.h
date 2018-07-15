@@ -27,6 +27,6 @@ Define configurações para o compilador personalizadas
 #define RCB(VAR) (VAR)[0] // Read const byte
 #define RCW(VAR) &((*VAR)[0]) // Read const word
 #define _CONST  // define variable const
-#define Util_malloc_max 1024 //define o tamanho da memoria das funções memPush e memPop
+#define MEM_MAX 1024 //define o tamanho da memoria das funções mem
 
 #endif

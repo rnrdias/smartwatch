@@ -67,8 +67,8 @@ void App_stopwatch_timerClear(void) {
 void App_stopwatch_intTimerMS(void) {
     if (App_stopwatchTime.enable) {
         App_stopwatchTimeCore.auxMillesimal++;
-        App_stopwatchTime.timeCurrent.millesimal = (App_stopwatchTimeCore.auxMillesimal * 100) / 128;
-        if (App_stopwatchTimeCore.auxMillesimal > 127) {
+        App_stopwatchTime.timeCurrent.millesimal = (App_stopwatchTimeCore.auxMillesimal * 100) / TMS_INT_SEC;
+        if (App_stopwatchTimeCore.auxMillesimal >= TMS_INT_SEC) {
             App_stopwatchTimeCore.auxMillesimal = 0;
             App_stopwatchTime.timeCurrent.second++;
         }

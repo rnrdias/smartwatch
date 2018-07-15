@@ -31,7 +31,7 @@ void StatusBar_printIcon(const StatusBar_paramFormat *s) {
 }
 
 void StatusBar_print() {
-    StatusBar_registerFormat *aux = (StatusBar_registerFormat*) root;
+    //StatusBar_registerFormat *aux = (StatusBar_registerFormat*) root;
     Std_printf("\r");
     StatusBar_check(StatusBar_printIcon);
     Std_printf("\r\n");

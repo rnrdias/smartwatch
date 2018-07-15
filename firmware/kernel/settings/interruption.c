@@ -7,10 +7,11 @@
 
 void Int_timerMS() {
     static unsigned char tmpAntAcc = 0;
-    if (tmpAntAcc > TMS_ACC) {
+    TMS_interrupt();
+    if (tmpAntAcc > TMS) {
         RTC_secondIncr();
     }
-    tmpAntAcc = TMS_ACC;
+    tmpAntAcc = TMS;
 }
 
 void Int_buttonUp(void) {

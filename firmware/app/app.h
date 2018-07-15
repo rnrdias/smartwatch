@@ -18,11 +18,13 @@
 extern "C" {
 #endif
 
+#include "../kernel/util.h"
 #include "alarms.h"
+#include "stopwatch.h"
 
     void App_initialize(void);
     void App_loop(void);
-    
+
 
 #ifdef __cplusplus
 }

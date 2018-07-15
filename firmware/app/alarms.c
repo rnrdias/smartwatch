@@ -5,6 +5,8 @@
  */
 
 #include "alarms.h"
+
+
 App_alarms_paramFormat Alarms[ALARMS_MAX];
 App_alarms_sleepParamFormat Alarms_sleep;
 
@@ -33,7 +35,7 @@ const StatusBar_paramFormat *SB_alarmsLoop() {
 }
 
 StatusBar_registerFormat SB_alarmsRegister = {
-    0,
+    {0},
     SB_alarmsLoop
 };
 
@@ -43,7 +45,7 @@ StatusBar_registerFormat SB_alarmsRegister = {
 Screen_windowLoad Alarms_ringingSCLoad = {0, 0};
 
 void App_alarms_ringing(char index) {
-    Alarms_ringingSCLoad.parameters = index;
+    Alarms_ringingSCLoad.parameters = (void *) 0x00 + index;
     Alarms_ringingSCLoad.windows = &Sc_alarmsRinging;
     Screen_windowOpen(&Alarms_ringingSCLoad);
 }

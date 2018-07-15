@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 
-#include "lcd_simulator.h"
+#include "lcd.h"
+
+#include <stdio.h>
+//#include <conio.h>
+//#include <windows.h>
+
 
 void gotoxy(int x, int y) {
     //to windows

@@ -18,10 +18,6 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
-//#include <conio.h>
-//#include <windows.h>
-    
 void LCD_initialize(void);  
 void LCD_sendBuffer(char *buffer);
 

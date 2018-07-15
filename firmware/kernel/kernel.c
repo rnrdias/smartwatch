@@ -13,8 +13,6 @@ void Start_loop(void) {
     Keyboard_loop();
     Hardware_loop();
     Beep_loop();
-    //TMS_loop();
-    //RTC_date.second++;
     RTC_loop();
     Screen_loop();
     if (Keyboard_keyDown() || Keyboard_getKeyEnter() || Keyboard_getKeyEsc() || Keyboard_getKeyUp()) {
