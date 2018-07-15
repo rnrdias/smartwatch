@@ -42,6 +42,7 @@ extern "C" {
     typedef struct {
         unsigned char enable;
         unsigned char enableControl;
+        unsigned char isPause;
         App_stopwatchTimeBaseFormat timeCurrent;
         App_stopwatchTimeHistoryFormat timeHistory;
     } App_stopwatchTimeFormat;

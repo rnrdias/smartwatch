@@ -14,7 +14,7 @@
 //char toggle;
 
 char Util_toggleSeg() {
-    return RTC_date.second % 2;
+    return TMS >= 50;
 }
 #define CONSTMAX ((long long int)1<<(sizeof(char *)*8-2))
 

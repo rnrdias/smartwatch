@@ -17,7 +17,7 @@ void Sc_stopwatchStart(Screen_windowLoad *this) {
 }
 
 void Sc_stopwatchLoop(Screen_windowLoad *this) {
-    Std_printf("%w%2ul:%1ud%w\n%1ud\r", &Font_numeric_16, App_stopwatchTime.timeCurrent.second / 60, (unsigned char) App_stopwatchTime.timeCurrent.second % 60, &Font_alfanum_8, App_stopwatchTime.timeCurrent.millesimal);
+    Std_printf("%t%w%2ul:%1ud%w\n%1ud\r%t", App_stopwatchTime.isPause, &Font_numeric_16, App_stopwatchTime.timeCurrent.second / 60, (unsigned char) App_stopwatchTime.timeCurrent.second % 60, &Font_alfanum_8, App_stopwatchTime.timeCurrent.millesimal, 0);
     for (unsigned char i = 0; i < 3; i++) {
         App_stopwatchTimeBaseFormat *t = App_stopwatch_getHistory(i);
         Std_printf("%ul:%1ud:%1ud\r\n", t->second / 60, (unsigned char) t->second % 60, t->millesimal);

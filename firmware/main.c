@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
 }
 
 void MAIN_INT_Process() {
-    for (unsigned int i = 0; i < 12; i++)
+    for (unsigned int i = 0; i < 15; i++)
         Int_coreTimerMS();
 
     if (Keyboard_getKeyUp()) {

@@ -55,6 +55,7 @@ void App_stopwatch_timerClear(void) {
     App_stopwatchTime.timeCurrent.millesimal = 0;
     App_stopwatchTime.timeCurrent.second = 0;
     App_stopwatchTime.timeHistory.index = 0;
+    App_stopwatchTime.isPause = 0;
     for (unsigned char i = 0; i < APP_STOPWATCH_MAX_HISTORY; i++) {
         App_stopwatchTime.timeHistory.time[i].millesimal = 0;
         App_stopwatchTime.timeHistory.time[i].second = 0;
@@ -79,8 +80,10 @@ void App_stopwatch_intButtonUp(void) {
     if (App_stopwatchTime.enableControl) {
         if (App_stopwatchTime.enable) {
             App_stopwatchTime.enable = 0;
+            App_stopwatchTime.isPause = 1;
         } else {
             App_stopwatchTime.enable = 1;
+            App_stopwatchTime.isPause = 0;
         }
     }
 }
@@ -114,4 +117,5 @@ void App_stopwatch_loop(void) {
 void App_stopwatch_initialize(void) {
     StatusBar_register(&SB_stopwatchRegister);
     Int_register(&App_stopwatchIntEventTimerMS, INT_TIMER_MS);
+    App_stopwatch_timerClear();
 }
