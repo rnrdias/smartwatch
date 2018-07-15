@@ -12,13 +12,7 @@ Define configurações para o compilador personalizadas
 #ifndef USER_H_
 #define USER_H_
 
-//AVR
-/*
-#include <avr/pgmspace.h>
-#define CONST const PROGMEM
-#define RCB(VAR) pgm_read_byte(VAR) // Read const byte
- */
-
+#define _SIMULATOR_
 //Load const
 #define _LC(x) ((void*)x+((long long int)1<<(sizeof(char *)*8-2)))
 //#define _LC(x) (x)

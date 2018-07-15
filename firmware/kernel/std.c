@@ -13,7 +13,6 @@
  */
 #include "std.h"
 
-
 //#define Std_buffer(val) Std_out(val)
 
 typedef union intToStringFragType {
@@ -157,7 +156,11 @@ void Std_vaprintf(void (*functionPtr)(char), const char *vstr, va_list arg_ptr) 
             } else {
                 isComand = 0;
                 if (Std_extends != 0)
+#ifdef _SIMULATOR_
                     (*Std_extends)(functionPtr, vstr, arg_ptr);
+#else   
+                    (*Std_extends)(functionPtr, vstr, &arg_ptr);
+#endif
             }
         } else {
             (*functionPtr)(str);
