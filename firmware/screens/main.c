@@ -7,24 +7,35 @@
 #include "screens.h"
 #include "../app/status_bar/status_bar.h"
 
-CONST char dsHour[] = "%w%1d:%1d%w\n%1d\r\n";
+CONST char dsHour[] = "%w%1d:%1d%w\n\n%1d\r\n";
 CONST char dsDate[] = "%s %1d-%1d-%3d";
 
 void Sc_mainPrintIcon(const StatusBar_paramFormat *s, void *parameter) {
     Std_printf("%w%c", (char*) RVCW(&s->icon), 0);
+    *(void **) parameter = (StatusBar_paramFormat *) s;
 }
 
 void Sc_mainLoop(Screen_windowLoad *this) {
+    StatusBar_paramFormat *SB_last = 0;
+    static TMS_timeFormat t;
+    static StatusBar_paramFormat *SB_lastPre = 0;
+
     char *weekday = (char *) (&lang->sunday + RTC_getWeekday());
     weekday = (char *) RVCW(weekday);
     Std_printf("%r");
-    StatusBar_check(Sc_mainPrintIcon, 0);
-    UPP_setCursorXY(5, 1);
-    Std_printf(_LC(dsHour), &Font_numeric_16, RTC_date.hour, RTC_date.minute, &Font_alfanum_8, RTC_date.second);
+    StatusBar_check(Sc_mainPrintIcon, &SB_last);
+    UPP_setCursorXY(1, 1);
+    Std_printf(_LC(dsHour), &Font_numeric_24, RTC_date.hour, RTC_date.minute, &Font_alfanum_8, RTC_date.second);
     Std_printf(_LC(dsDate), weekday, RTC_date.day, RTC_date.month, RTC_date.year);
-    Std_printf("%s", "info");
-
-
+    
+    if(SB_last != SB_lastPre){
+        t = 3000;
+        TMS_loadTime(&t);
+        SB_lastPre = SB_last;
+    }else if (SB_last && !TMS_checkTime(&t)) {
+        Std_printf("%w%c%w%s", RVCW(&SB_last->icon), 0, &Font_alfanum_8, (char*) RVCW(&SB_last->title));
+    }
+    
     if (Keyboard_keyEnter()) {
         Screen_windowLoad scLoad;
         scLoad.parameters = 0;

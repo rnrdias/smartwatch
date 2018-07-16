@@ -25,6 +25,13 @@ extern "C" {
     void TMS_initialize_interruption(void);
     void TMS_interrupt(void);
 
+    /*typedef struct{
+        unsigned long int time;
+    }TMS_timeFormat;*/
+    
+    typedef unsigned int TMS_timeFormat;
+    void TMS_loadTime(TMS_timeFormat *time);
+    unsigned char TMS_checkTime(TMS_timeFormat *time);
 #ifdef __cplusplus
 }
 #endif

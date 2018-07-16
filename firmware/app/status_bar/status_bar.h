@@ -35,7 +35,7 @@ extern "C" {
         Util_list item;
         const StatusBar_paramFormat *data;
     } StatusBar_registerFormat;
-
+    
     void StatusBar_register(StatusBar_registerFormat *r);
     void StatusBar_unregister(StatusBar_registerFormat *r);
     void StatusBar_initialize();

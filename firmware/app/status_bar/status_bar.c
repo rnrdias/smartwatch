@@ -8,15 +8,18 @@
 
 Util_list *root;
 unsigned char count;
+const StatusBar_paramFormat *StatusBar_lastResiter;
 
 void StatusBar_register(StatusBar_registerFormat *r) {
     Util_listAdd(&root, &r->item);
+    StatusBar_lastResiter = r->data;
     count++;
 }
 
 void StatusBar_unregister(StatusBar_registerFormat *r) {
     if (Util_listRemove(&root, &r->item)) {
         count--;
+        StatusBar_lastResiter = 0;
     }
 }
 
