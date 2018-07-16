@@ -14,6 +14,9 @@ App_alarms_sleepParamFormat Alarms_sleep;
 
 //___________________ICON______________________________
 
+void SB_alarmsFunction(void) {
+    App_alarmsSleepDisable();
+}
 CONST UPP_BitmapFormat SB_alamesIcon = {
     STATUS_BAR_HEAD //0x06,0x01,0x00,0x01,
     {0x00, 0x7e, 0x7e, 0x7e, 0x7e, 0x00}
@@ -23,30 +26,32 @@ CONST char SB_alarmsTitle[] = "Soneca";
 CONST StatusBar_paramFormat SB_alarms = {
     _LC(&SB_alamesIcon),
     _LC(&SB_alarmsTitle),
-    0,
-    0,
+    SB_alarmsFunction,
 };
-
-const StatusBar_paramFormat *SB_alarmsLoop() {
-    if (Alarms_sleep.enable)
-        return _LC(&SB_alarms);
-    else
-        return 0;
-}
 
 StatusBar_registerFormat SB_alarmsRegister = {
-    {0},
-    SB_alarmsLoop
+    0,
+    _LC(&SB_alarms)
 };
-
-
-
 //_____________________APP__________________________
+
 void App_alarms_ringing(char index) {
     Screen_windowLoad scLoad;
     scLoad.parameters = (void *) 0x00 + index;
     scLoad.windows = &Sc_alarmsRinging;
     Screen_windowOpen(&scLoad);
+}
+
+void App_alarmsSleepEnable(unsigned char time) {
+    if (!Alarms_sleep.enable) {
+        Alarms_sleep.enable = 1;
+        Alarms_sleep.time = time;
+    }
+}
+
+void App_alarmsSleepDisable() {
+    Alarms_sleep.enable = 0;
+    StatusBar_unregister(&SB_alarmsRegister);
 }
 
 void App_alarms_loop(void) {
@@ -82,6 +87,7 @@ void App_alarms_loop(void) {
 
     if (Alarms_sleep.enable) {
         if (Alarms_sleep.time) {
+            StatusBar_register(&SB_alarmsRegister);
             Alarms_sleep.currentMinute = RTC_date.minute + Alarms_sleep.time;
             Alarms_sleep.currentHour = RTC_date.hour;
 
@@ -96,7 +102,7 @@ void App_alarms_loop(void) {
         }
 
         if (Alarms_sleep.currentHour == RTC_date.hour && Alarms_sleep.currentMinute == RTC_date.minute) {
-            Alarms_sleep.enable = 0;
+            App_alarmsSleepDisable();
             App_alarms_ringing(0);
         }
     }
@@ -113,9 +119,6 @@ void App_alarms_initialize(void) {
     Alarms_sleep.currentMinute = 0;
     Alarms_sleep.enable = 0;
     Alarms_sleep.time = 10;
-
-    StatusBar_register(&SB_alarmsRegister);
-
 
     //test
     Alarms[0].hour = 0;

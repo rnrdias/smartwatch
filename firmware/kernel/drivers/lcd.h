@@ -11,8 +11,8 @@
  * Created on 8 de Maio de 2018, 11:24
  */
 
-#ifndef LCD_SIMULATOR_H
-#define LCD_SIMULATOR_H
+#ifndef LCD_H
+#define LCD_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,5 +26,5 @@ void LCD_sendBuffer(char *buffer);
 }
 #endif
 
-#endif /* SCREENMAIN_H */
+#endif /* LCD_H */
 

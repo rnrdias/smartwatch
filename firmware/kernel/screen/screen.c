@@ -262,6 +262,9 @@ void Screen_listSelectPrint() {
     listIndex = listAux->scrollIndex;
     i = listAux->quantPrint;
     while (i--) {
+        if (listIndex >= listAux->sizeList)
+            break;
+
         if (listAux->index == listIndex) {
             listAux->itens[listIndex].isSelect = 1;
             if (Screen_getKeyEntre()) {
@@ -277,9 +280,6 @@ void Screen_listSelectPrint() {
             scrollOffset += listAux->itens[listIndex].itemPrintSize - 1;
             listAux->itens[listIndex].itemPrint(&listAux->itens[listIndex]);
         }
-
-        if (++listIndex >= listAux->sizeList)
-            break;
-
+        listIndex++;
     }
 }

@@ -13,7 +13,7 @@ typedef struct {
 
 void Sc_alarmsRingingStart(Screen_windowLoad *this) {
     this->windows->title = (char*) RVCW(&lang->alarms);
-    char index = (char) this->parameters;
+    char index = this->parameters;
 
     Mem_alloc(this->parameters, sizeof (Sc_alarmsRingingParam));
 
@@ -39,8 +39,7 @@ void Sc_alarmsRingingLoop(Screen_windowLoad *this) {
 
     Beep_param = &p->beep;
     if (Keyboard_keyEsc()) {
-        Alarms_sleep.enable = 10;
-        Alarms_sleep.time = 1;
+        App_alarmsSleepEnable(1);
         Screen_windowClose();
     }
 

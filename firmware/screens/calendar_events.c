@@ -50,14 +50,14 @@ void Sc_calendarEventsStart(Screen_windowLoad *this) {
     p->list.sizeList = 5;
     p->list.index = 0;
     p->list.scrollIndex = 0;
-
-    Screen_listSelectLoad(&p->list);
 }
 
 void Sc_calendarEventsLoop(Screen_windowLoad *this) {
+    Sc_calendarEventsParam *p = this->parameters;
     if (Keyboard_keyEsc() && !Screen_hasEditNumRun()) {
         Screen_windowClose();
     }
+    Screen_listSelectLoad(&p->list);
     Screen_listSelectPrint();
 }
 

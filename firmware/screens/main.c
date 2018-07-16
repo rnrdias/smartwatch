@@ -10,11 +10,15 @@
 CONST char dsHour[] = "%w%1d:%1d%w\n%1d\r\n";
 CONST char dsDate[] = "%s %1d-%1d-%3d";
 
+void Sc_mainPrintIcon(const StatusBar_paramFormat *s, void *parameter) {
+    Std_printf("%w%c", (char*) RVCW(&s->icon), 0);
+}
+
 void Sc_mainLoop(Screen_windowLoad *this) {
     char *weekday = (char *) (&lang->sunday + RTC_getWeekday());
     weekday = (char *) RVCW(weekday);
     Std_printf("%r");
-    StatusBar_print();
+    StatusBar_check(Sc_mainPrintIcon, 0);
     UPP_setCursorXY(5, 1);
     Std_printf(_LC(dsHour), &Font_numeric_16, RTC_date.hour, RTC_date.minute, &Font_alfanum_8, RTC_date.second);
     Std_printf(_LC(dsDate), weekday, RTC_date.day, RTC_date.month, RTC_date.year);

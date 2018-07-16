@@ -55,8 +55,8 @@ extern "C" {
 
     extern App_alarms_paramFormat Alarms[ALARMS_MAX];
     extern App_alarms_sleepParamFormat Alarms_sleep;
-
-    void App_alarms_ringing(char index);
+    void App_alarmsSleepEnable(unsigned char time);
+    void App_alarmsSleepDisable();
 
     void App_alarms_initialize(void);
     void App_alarms_loop(void);

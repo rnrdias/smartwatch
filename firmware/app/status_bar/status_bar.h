@@ -28,20 +28,19 @@ extern "C" {
     typedef struct _StatusBar_paramFormat {
         const UPP_BitmapFormat *icon;
         const char *title;
-        const char *description;
-        const char *function;
+        void (*function)(void);
     } StatusBar_paramFormat;
 
     typedef struct _StatusBar_registerFormat {
         Util_list item;
-        const StatusBar_paramFormat *(*functionRegister)(void);
+        const StatusBar_paramFormat *data;
     } StatusBar_registerFormat;
 
     void StatusBar_register(StatusBar_registerFormat *r);
+    void StatusBar_unregister(StatusBar_registerFormat *r);
     void StatusBar_initialize();
-    void StatusBar_print();
-    void StatusBar_check(void (*functionPtr)(const StatusBar_paramFormat *s));
-
+    void StatusBar_check(void (*functionPtr)(const StatusBar_paramFormat *s, void *parameter), void *parameter);
+    unsigned char StatusBar_size(void);
 #ifdef __cplusplus
 }
 #endif

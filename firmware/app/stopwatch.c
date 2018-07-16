@@ -5,8 +5,15 @@
  */
 
 #include "stopwatch.h"
-
+#include "../screens/screens.h"
 //___________________ICON______________________________
+
+void SB_stopwatchFunction(void) {
+    Screen_windowLoad scLoad;
+    scLoad.parameters = 0;
+    scLoad.windows = &Sc_stopwatch;
+    Screen_windowOpen(&scLoad);
+}
 
 CONST UPP_BitmapFormat SB_stopwatchIcon = {
     STATUS_BAR_HEAD
@@ -17,20 +24,12 @@ CONST char SB_stopwatchTitle[] = "Stopwatch";
 CONST StatusBar_paramFormat SB_stopwatch = {
     _LC(&SB_stopwatchIcon),
     _LC(&SB_stopwatchTitle),
-    0,
-    0,
+    SB_stopwatchFunction,
 };
-
-const StatusBar_paramFormat *SB_stopwatchLoop() {
-    if (App_stopwatchTime.enable)
-        return _LC(&SB_stopwatch);
-    else
-        return 0;
-}
 
 StatusBar_registerFormat SB_stopwatchRegister = {
     0,
-    SB_stopwatchLoop
+    _LC(&SB_stopwatch)
 };
 
 //___________________________function control________________________________
@@ -80,9 +79,11 @@ void App_stopwatch_intButtonUp(void) {
     if (App_stopwatchTime.enableControl) {
         if (App_stopwatchTime.enable) {
             App_stopwatchTime.enable = 0;
+            StatusBar_unregister(&SB_stopwatchRegister);
             App_stopwatchTime.isPause = 1;
         } else {
             App_stopwatchTime.enable = 1;
+            StatusBar_register(&SB_stopwatchRegister);
             App_stopwatchTime.isPause = 0;
         }
     }
@@ -115,7 +116,6 @@ void App_stopwatch_loop(void) {
 }
 
 void App_stopwatch_initialize(void) {
-    StatusBar_register(&SB_stopwatchRegister);
     Int_register(&App_stopwatchIntEventTimerMS, INT_TIMER_MS);
     App_stopwatch_timerClear();
 }
