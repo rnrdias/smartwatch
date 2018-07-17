@@ -7,6 +7,7 @@
 #include "screens.h"
 #include "../app/status_bar/status_bar.h"
 #include "../kernel/drivers/lcd.h"
+#include "../kernel/energy_management.h"
 
 CONST char dsHour[] = "%w%1d:%1d%w\n\n%1d\r\n";
 CONST char dsDate[] = "%s %1d-%1d-%3d";
@@ -50,5 +51,6 @@ void Sc_mainLoop(Screen_windowLoad *this) {
         scLoad.windows = &Sc_status;
         Screen_windowOpen(&scLoad);
     }
+    EM.timeStandbay = TMS_INT_SEC; //1fps
 }
 Screen_window Sc_main = {0, Sc_mainLoop, 0, 0, 0, 0};

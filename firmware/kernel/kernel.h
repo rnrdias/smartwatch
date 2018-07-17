@@ -24,7 +24,8 @@ extern "C" {
 #include "drivers/time_ms.h"
 #include "drivers/interruption.h"
 #include "mem.h"
-
+#include "energy_management.h"
+    
     void Start_initialize();
 
     void Start_loop();

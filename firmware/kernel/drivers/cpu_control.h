@@ -18,8 +18,8 @@
 extern "C" {
 #endif
 
+    void CPU_standby(void);
     
-
 
 
 #ifdef __cplusplus

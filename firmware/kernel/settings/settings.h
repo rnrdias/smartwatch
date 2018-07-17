@@ -30,8 +30,8 @@ extern "C" {
 #include "../drivers/real_time_clock.h"
 #include "../drivers/beep.h"
 #include "../mem.h"
-
-
+    
+    
     char lcdBuffer[504];
     void Std_extend(void (*functionPtr)(char), const char *str, va_list *arg_ptr);
 
@@ -39,7 +39,7 @@ extern "C" {
     void App_INT_buttonUp(void);
     void APP_INT_buttonDown(void);
     void APP_INT_timerMS(void);
-    
+
 #ifdef __cplusplus
 }
 #endif 

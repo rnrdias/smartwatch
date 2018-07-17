@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/kernel/drivers/lcd_simulator.o \
 	${OBJECTDIR}/kernel/drivers/real_time_clock.o \
 	${OBJECTDIR}/kernel/drivers/time_ms_simulator.o \
+	${OBJECTDIR}/kernel/energy_management.o \
 	${OBJECTDIR}/kernel/fonts/alfanum_6.o \
 	${OBJECTDIR}/kernel/fonts/alfanum_8.o \
 	${OBJECTDIR}/kernel/fonts/numeric_16.o \
@@ -162,6 +163,11 @@ ${OBJECTDIR}/kernel/drivers/time_ms_simulator.o: kernel/drivers/time_ms_simulato
 	${MKDIR} -p ${OBJECTDIR}/kernel/drivers
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/drivers/time_ms_simulator.o kernel/drivers/time_ms_simulator.c
+
+${OBJECTDIR}/kernel/energy_management.o: kernel/energy_management.c
+	${MKDIR} -p ${OBJECTDIR}/kernel
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/kernel/energy_management.o kernel/energy_management.c
 
 ${OBJECTDIR}/kernel/fonts/alfanum_6.o: kernel/fonts/alfanum_6.c
 	${MKDIR} -p ${OBJECTDIR}/kernel/fonts

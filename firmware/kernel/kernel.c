@@ -6,9 +6,12 @@
 
 #include "kernel.h"
 
+
 Beep_paramFormat param = {2000, 250, 1, 0, 1, 0};
 
 void Start_loop(void) {
+    EM_standbayLoop();
+    EM.timeStandbay = TMS_INT_SEC / 2; //fps 2
     Mem_loop();
     Keyboard_loop();
     Hardware_loop();
@@ -35,6 +38,7 @@ void Start_initialize(void) {
     RTC_initialize();
     Beep_initialize();
     Int_initialize();
+    EM_standbayInitialize();
 }
 
 
