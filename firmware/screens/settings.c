@@ -5,12 +5,22 @@
  */
 
 #include "screens.h"
+#include "../kernel/drivers/lcd.h"
 
 void Sc_settingsClick(Screen_listItem *this) {
     Screen_windowLoad scLoad;
     scLoad.windows = this->parameter;
     scLoad.parameters = 0;
     Screen_windowOpen(&scLoad);
+}
+
+void Sc_settingsPrintItemBrightness(Screen_listItem *this) {
+    Screen_numberEditFormat *n = this->parameter;
+
+    if (this->isSelect) {
+        Std_printf("%y%x", n);
+    }
+    Std_printf("%m%#%s:%t%2d%t", this->isSelect, &Font_alfanum_8, ' ', (char*) RVCW(&lang->lcdBrightness), n->editRun, (int) n->numView, 0);
 }
 
 void Sc_settingsStart(Screen_windowLoad *this) {
@@ -21,7 +31,7 @@ void Sc_settingsStart(Screen_windowLoad *this) {
     Screen_list *list = this->parameters;
     //list->itens = itens;
     list->quantPrint = 5;
-    list->sizeList = 1;
+    list->sizeList = 2;
     list->index = 0;
     list->scrollIndex = 0;
 
@@ -44,12 +54,18 @@ void Sc_settingsResume(Screen_windowLoad *this) {
     Screen_listItem *itens;
     Screen_list *list = this->parameters;
 
-    Mem_alloc(list->itens, 1 * sizeof (Screen_listItem));
+    Mem_alloc(list->itens, 2 * sizeof (Screen_listItem));
     itens = list->itens;
-
     itens[0].description = (char*) RVCW(&lang->settingsDateHour);
     itens[0].click = &Sc_settingsClick;
     itens[0].parameter = &Sc_settingsDateHour;
+
+    itens[1].description = 0;
+    itens[1].click = 0;
+    //itens[1].parameter = 00;
+    Mem_alloc(list->itens[1].parameter, sizeof (Screen_numberEditFormat));
+    itens[1].itemPrint = Sc_settingsPrintItemBrightness;
+    itens[1].itemPrintSize = 1;
 
     /* itens[1].description = "C2";
      itens[1].click = &Sc_settingsClick;
@@ -68,10 +84,28 @@ void Sc_settingsResume(Screen_windowLoad *this) {
      itens[4].parameter = &Sc_status;*/
 
 
+    Screen_numberEditFormat *n = itens[1].parameter;
+    n->numInc = 10;
+    n->numMax = 0x7f;
+    n->numMin = 10;
+    n->numVar = (long *) &LCD.contrast;
+    n->editRun = 0;
+    n->sucess = 0;
+    n->type = Screen_numberEditUnsignedChar;
+
+    /*n->month.numInc = 1;
+    n->month.numMax = 12;
+    n->month.numMin = 1;
+    n->month.numVar = (long *) &p->calendar->month;
+    n->month.editRun = 0;
+    n->month.sucess = 0;
+    n->month.type = Screen_numberEditUnsignedChar;*/
+
 }
 
 void Sc_settingsPause(Screen_windowLoad *this) {
     Screen_list *list = this->parameters;
+    Mem_free(list->itens[1].parameter);
     Mem_free(list->itens);
 }
 Screen_window Sc_settings = {0, Sc_settingsLoop, Sc_settingsStart, Sc_settingsEnd, Sc_settingsResume, Sc_settingsPause};

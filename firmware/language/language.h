@@ -49,6 +49,7 @@ extern "C" {
         const char initSwitchedOn;
         const char *alarm;
         const char *sleep;
+        const char *lcdBrightness;
     } Language;
 
     const Language *lang;

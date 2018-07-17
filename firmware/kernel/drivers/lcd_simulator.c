@@ -10,16 +10,15 @@
 //#include <conio.h>
 //#include <windows.h>
 
-
 void gotoxy(int x, int y) {
     //to windows
-/*  COORD coord;
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);*/
-    
+    /*  COORD coord;
+        coord.X = x;
+        coord.Y = y;
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);*/
+
     //to linux
-    printf("%c[%d;%df",0x1B,y,x);
+    printf("%c[%d;%df", 0x1B, y, x);
 }
 
 #define displayWidth() 84
@@ -56,6 +55,21 @@ void LCD_sendBuffer(char *buffer) {
     //printf("%d%d%d%d\n\n", BA, BB, BC, BD);
 }
 
+
+void LCD_setContrast(unsigned char value) {
+    
+}
+
+void LCD_loop(void) {
+    static unsigned char brightness;
+
+    if (brightness != LCD.contrast) {
+        LCD_setContrast(LCD.contrast);
+        brightness = LCD.contrast;
+    }
+}
+
 void LCD_initialize(void) {
+    LCD.contrast = 60;
     gotoxy(0, 0);
 }

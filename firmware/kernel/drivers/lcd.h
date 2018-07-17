@@ -18,9 +18,16 @@
 extern "C" {
 #endif
 
-void LCD_initialize(void);  
-void LCD_sendBuffer(char *buffer);
+    typedef struct {
+        unsigned char contrast;
+        unsigned char powerdown;
+    } LCD_param;
 
+    LCD_param LCD;
+
+    void LCD_initialize(void);
+    void LCD_sendBuffer(char *buffer);
+    void LCD_loop(void);
 
 #ifdef __cplusplus
 }

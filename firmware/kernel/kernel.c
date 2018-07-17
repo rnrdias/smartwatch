@@ -15,6 +15,7 @@ void Start_loop(void) {
     Beep_loop();
     RTC_loop();
     Screen_loop();
+    LCD_loop();
     if (Keyboard_keyDown() || Keyboard_getKeyEnter() || Keyboard_getKeyEsc() || Keyboard_getKeyUp()) {
         Beep_param = &param;
         param.repeat = 1;

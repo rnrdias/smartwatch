@@ -47,7 +47,7 @@ void Sc_calendarEventsStart(Screen_windowLoad *this) {
 
     p->calendar = calendarParam;
     p->list.quantPrint = 5;
-    p->list.sizeList = 5;
+    p->list.sizeList = 1;
     p->list.index = 0;
     p->list.scrollIndex = 0;
 }
@@ -80,7 +80,7 @@ void Sc_calendarEventsResume(Screen_windowLoad *this) {
     itens[0].itemPrintSize = 2;
 
 
-    itens[1].description = (char*) RVCW(&lang->calendar);
+    /*itens[1].description = (char*) RVCW(&lang->calendar);
     itens[1].click = &Sc_calendarEventsClick;
     itens[1].parameter = &Sc_status;
 
@@ -94,7 +94,7 @@ void Sc_calendarEventsResume(Screen_windowLoad *this) {
 
     itens[4].description = (char*) RVCW(&lang->status);
     itens[4].click = &Sc_calendarEventsClick;
-    itens[4].parameter = &Sc_status;
+    itens[4].parameter = &Sc_status;*/
 
     
 

@@ -27,6 +27,7 @@ CONST char pt_br_switchedOn[] = "Lig";
 //seq fim
 CONST char pt_br_alarm[] = "Alarme";
 CONST char pt_br_sleep[] = "Soneca";
+CONST char pt_br_lcdBrightness[] = "LCD Brilho";
 
 CONST Language _pt_br = {
     _LC(pt_br_alarms),
@@ -54,7 +55,8 @@ CONST Language _pt_br = {
     'S',
     'L',
     _LC(pt_br_alarm),
-    _LC(pt_br_sleep)
+    _LC(pt_br_sleep),
+    _LC(pt_br_lcdBrightness)
 };
 
 //CONST Language * const pt_br = (const Language *) _LC((void *)&_pt_br);
