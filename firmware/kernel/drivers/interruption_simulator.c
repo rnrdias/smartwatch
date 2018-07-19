@@ -48,8 +48,10 @@ void Int_processEventHandle(Util_list *e) {
 }
 
 void Int_coreTimerMS() {
-    Int_timerMS();
-    Int_processEventHandle(Int_rootTimeMs);
+    if (TMS_interrupt()) {
+        Int_timerMS();
+        Int_processEventHandle(Int_rootTimeMs);
+    }
 }
 
 void Int_coreButtonUp() {

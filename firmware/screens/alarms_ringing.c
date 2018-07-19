@@ -20,11 +20,11 @@ void Sc_alarmsRingingStart(Screen_windowLoad *this) {
     Sc_alarmsRingingParam *p = this->parameters;
     p->index = index;
     p->beep.frequency = 2000;
-    p->beep.frequencyDelay = 200;
-    p->beep.masterRepeat = 2;
-    p->beep.masterRepeatDelay = 500;
-    p->beep.repeat = 250;
-    p->beep.repeatDelay = 250;
+    p->beep.frequencyDelay = 20;
+    p->beep.repeat = 2;
+    p->beep.repeatDelay = 25;
+    p->beep.masterRepeat = 1;
+    p->beep.masterRepeatDelay = 100;
 }
 
 void Sc_alarmsRingingLoop(Screen_windowLoad *this) {

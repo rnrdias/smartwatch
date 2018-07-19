@@ -19,15 +19,16 @@ extern "C" {
 #endif
 
     typedef struct {
-        unsigned int frequency;
-        unsigned int frequencyDelay;
-        unsigned char repeat;
-        unsigned int repeatDelay;
-        unsigned char masterRepeat;
-        unsigned int masterRepeatDelay;
+        unsigned int frequency; //frequencia 
+        unsigned int frequencyDelay; //frequencia duração
+        unsigned char repeat; //numero de repetiçoes
+        unsigned int repeatDelay; //repetições duração
+        unsigned char masterRepeat; //numero de repetiçoes master
+        unsigned int masterRepeatDelay; //repetições duração master
     } Beep_paramFormat;
 
     Beep_paramFormat *Beep_param;
+    
     void Beep_initialize(void);
     void Beep_loop(void);
 

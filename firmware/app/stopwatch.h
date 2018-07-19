@@ -26,10 +26,6 @@ extern "C" {
 #define APP_STOPWATCH_MAX_HISTORY 5
 
     typedef struct {
-        unsigned char auxMillesimal;
-    } App_stopwatchTimeCoreFormat;
-
-    typedef struct {
         unsigned long int second;
         unsigned char millesimal;
     } App_stopwatchTimeBaseFormat;
@@ -47,8 +43,6 @@ extern "C" {
         App_stopwatchTimeHistoryFormat timeHistory;
     } App_stopwatchTimeFormat;
 
-
-    App_stopwatchTimeCoreFormat App_stopwatchTimeCore;
     App_stopwatchTimeFormat App_stopwatchTime;
 
     void App_stopwatch_addHistory(void);

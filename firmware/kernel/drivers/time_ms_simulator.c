@@ -14,7 +14,6 @@
 #include "time_ms.h"
 TMS_timeFormat TMS_cont;
 
-
 void TMS_initialize(void) {
     TMS = 0;
 }
@@ -34,7 +33,7 @@ unsigned char TMS_checkTime(TMS_timeFormat *time) {
     }
 }
 
-void TMS_interrupt(void) {
+unsigned char TMS_interrupt(void) {
     static unsigned char acc = 0;
     static unsigned char TMS_pre = 0;
     if (++acc >= TMS_INT_SEC)
@@ -43,7 +42,9 @@ void TMS_interrupt(void) {
     if (TMS != TMS_pre) {
         TMS_cont++;
         TMS_pre = TMS;
+        return 1;
     }
+    return 0;
 }
 
 void TMS_loop(void) {

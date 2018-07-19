@@ -59,17 +59,15 @@ void App_stopwatch_timerClear(void) {
         App_stopwatchTime.timeHistory.time[i].millesimal = 0;
         App_stopwatchTime.timeHistory.time[i].second = 0;
     }
-    App_stopwatchTimeCore.auxMillesimal = 0;
 }
 
 //______________________Interrupt inicialize______________
 
 void App_stopwatch_intTimerMS(void) {
     if (App_stopwatchTime.enable) {
-        App_stopwatchTimeCore.auxMillesimal++;
-        App_stopwatchTime.timeCurrent.millesimal = (App_stopwatchTimeCore.auxMillesimal * 100) / TMS_INT_SEC;
-        if (App_stopwatchTimeCore.auxMillesimal >= TMS_INT_SEC) {
-            App_stopwatchTimeCore.auxMillesimal = 0;
+        App_stopwatchTime.timeCurrent.millesimal++;
+        if (App_stopwatchTime.timeCurrent.millesimal > 99) {
+            App_stopwatchTime.timeCurrent.millesimal = 0;
             App_stopwatchTime.timeCurrent.second++;
         }
     }

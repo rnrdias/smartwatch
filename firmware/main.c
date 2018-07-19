@@ -35,14 +35,16 @@ int main(int argc, char** argv) {
         App_loop();
         Start_loop();
         LCD_sendBuffer(lcdBuffer);
-        usleep(100 * 1000);
+        
         MAIN_INT_Process();
     }
 }
 
 void MAIN_INT_Process() {
-    for (unsigned int i = 0; i < 100; i++)
+    for (unsigned int i = 0; i < 10; i++){
         Int_coreTimerMS();
+        usleep(5 * 1000);
+    }
 
     if (Keyboard_getKeyUp()) {
         Int_coreButtonUp();

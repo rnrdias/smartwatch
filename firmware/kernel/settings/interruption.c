@@ -7,7 +7,6 @@
 
 void Int_timerMS() {
     static unsigned char tmpAntAcc = 0;
-    TMS_interrupt();
     if (tmpAntAcc > TMS) {
         RTC_secondIncr();
     }

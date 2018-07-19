@@ -23,7 +23,7 @@ extern "C" {
     void TMS_initialize(void);
     void TMS_loop(void);
     void TMS_initialize_interruption(void);
-    void TMS_interrupt(void);
+    unsigned char TMS_interrupt(void);
 
     /*typedef struct{
         unsigned long int time;
