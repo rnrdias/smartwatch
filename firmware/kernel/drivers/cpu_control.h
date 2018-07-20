@@ -19,7 +19,7 @@ extern "C" {
 #endif
 
     void CPU_standby(void);
-    
+    void CPU_initialize(void);
 
 
 #ifdef __cplusplus

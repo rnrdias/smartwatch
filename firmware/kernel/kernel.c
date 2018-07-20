@@ -7,7 +7,7 @@
 #include "kernel.h"
 
 
-Beep_paramFormat param = {2000, 25, 1, 0, 1, 0};
+Beep_paramFormat param = {1000, 1, 1, 0, 1, 0};
 
 void Start_loop(void) {
     EM_standbayLoop();
@@ -39,6 +39,7 @@ void Start_initialize(void) {
     Std_extends = Std_extend;
     UPP_fontDefault = &Font_alfanum_8;
     EM_standbayInitialize();
+    CPU_initialize();
 }
 
 

@@ -8,3 +8,7 @@
 void CPU_standby() {
 
 }
+
+void CPU_initialize(){
+    
+}
