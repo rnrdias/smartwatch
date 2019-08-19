@@ -49,7 +49,7 @@ void LCD_sendBuffer(char *buffer) {
             bit = 0;
             y--;
         }
-        printf("\n");
+        printf("\r\n");
     }
 
     //printf("%d%d%d%d\n\n", BA, BB, BC, BD);

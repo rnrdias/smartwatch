@@ -7,17 +7,17 @@
 #include "settings.h"
 
 char Keyboard_getKeyEnter() {
-    return letra == '1';
+    return letra == 'a';
 }
 
 char Keyboard_getKeyEsc() {
-    return letra == '7';
+    return letra == 'd';
 }
 
 char Keyboard_getKeyUp() {
-    return letra == '9';
+    return letra == 'w';
 }
 
 char Keyboard_getKeyDown() {
-    return letra == '3';
+    return letra == 's';
 }

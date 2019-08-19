@@ -34,14 +34,14 @@ char Screen_getScrollStop() {
 }
 
 void Screen_windowLoadHead(const char *title) {
-    Std_printf("%r%w%#%s %d ", &Font_alfanum_6, &Font_alfanum_8, '_', title, Mem_getSizeAlloc());
-    static unsigned char second, fps;
+    Std_printf("%r%w%#%s", &Font_alfanum_6, &Font_alfanum_8, '_', title, Mem_getSizeAlloc());
+    /*static unsigned char second, fps;
     fps++;
     if (RTC_date.second != second) {
         second = RTC_date.second;
         Std_printf("%d", fps);
         fps = 0;
-    }
+    }*/
 
     Std_printf("\r\n%w", &Font_alfanum_8);
 }

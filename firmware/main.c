@@ -34,8 +34,8 @@ int main(int argc, char** argv) {
     while (1) {
         App_loop();
         Start_loop();
-        LCD_sendBuffer(lcdBuffer);
         
+        LCD_sendBuffer(lcdBuffer);
         MAIN_INT_Process();
     }
 }
