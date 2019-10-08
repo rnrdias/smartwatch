@@ -38,8 +38,9 @@ OBJS = $(patsubst %.c,$(PATH_OBJS)/%.o,$(SOURCES))
 
 all: mkdir $(EXEC)
 
+all_debug: CFLAGS += -g
+all_debug: CFLAGSLINKER += -g
 all_debug: mkdir $(EXEC_DEBUG)
-
 
 mkdir:
 	mkdir -p $(PATH_BIN)
@@ -50,7 +51,7 @@ $(EXEC): $(OBJS)
 	$(CC) -o $@ $^ $(CFLAGSLINKER)
 
 $(EXEC_DEBUG): $(OBJS)
-	$(CC) -o $@ $^ -g $(CFLAGSLINKER)
+	$(CC) -o $@ $^ $(CFLAGSLINKER)
 
 #Processe todos os arquivos .c para .o
 $(PATH_OBJS)/%.o: %.c
