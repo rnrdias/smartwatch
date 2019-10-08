@@ -23,22 +23,22 @@ extern "C" {
     /*
      * Fonte alfanumerico tamanho 6
      */
-    CONST extern UPP_BitmapFormat _Font_alfanum_6;
+    extern CONST UPP_BitmapFormat _Font_alfanum_6;
 #define Font_alfanum_6 (*(UPP_BitmapFormat *)_LC(&_Font_alfanum_6))
     /*
      * Fonte alfanumerico tamanho 8
      */
-    CONST extern UPP_BitmapFormat _Font_alfanum_8;
+    extern CONST UPP_BitmapFormat _Font_alfanum_8;
 #define Font_alfanum_8 (*(const UPP_BitmapFormat*)_LC(&_Font_alfanum_8))
     /*
      * Fonte numerica tamanho 16
      */
-    CONST extern UPP_BitmapFormat _Font_numeric_16;
+    extern CONST UPP_BitmapFormat _Font_numeric_16;
 #define Font_numeric_16 (*(const UPP_BitmapFormat *)_LC(&_Font_numeric_16))
     /*
      * Fonte numerica tamanho 24
      */
-    CONST extern UPP_BitmapFormat _Font_numeric_24;
+    extern CONST UPP_BitmapFormat _Font_numeric_24;
 #define Font_numeric_24 (*(const UPP_BitmapFormat *)_LC(&_Font_numeric_24))
 
 #ifdef __cplusplus
