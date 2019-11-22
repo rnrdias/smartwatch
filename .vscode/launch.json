@@ -6,7 +6,7 @@
     "configurations": [
     
         {
-            "name": "build and debug",
+            "name": "build and debug simulator",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/smartwatchdebug",
@@ -24,7 +24,7 @@
                     "ignoreFailures": true,
                 }
             ],
-            "preLaunchTask": "build all (Debug)",
+            "preLaunchTask": "build all (Debug) simulator",
             "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
