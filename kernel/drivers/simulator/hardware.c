@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "hardware.h"
+#include "../hardware.h"
 
 #include <stdio.h>
 #include <stdlib.h>

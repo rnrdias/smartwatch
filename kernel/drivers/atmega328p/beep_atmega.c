@@ -4,29 +4,14 @@
  * and open the template in the editor.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include "beep.h"
-#include "interruption.h"
+#ifndef __AVR_ATmega328P__
+#define __AVR_ATmega328P__
+#endif
+#include <avr/io.h>
+#include <avr/power.h>
+#include "../beep.h"
+#include "../interruption.h"
 
-//#include <pthread.h>
-//#include <windows.h>
-
-/*void *Beep_beep(void *param) {
-    Beep_paramFormat *p = (Beep_paramFormat *) param;
-    /*while (p->repeat && p->masterRepeat) {
-        Beep(p->frequency, p->frequencyDelay);
-        Sleep(p->repeatDelay);
-        p->repeat--;
-        if (!(p->repeat % p->masterRepeat)) {
-            Sleep(p->masterRepeatDelay);
-        }
-    }*
-    p->repeat = 0;
-    pthread_exit(NULL);
-}*/
-
-//pthread_t thread;
 
 Beep_paramFormat Beep_core;
 
@@ -35,16 +20,22 @@ char beep_onNoff = 0;
 void Beep_on() {
     if (!beep_onNoff) {
         beep_onNoff = 1;
-        char command[100];
-        snprintf(command, 100, "pactl load-module module-sine frequency=%d>>/dev/null", Beep_core.frequency);
-        system(command);
+        SMCR = 0x01; // //CPU Sleep
+        TCCR0A = 0x33;
+        TCCR0B = 0x0b;
+
+        OCR0A = 12500 / (Beep_core.frequency / 10);
+        OCR0B = OCR0A / 2;
+        DDRD |= (1 << PD5);
     }
 }
 
 void Beep_off() {
     if (beep_onNoff) {
         beep_onNoff = 0;
-        system("pactl unload-module module-sine");
+        SMCR = 0x07; //CPU Sleep
+        DDRD &= ~(1 << PD5);
+        PORTD &= ~(1 << PD5);
     }
 }
 
@@ -87,14 +78,10 @@ void Beep_intTimerMS() {
 Int_event Beep_IntEventTimerMS = {0, Beep_intTimerMS};
 
 void Beep_loop(void) {
-    /*if (Beep_param) {
-        Beep_core = *Beep_param;
-        Beep_param = 0;
-    }*/
+
 }
 
 void Beep_initialize(void) {
     Beep_param = 0;
     Int_register(&Beep_IntEventTimerMS, INT_TIMER_MS);
-    Beep_off();
 }

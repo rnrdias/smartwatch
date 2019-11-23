@@ -10,7 +10,7 @@
  *
  * Created on 9 de Maio de 2018, 11:01
  */
-#include "settings.h"
+#include "../settings.h"
 //char toggle;
 
 char Util_toggleSeg() {

@@ -1,15 +1,53 @@
 
 ############################# Makefile ##########################
-CC=gcc 
-CFLAGS= -W -Wall -ansi -pedantic -std=c11 -lncurses
-CFLAGSLINKER= -std=c11 -lncurses
+SOURCES = 
+PATH_OBJS_DIR =
 
-PATH_BIN=build
+#Simulator Load
+ifeq "$(MAKECMDGOALS)" "all_simulator"
+	CC=gcc 
+	CFLAGS= -D SIMULATOR -g -W -Wall -ansi -pedantic -std=c11 -lncurses
+	CFLAGSLINKER= -g -std=c11 -lncurses
+
+	PATH_BIN=build/simulator
+
+	SOURCES += $(wildcard ./kernel/drivers/simulator/*.c)
+	SOURCES += $(wildcard ./kernel/settings/simulator/*.c)
+
+	PATH_OBJS_DIR += $(PATH_OBJS)/kernel/drivers/simulator
+	PATH_OBJS_DIR += $(PATH_OBJS)/kernel/settings/simulator
+
+#avr Load
+else 
+	ifeq "$(MAKECMDGOALS)" "all_m328p"
+		F_CPU=8000000L
+		MMCU=atmega328p
+		CC=avr-gcc 
+		CFLAGS= -D ATMEGA328P -ansi -pedantic -W -Wall -Os -std=c11 -mmcu=$(MMCU) -D F_CPU=$(F_CPU)
+		CFLAGSLINKER=-Wall -Os -std=c11 -mmcu=$(MMCU) -D F_CPU=$(F_CPU)
+
+		PATH_BIN=build/atmega328p
+
+		SOURCES += $(wildcard ./kernel/drivers/atmega328p/*.c)
+		SOURCES += $(wildcard ./kernel/settings/atmega328p/*.c)
+
+		PATH_OBJS_DIR += $(PATH_OBJS)/kernel/drivers/atmega328p
+		PATH_OBJS_DIR += $(PATH_OBJS)/kernel/settings/atmega328p
+
+	#others
+	else
+		PATH_BIN=build/simulator
+	endif
+
+endif
+	#PATH_BIN+=build/avr
+
+
+#Generic
 PATH_OBJS=$(PATH_BIN)/obj
 EXEC=$(PATH_BIN)/smartwatch
-EXEC_DEBUG=$(PATH_BIN)/smartwatchdebug
 
-SOURCES = $(wildcard *.c)
+SOURCES += $(wildcard *.c)
 SOURCES += $(wildcard ./app/*.c)
 SOURCES += $(wildcard ./app/status_bar/*.c)
 SOURCES += $(wildcard ./kernel/*.c)
@@ -21,7 +59,7 @@ SOURCES += $(wildcard ./kernel/upp/*.c)
 SOURCES += $(wildcard ./language/*.c)
 SOURCES += $(wildcard ./screens/*.c)
 
-PATH_OBJS_DIR = $(PATH_OBJS)
+PATH_OBJS_DIR += $(PATH_OBJS)
 PATH_OBJS_DIR += $(PATH_OBJS)/app
 PATH_OBJS_DIR += $(PATH_OBJS)/app/status_bar
 PATH_OBJS_DIR += $(PATH_OBJS)/kernel
@@ -36,11 +74,8 @@ PATH_OBJS_DIR += $(PATH_OBJS)/screens
 OBJS = $(patsubst %.c,$(PATH_OBJS)/%.o,$(SOURCES))
 
 
-all: mkdir $(EXEC)
-
-all_debug: CFLAGS += -g
-all_debug: CFLAGSLINKER += -g
-all_debug: mkdir $(EXEC_DEBUG)
+all_simulator: mkdir $(EXEC)
+all_m328p: mkdir $(EXEC)
 
 mkdir:
 	mkdir -p $(PATH_BIN)
@@ -48,9 +83,6 @@ mkdir:
 
 	
 $(EXEC): $(OBJS)
-	$(CC) -o $@ $^ $(CFLAGSLINKER)
-
-$(EXEC_DEBUG): $(OBJS)
 	$(CC) -o $@ $^ $(CFLAGSLINKER)
 
 #Processe todos os arquivos .c para .o

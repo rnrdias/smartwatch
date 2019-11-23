@@ -10,7 +10,23 @@
             "args": [
                 "-j",
                 "8", //threads number
-                "all_debug"
+                "all_simulator"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "build all m328p",
+            "command": "/usr/bin/make",
+            "args": [
+                "-j",
+                "8", //threads number
+                "all_m328p"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

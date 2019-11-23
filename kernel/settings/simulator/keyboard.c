@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "settings.h"
+#include "../settings.h"
 
 char Keyboard_getKeyEnter() {
     return letra == 'a';

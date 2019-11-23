@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "keyboard.h"
+#include "../keyboard.h"
 char keyEnter, keyEsc, keyUp, keyDown;
 
 char Keyboard_keyEnter(void) {

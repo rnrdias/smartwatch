@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-#include "lcd.h"
+#include "../lcd.h"
 
 #include <stdio.h>
 //#include <conio.h>

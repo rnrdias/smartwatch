@@ -11,7 +11,7 @@
  * Created on 7 de Julho de 2018, 23:05
  */
 
-#include "time_ms.h"
+#include "../time_ms.h"
 TMS_timeFormat TMS_cont;
 
 void TMS_initialize(void) {

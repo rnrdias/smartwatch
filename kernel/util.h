@@ -9,9 +9,11 @@
 #ifndef UTIL_H_
 #define UTIL_H_
 
-#include "compiler_define.h"
-
-
+#ifdef SIMULATOR
+    #include "settings/simulator/compiler_define.h"
+#elif  defined(ATMEGA328P)
+    #include "settings/atmega328p/compiler_define.h"
+#endif
 /*
  * Pototipo para atraso de milesegundos
  */

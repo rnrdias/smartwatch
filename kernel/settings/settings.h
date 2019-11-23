@@ -25,7 +25,7 @@ extern "C" {
 #include "../std.h"
 #include "../drivers/lcd.h"
 #include "../drivers/keyboard.h"
-#include "../../hardware.h"
+#include "../drivers/hardware.h"
 #include "../drivers/time_ms.h" 
 #include "../drivers/real_time_clock.h"
 #include "../drivers/beep.h"

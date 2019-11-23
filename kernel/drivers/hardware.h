@@ -17,15 +17,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-#include <stdio.h>
-//#include <conio.h>
-//#include <windows.h>
 
     char letra;
     void Hardware_initialize(void);
     void Hardware_loop(void);
-
-
 
 #ifdef __cplusplus
 }
