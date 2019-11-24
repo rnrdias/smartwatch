@@ -1,7 +1,11 @@
 
 ############################# Makefile ##########################
+#create empty variables
 SOURCES = 
 PATH_OBJS_DIR =
+
+#set default bin dir
+PATH_BIN_DIR = build
 
 #Simulator Load
 ifeq "$(MAKECMDGOALS)" "all_simulator"
@@ -9,7 +13,7 @@ ifeq "$(MAKECMDGOALS)" "all_simulator"
 	CFLAGS= -D SIMULATOR -g -W -Wall -ansi -pedantic -std=c11 -lncurses
 	CFLAGSLINKER= -g -std=c11 -lncurses
 
-	PATH_BIN=build/simulator
+	PATH_BIN=$(PATH_BIN_DIR)/simulator
 
 	SOURCES += $(wildcard ./kernel/drivers/simulator/*.c)
 	SOURCES += $(wildcard ./kernel/settings/simulator/*.c)
@@ -26,7 +30,7 @@ else
 		CFLAGS= -D ATMEGA328P -ansi -pedantic -W -Wall -Os -std=c11 -mmcu=$(MMCU) -D F_CPU=$(F_CPU)
 		CFLAGSLINKER=-Wall -Os -std=c11 -mmcu=$(MMCU) -D F_CPU=$(F_CPU)
 
-		PATH_BIN=build/atmega328p
+		PATH_BIN=$(PATH_BIN_DIR)/atmega328p
 
 		SOURCES += $(wildcard ./kernel/drivers/atmega328p/*.c)
 		SOURCES += $(wildcard ./kernel/settings/atmega328p/*.c)
@@ -36,11 +40,12 @@ else
 
 	#others
 	else
-		PATH_BIN=build/simulator
+		#PATH_BIN_M328P=build/atmega328p
+		#PATH_BIN=$(PATH_BIN_M328P) build/simulator
 	endif
 
 endif
-	#PATH_BIN+=build/avr
+
 
 
 #Generic
@@ -90,8 +95,6 @@ $(PATH_OBJS)/%.o: %.c
 	$(CC) -o $@ -c $*.c $(CFLAGS)
 
 #Para limpeza
-.PHONY: clean mrproper
+.PHONY: clean
 clean: 
-	rm -rf $(PATH_OBJS)
-mrproper: clean
-	rm -rf $(EXEC)
+	rm -rf $(PATH_BIN_DIR)
